@@ -150,7 +150,7 @@ namespace 项目方案第一版
         /// 打开文件对话框，导入进路信息表并显示在加载进来的DataGridview中,并将文件名加入字典中与DataSets下标对应 eg:"进路信息表":0
         /// </summary>
         /// <param name="dav"></param>
-        public static void Load_file_jinluinfo(DataGridView dav,TextBox tb)
+        public static void Load_file_jinlu_info(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -177,7 +177,7 @@ namespace 项目方案第一版
         /// 导入线路数据表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"线路数据表":1
         /// </summary>
 
-        public static void Load_file_xianlu_info()
+        public static void Load_file_xianlu_info(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -193,13 +193,15 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 DataSets.Add(ds);
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
             } 
         }
 
         /// <summary>
         /// 导入道岔信息表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"道岔信息表":2
         /// </summary>
-        public static void Load_file_daocha_info()
+        public static void Load_file_daocha_info(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -215,7 +217,8 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 DataSets.Add(ds);
-                
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
 
             }
 
@@ -224,7 +227,7 @@ namespace 项目方案第一版
         /// <summary>
         /// 导入应答器位置表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"应答器位置表":3
         /// </summary>
-        public static void Load_file_yindaqi_info()
+        public static void Load_file_yindaqi_info(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -240,7 +243,8 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 DataSets.Add(ds);
-
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
             }
 
         }
@@ -248,7 +252,7 @@ namespace 项目方案第一版
         /// <summary>
         /// 导入辅助信息表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"辅助信息表":4
         /// </summary>
-        public static void Load_file_fuzhu_info()
+        public static void Load_file_fuzhu_info(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -264,9 +268,41 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 DataSets.Add(ds);
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dv"></param>
+        /// <param name="tb"></param>
+        /// <param name="e"></param>
+        public static void Search(DataGridView dv ,TextBox tb, KeyEventArgs e)
+        {
+            string a;
+            if (e.KeyValue == 13)
+            {
+                for (int i = 3; i < dv.RowCount; i++)
+                {
+                    if (i > 0)
+                    {
+                        //a = this.dataGridView2.Rows[i].Cells[3].Value.ToString().Trim();
+                        a = Convert.ToString(dv[3, i].Value);
+                        if (tb.Text.ToString().Trim() == a)
+                        {
+                            dv.Rows[i].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
+                        }
+                        if (tb.Text == "")
+                        {
+                            dv.Rows[i].DefaultCellStyle.BackColor = Color.FromName("White");
+                        }
+                    }
+                }
+                //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
+            }
+        }
     }
+
 }

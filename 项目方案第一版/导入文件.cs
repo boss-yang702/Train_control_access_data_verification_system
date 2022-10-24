@@ -22,10 +22,25 @@ namespace 项目方案第一版
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            Manager.Load_file_daocha_info(textBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file_xianlu_info(textBox2);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file_yindaqi_info(textBox3);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }

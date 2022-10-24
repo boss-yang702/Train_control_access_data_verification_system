@@ -119,7 +119,7 @@ namespace 项目方案第一版
 
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            Manager.Load_file_jinluinfo(this.dataGridView2,textBox1);
+            Manager.Load_file_jinlu_info(this.dataGridView2,textBox1);
 
             //string path;
             //path = SelectPath();
@@ -164,27 +164,7 @@ namespace 项目方案第一版
 
        private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            string a;
-            if (e.KeyValue == 13)
-            {
-                for (int i = 3; i <dataGridView2.RowCount; i++)
-                {
-                    if (i > 0)
-                    {
-                        //a = this.dataGridView2.Rows[i].Cells[3].Value.ToString().Trim();
-                        a = Convert.ToString(dataGridView2[3, i].Value);
-                        if (textBox2.Text.ToString().Trim() == a)
-                        {
-                            dataGridView2.Rows[i].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
-                        }
-                        if(textBox2.Text=="")
-                        {
-                            dataGridView2.Rows[i].DefaultCellStyle.BackColor = Color.FromName("White");
-                        }
-                    }
-                }
-                //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
-            }
+            Manager.Search(dataGridView2, textBox2, e);
         }
     }
 }
