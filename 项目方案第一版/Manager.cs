@@ -23,6 +23,9 @@ namespace 项目方案第一版
         //项目所有数据集,统一方便管理
         public static List<DataSet> DataSets =new List<DataSet>();
 
+
+        
+
         /// <summary>
         /// 输入文件路径
         /// </summary>
@@ -80,7 +83,7 @@ namespace 项目方案第一版
             }
             ds = new DataSet();
 
-            int j = 0;
+            
             foreach (string it in sheetnames)
             {
                 DataTable dt = new DataTable(it.Substring(0, it.Length - 1));
@@ -90,7 +93,7 @@ namespace 项目方案第一版
                 oleda.Fill(dt);
 
                 ds.Tables.Add(dt);
-                j++;
+               
             }
 
             //关闭连接，释放资源
@@ -147,7 +150,7 @@ namespace 项目方案第一版
         /// 打开文件对话框，导入进路信息表并显示在加载进来的DataGridview中,并将文件名加入字典中与DataSets下标对应 eg:"进路信息表":0
         /// </summary>
         /// <param name="dav"></param>
-        public static void Load_file_jinluinfo(DataGridView dav)
+        public static void Load_file_jinluinfo(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -156,16 +159,18 @@ namespace 项目方案第一版
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 strPath = ofd.FileName;
-                int index1 = ofd.FileName.LastIndexOf('站');
-                int index2 = ofd.FileName.LastIndexOf('表');
-                string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
+                int index2 = filename.LastIndexOf('表');
+                string DsName = filename.Substring(0, index2+1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 Manager.DataSets.Add(ds);
+                dav.DataSource = Manager.DataSets[DsNames[DsName]].Tables[0];
 
             }
-            dav.DataSource = Manager.DataSets[DsNames["进路信息表"]].Tables[0];
+
         }
 
         /// <summary>
@@ -210,6 +215,7 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 DsNames.Add(DsName, DataSets.Count);
                 DataSets.Add(ds);
+                
 
             }
 

@@ -119,7 +119,7 @@ namespace 项目方案第一版
 
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            Manager.Load_file_jinluinfo(this.dataGridView2);
+            Manager.Load_file_jinluinfo(this.dataGridView2,textBox1);
 
             //string path;
             //path = SelectPath();
@@ -129,7 +129,6 @@ namespace 项目方案第一版
             //dataGridView2.DataSource = dt;
             //textBox2.Text = dataGridView2.Rows[3].Cells[3].Value.ToString();
             //dataGridView2.Rows[3].Cells[2].Style.BackColor = Color.FromName("Red");
-
             //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
         }
 
