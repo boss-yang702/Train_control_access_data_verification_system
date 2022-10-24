@@ -67,9 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Examine_info1.cs" />
-    <Compile Include="Examine_info2.cs" />
-    <Compile Include="Examine_info3.cs" />
+    <Compile Include="Examine_guidaoquduan.cs" />
+    <Compile Include="Examine_yingdaqi.cs" />
+    <Compile Include="Examine_speed.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
