@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 项目方案第一版
 {
-    internal class Examine_info2:Manager
+    internal class Examine_info2 : Manager
     {
     }
 }

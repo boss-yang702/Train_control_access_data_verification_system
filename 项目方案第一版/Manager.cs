@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Threading;
+
 
 namespace 项目方案第一版
 {
-    internal  class Manager
+    internal   class Manager
     {
         //一个文件对应一个Dataset 该Dataset有个名字与该下标对应，构建这个字典，便可以通过名字得到下标再寻找Dataset
         public static Dictionary<string, int> DsNames = new Dictionary<string, int>();
 
         //项目所有数据集,统一方便管理
-        public static List<DataSet> DataSets;
+        public static List<DataSet> DataSets =new List<DataSet>();
 
         /// <summary>
         /// 输入文件路径
@@ -25,28 +31,35 @@ namespace 项目方案第一版
         public static DataSet ImportExcel(string filePath)
         {
             DataSet ds = null;
-            OleDbConnection conn;
+            OleDbConnection OleConn;
 
             string strConn = string.Empty;
             string sheetName = string.Empty;
 
             try
             {
+                //string strConn;
+                ////strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
+                //strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";//此连接可以操作.xls与.xlsx文件
+                //OleDbConnection OleConn = new OleDbConnection(strConn);
+                //OleConn.Open();
+                
+
                 // Excel 2003 版本连接字符串
-                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0; HDR=YES; IMEX=1;'";
-                conn = new OleDbConnection(strConn);
-                conn.Open();
+                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
+                 OleConn = new OleDbConnection(strConn);
+                OleConn.Open();
             }
             catch
             {
                 // Excel 2007 以上版本连接字符串
-                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1;'";
-                conn = new OleDbConnection(strConn);
-                conn.Open();
+                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";
+                 OleConn = new OleDbConnection(strConn);
+                OleConn.Open();
             }
 
             //获取所有的 sheet 表
-            DataTable dtSheetName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" });
+            DataTable dtSheetName = OleConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" });
             List<string> sheetnames = new List<string>();
             foreach (DataRow row in dtSheetName.Rows)
             {
@@ -72,7 +85,7 @@ namespace 项目方案第一版
             {
                 DataTable dt = new DataTable(it.Substring(0, it.Length - 1));
 
-                OleDbDataAdapter oleda = new OleDbDataAdapter("select * from [" + it + "]", conn);
+                OleDbDataAdapter oleda = new OleDbDataAdapter("select * from [" + it + "]", OleConn);
 
                 oleda.Fill(dt);
 
@@ -81,8 +94,8 @@ namespace 项目方案第一版
             }
 
             //关闭连接，释放资源
-            conn.Close();
-            conn.Dispose();
+            OleConn.Close();
+            OleConn.Dispose();
 
             return ds;
         }
@@ -142,15 +155,17 @@ namespace 项目方案第一版
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                strPath = ofd.FileName;
                 int index1 = ofd.FileName.LastIndexOf('站');
                 int index2 = ofd.FileName.LastIndexOf('表');
                 string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
-                DataSets[0] = ImportExcel(strPath);
-                DataSets[0].DataSetName = DsName;
-                //DataSets.Add(ds);
+                DataSet ds = ImportExcel(strPath);
+                ds.DataSetName = DsName;
+                DsNames.Add(DsName, DataSets.Count);
+                Manager.DataSets.Add(ds);
 
             }
-            dav.DataSource = DataSets[DsNames["进路信息表"]].Tables[0];
+            dav.DataSource = Manager.DataSets[DsNames["进路信息表"]].Tables[0];
         }
 
         /// <summary>
@@ -165,6 +180,7 @@ namespace 项目方案第一版
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                strPath = ofd.FileName;
                 int index1 = ofd.FileName.LastIndexOf('站');
                 int index2 = ofd.FileName.LastIndexOf('表');
                 string DsName=ofd.FileName.Substring(index1+1, index2-index1);
@@ -186,6 +202,7 @@ namespace 项目方案第一版
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                strPath = ofd.FileName;
                 int index1 = ofd.FileName.LastIndexOf('站');
                 int index2 = ofd.FileName.LastIndexOf('表');
                 string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
@@ -209,6 +226,7 @@ namespace 项目方案第一版
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                strPath = ofd.FileName;
                 int index1 = ofd.FileName.LastIndexOf('站');
                 int index2 = ofd.FileName.LastIndexOf('表');
                 string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
@@ -232,6 +250,7 @@ namespace 项目方案第一版
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                strPath = ofd.FileName;
                 int index1 = ofd.FileName.LastIndexOf('站');
                 int index2 = ofd.FileName.LastIndexOf('表');
                 string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);

@@ -81,8 +81,8 @@ namespace 项目方案第一版
             {
                 //创建连接，引用协议
                 string strConn;
-                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
-                //strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";//此连接可以操作.xls与.xlsx文件
+                //strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
+                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";//此连接可以操作.xls与.xlsx文件
                 OleDbConnection OleConn = new OleDbConnection(strConn);
                 OleConn.Open();
                 String sql = "SELECT* FROM[Sheet1$]";//可是更改Sheet名称，比如sheet2，等等 
