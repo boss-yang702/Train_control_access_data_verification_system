@@ -102,24 +102,19 @@ namespace 项目方案第一版
         //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
         public static void Haseload()
         {
-
-            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\列车进路数据表\安江东站进路信息表-V1.0.2.XLS");
-            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
-
-           
+      
             string path;
             FolderBrowserDialog dilog = new FolderBrowserDialog();
             dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
-            if (dilog.ShowDialog() == DialogResult.OK || dilog.ShowDialog() == DialogResult.Yes)
+            if (dilog.ShowDialog() == DialogResult.OK)
             {
                 path = dilog.SelectedPath;
                 loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
                 loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
                 loding(path+@"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+                return;
             }
-            return;
+            
 
    
 
