@@ -83,6 +83,12 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
+    <Compile Include="信息表显示.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="信息表显示.Designer.cs">
+      <DependentUpon>信息表显示.cs</DependentUpon>
+    </Compile>
     <Compile Include="导入文件.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="信息表显示.resx">
+      <DependentUpon>信息表显示.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="导入文件.resx">
       <DependentUpon>导入文件.cs</DependentUpon>

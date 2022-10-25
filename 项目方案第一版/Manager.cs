@@ -12,6 +12,7 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 namespace 项目方案第一版
 {
@@ -97,7 +98,25 @@ namespace 项目方案第一版
 
             return ds;
         }
-
+        public static void Haseload()
+        {
+            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\列车进路数据表\安江东站进路信息表-V1.0.2.XLS");
+            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
+            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+        }
+        private static void loding(string strPath)
+        {
+   
+            string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+            int index2 = filename.LastIndexOf('表');
+            string DsName = filename.Substring(0, index2 + 1);
+            DataSet ds = ImportExcel(strPath);
+            ds.DataSetName = DsName;
+            DataSets.Add(DsName, ds);
+            信息表显示 frm = new 信息表显示(ds);
+            frm.Show();
+        }
 
         /// <summary>
         /// 传入一个datagridview,通过这个datagridview导出一个Excel表格文件，可选择文件保存地址
@@ -180,14 +199,15 @@ namespace 项目方案第一版
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 strPath = ofd.FileName;
-                int index1 = ofd.FileName.LastIndexOf('站');
-                int index2 = ofd.FileName.LastIndexOf('表');
-                string DsName=ofd.FileName.Substring(index1+1, index2-index1);
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+                tb.Text = filename;
+                int index1 = filename.LastIndexOf('表');
+                
+                string DsName=filename.Substring(0, index1+1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
                 DataSets.Add(DsName, ds);
-                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
+
             } 
         }
 
