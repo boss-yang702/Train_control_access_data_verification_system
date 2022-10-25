@@ -100,10 +100,10 @@ namespace 项目方案第一版
         }
         public static void Haseload()
         {
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\列车进路数据表\安江东站进路信息表-V1.0.2.XLS");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\列车进路数据表\安江东站进路信息表-V1.0.2.XLS");
+            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
+            loding(@"C:\Users\波霸\Documents\Tencent Files\1242475321\FileRecv\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
         }
         private static void loding(string strPath)
         {
