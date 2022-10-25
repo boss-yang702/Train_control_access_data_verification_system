@@ -30,7 +30,7 @@ namespace 项目方案第一版
             else
             {
                 //用户名和密码验证正确，提示成功，并执行跳转界面。
-                if (userName.Equals("2019112172") && userPassword.Equals("123456"))
+                if (userName.Equals("123") && userPassword.Equals("123"))
                 {
                     MessageBox.Show("登录成功！");
                     //跳转主界面
