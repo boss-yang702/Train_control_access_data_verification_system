@@ -168,7 +168,7 @@ namespace 项目方案第一版
         }
 
         /// <summary>
-        /// 导入线路数据表加载到内存中,建立字典
+        /// 导入线路数据表,等其他信息加载到内存中,建立字典
         /// </summary>
 
         public static void Load_file(TextBox tb)

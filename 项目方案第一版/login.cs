@@ -50,5 +50,16 @@ namespace 项目方案第一版
         {
             this.Close();
         }
-    }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox2.PasswordChar = '\0';   //显示输入
+            }
+            else
+            {
+                textBox2.PasswordChar = '*';   //显示*
+            }
+    }   }
 }

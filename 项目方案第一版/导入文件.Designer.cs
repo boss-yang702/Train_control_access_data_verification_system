@@ -42,7 +42,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(408, 84);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(358, 25);
+            this.textBox1.Size = new System.Drawing.Size(369, 25);
             this.textBox1.TabIndex = 0;
             // 
             // button1
@@ -89,7 +89,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(408, 184);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(358, 25);
+            this.textBox2.Size = new System.Drawing.Size(369, 25);
             this.textBox2.TabIndex = 5;
             // 
             // button5
@@ -106,7 +106,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(408, 282);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(358, 25);
+            this.textBox3.Size = new System.Drawing.Size(369, 25);
             this.textBox3.TabIndex = 7;
             // 
             // 导入文件
@@ -123,7 +123,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "导入文件";
-            this.Text = "Form2";
+            this.Text = "导入基础数据表";
             this.ResumeLayout(false);
             this.PerformLayout();
 
