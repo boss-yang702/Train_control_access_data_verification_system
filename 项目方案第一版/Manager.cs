@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace 项目方案第一版
 {
-    internal class Manager
+    internal abstract class Manager
     {
         //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
         protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
@@ -266,6 +266,8 @@ namespace 项目方案第一版
                 //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
             }
         }
+
+
     }
 
 }
