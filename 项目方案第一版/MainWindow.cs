@@ -136,5 +136,10 @@ namespace 项目方案第一版
         {
 
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            Manager.Haseload();
+        }
     }
 }

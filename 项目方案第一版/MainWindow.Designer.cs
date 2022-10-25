@@ -33,8 +33,16 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.导入数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看导入的具体数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.改变背景颜色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.字体样式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.使用说明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.版本解释ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.进路数据导入 = new System.Windows.Forms.Button();
@@ -45,14 +53,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.改变背景颜色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.字体样式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.使用说明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.版本解释ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看导入的具体数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,25 @@
             this.导入数据ToolStripMenuItem.Text = "导入数据";
             this.导入数据ToolStripMenuItem.Click += new System.EventHandler(this.导入数据ToolStripMenuItem_Click);
             // 
+            // 查看导入的具体数据ToolStripMenuItem
+            // 
+            this.查看导入的具体数据ToolStripMenuItem.Name = "查看导入的具体数据ToolStripMenuItem";
+            this.查看导入的具体数据ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.查看导入的具体数据ToolStripMenuItem.Text = "查看已导入的具体数据";
+            this.查看导入的具体数据ToolStripMenuItem.Click += new System.EventHandler(this.查看导入的具体数据ToolStripMenuItem_Click);
+            // 
+            // 保存文档ToolStripMenuItem
+            // 
+            this.保存文档ToolStripMenuItem.Name = "保存文档ToolStripMenuItem";
+            this.保存文档ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.保存文档ToolStripMenuItem.Text = "保存文档";
+            // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
+            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -105,6 +124,25 @@
             this.toolStripDropDownButton1.Text = "工具";
             this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
+            // qqToolStripMenuItem
+            // 
+            this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.qqToolStripMenuItem.Text = "清空当前";
+            this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
+            // 
+            // 改变背景颜色ToolStripMenuItem
+            // 
+            this.改变背景颜色ToolStripMenuItem.Name = "改变背景颜色ToolStripMenuItem";
+            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.改变背景颜色ToolStripMenuItem.Text = "背景颜色";
+            // 
+            // 字体样式ToolStripMenuItem
+            // 
+            this.字体样式ToolStripMenuItem.Name = "字体样式ToolStripMenuItem";
+            this.字体样式ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.字体样式ToolStripMenuItem.Text = "字体样式";
+            // 
             // toolStripDropDownButton2
             // 
             this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -116,6 +154,18 @@
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
             this.toolStripDropDownButton2.Size = new System.Drawing.Size(53, 24);
             this.toolStripDropDownButton2.Text = "帮助";
+            // 
+            // 使用说明ToolStripMenuItem
+            // 
+            this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.使用说明ToolStripMenuItem.Text = "使用说明";
+            // 
+            // 版本解释ToolStripMenuItem
+            // 
+            this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
+            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.版本解释ToolStripMenuItem.Text = "版本解释";
             // 
             // button1
             // 
@@ -203,56 +253,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(816, 546);
             this.dataGridView2.TabIndex = 11;
             // 
-            // qqToolStripMenuItem
-            // 
-            this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.qqToolStripMenuItem.Text = "清空当前";
-            this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
-            // 
-            // 改变背景颜色ToolStripMenuItem
-            // 
-            this.改变背景颜色ToolStripMenuItem.Name = "改变背景颜色ToolStripMenuItem";
-            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.改变背景颜色ToolStripMenuItem.Text = "背景颜色";
-            // 
-            // 字体样式ToolStripMenuItem
-            // 
-            this.字体样式ToolStripMenuItem.Name = "字体样式ToolStripMenuItem";
-            this.字体样式ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.字体样式ToolStripMenuItem.Text = "字体样式";
-            // 
-            // 使用说明ToolStripMenuItem
-            // 
-            this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.使用说明ToolStripMenuItem.Text = "使用说明";
-            // 
-            // 版本解释ToolStripMenuItem
-            // 
-            this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
-            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.版本解释ToolStripMenuItem.Text = "版本解释";
-            // 
-            // 查看导入的具体数据ToolStripMenuItem
-            // 
-            this.查看导入的具体数据ToolStripMenuItem.Name = "查看导入的具体数据ToolStripMenuItem";
-            this.查看导入的具体数据ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.查看导入的具体数据ToolStripMenuItem.Text = "查看已导入的具体数据";
-            this.查看导入的具体数据ToolStripMenuItem.Click += new System.EventHandler(this.查看导入的具体数据ToolStripMenuItem_Click);
-            // 
-            // 保存文档ToolStripMenuItem
-            // 
-            this.保存文档ToolStripMenuItem.Name = "保存文档ToolStripMenuItem";
-            this.保存文档ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.保存文档ToolStripMenuItem.Text = "保存文档";
-            // 
-            // 修改密码ToolStripMenuItem
-            // 
-            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.修改密码ToolStripMenuItem.Text = "修改密码";
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -271,6 +271,7 @@
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "列车进路数据校验";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
