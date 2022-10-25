@@ -38,9 +38,10 @@ namespace 项目方案第一版
             float newy = (this.Height) / y;
             setControls(newx, newy, this);
         }//窗口大小自动调整
-
+        
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
+            
             Manager.Load_file(this.dataGridView2,textBox1);
 
             //string path;
@@ -76,6 +77,7 @@ namespace 项目方案第一版
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 25;
             timer1.Enabled = true;
+            Examine_guidaoquduan.start_exam(textBox1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口

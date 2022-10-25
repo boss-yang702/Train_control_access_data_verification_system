@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Windows.Shapes;
 
 namespace 项目方案第一版
 {
@@ -79,7 +80,7 @@ namespace 项目方案第一版
             }
             ds = new DataSet();
 
-            
+            //导入所有Sheet
             foreach (string it in sheetnames)
             {
                 DataTable dt = new DataTable(it.Substring(0, it.Length - 1));
@@ -98,12 +99,23 @@ namespace 项目方案第一版
 
             return ds;
         }
+        //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
         public static void Haseload()
         {
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\列车进路数据表\安江东站进路信息表-V1.0.2.XLS");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-            loding(@"C:\Users\challenger\source\repos\course_designs\怀衡线列控工程数据表V1.0.18\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+           
+            string path;
+            FolderBrowserDialog dilog = new FolderBrowserDialog();
+            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
+            if (dilog.ShowDialog() == DialogResult.OK || dilog.ShowDialog() == DialogResult.Yes)
+            {
+                path = dilog.SelectedPath;
+                loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+                loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
+                loding(path+@"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+            }
+            return;
+
+   
         }
         private static void loding(string strPath)
         {
@@ -174,14 +186,20 @@ namespace 项目方案第一版
             {
                 strPath = ofd.FileName;
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
                 int index2 = filename.LastIndexOf('表');
                 string DsName = filename.Substring(0, index2+1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
-                DataSets.Add(DsName,ds);
+                if (DataSets.ContainsKey(DsName))
+                {
+                    MessageBox.Show("该表格已导入,现直接显示");
+                    dav.DataSource = DataSets[DsName].Tables[0];
+                    tb.Text = DsName;
+                    return;
+                }
+                DataSets.Add(DsName, ds);
                 dav.DataSource = DataSets[DsName].Tables[0];
-
+                tb.Text = DsName;
             }
 
         }
@@ -199,13 +217,17 @@ namespace 项目方案第一版
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 strPath = ofd.FileName;
-                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
+                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx” 
                 int index1 = filename.LastIndexOf('表');
-                
                 string DsName=filename.Substring(0, index1+1);
+                tb.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
+                if (DataSets.ContainsKey(DsName))
+                {
+                    MessageBox.Show("该表格已导入!");
+                    return;
+                }
                 DataSets.Add(DsName, ds);
 
             } 
