@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace 项目方案第一版
 {
-    internal class Manager
+    internal abstract class Manager
     {
         //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
         protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
@@ -106,14 +106,13 @@ namespace 项目方案第一版
             string path;
             FolderBrowserDialog dilog = new FolderBrowserDialog();
             dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
-            if (dilog.ShowDialog() == DialogResult.OK || dilog.ShowDialog() == DialogResult.Yes)
+            if (dilog.ShowDialog() == DialogResult.OK)
             {
                 path = dilog.SelectedPath;
                 loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
                 loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
                 loding(path+@"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
             }
-            return;
 
    
         }
@@ -264,6 +263,8 @@ namespace 项目方案第一版
                 //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
             }
         }
+
+
     }
 
 }

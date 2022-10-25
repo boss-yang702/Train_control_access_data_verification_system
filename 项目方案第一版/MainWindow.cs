@@ -78,6 +78,8 @@ namespace 项目方案第一版
             progressBar1.Maximum = 25;
             timer1.Enabled = true;
             Examine_guidaoquduan.start_exam(textBox1.Text);
+            Examine_yingdaqi.start_exam(textBox1.Text);
+            Examine_speed.start_exam(textBox1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口
