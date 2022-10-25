@@ -119,7 +119,7 @@ namespace 项目方案第一版
 
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            Manager.Load_file_jinlu_info(this.dataGridView2,textBox1);
+            Manager.Load_file(this.dataGridView2,textBox1);
 
             //string path;
             //path = SelectPath();

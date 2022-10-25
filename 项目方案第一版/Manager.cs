@@ -11,27 +11,22 @@ using System.Data.OleDb;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Threading;
-
+using System.Runtime.CompilerServices;
 
 namespace 项目方案第一版
 {
-    internal   class Manager
+    internal class Manager
     {
-        //一个文件对应一个Dataset 该Dataset有个名字与该下标对应，构建这个字典，便可以通过名字得到下标再寻找Dataset
-        public static Dictionary<string, int> DsNames = new Dictionary<string, int>();
+        //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
+        protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
 
-        //项目所有数据集,统一方便管理
-        public static List<DataSet> DataSets =new List<DataSet>();
-
-
-        
 
         /// <summary>
         /// 输入文件路径
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns>返回一个包含该文件的DateSet 里面有所有Sheet对应的Datatable</returns>
-        public static DataSet ImportExcel(string filePath)
+        private static DataSet ImportExcel(string filePath)
         {
             DataSet ds = null;
             OleDbConnection OleConn;
@@ -150,7 +145,7 @@ namespace 项目方案第一版
         /// 打开文件对话框，导入进路信息表并显示在加载进来的DataGridview中,并将文件名加入字典中与DataSets下标对应 eg:"进路信息表":0
         /// </summary>
         /// <param name="dav"></param>
-        public static void Load_file_jinlu_info(DataGridView dav,TextBox tb)
+        public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -165,19 +160,18 @@ namespace 项目方案第一版
                 string DsName = filename.Substring(0, index2+1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
-                DsNames.Add(DsName, DataSets.Count);
-                Manager.DataSets.Add(ds);
-                dav.DataSource = Manager.DataSets[DsNames[DsName]].Tables[0];
+                DataSets.Add(DsName,ds);
+                dav.DataSource = DataSets[DsName].Tables[0];
 
             }
 
         }
 
         /// <summary>
-        /// 导入线路数据表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"线路数据表":1
+        /// 导入线路数据表加载到内存中,建立字典
         /// </summary>
 
-        public static void Load_file_xianlu_info(TextBox tb)
+        public static void Load_file(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls";
@@ -191,90 +185,15 @@ namespace 项目方案第一版
                 string DsName=ofd.FileName.Substring(index1+1, index2-index1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
-                DsNames.Add(DsName, DataSets.Count);
-                DataSets.Add(ds);
+                DataSets.Add(DsName, ds);
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
                 tb.Text = filename;
             } 
         }
 
-        /// <summary>
-        /// 导入道岔信息表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"道岔信息表":2
-        /// </summary>
-        public static void Load_file_daocha_info(TextBox tb)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
-            //文件绝对路径
-            string strPath = string.Empty;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                strPath = ofd.FileName;
-                int index1 = ofd.FileName.LastIndexOf('站');
-                int index2 = ofd.FileName.LastIndexOf('表');
-                string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
-                DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                DsNames.Add(DsName, DataSets.Count);
-                DataSets.Add(ds);
-                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
-
-            }
-
-        }
 
         /// <summary>
-        /// 导入应答器位置表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"应答器位置表":3
-        /// </summary>
-        public static void Load_file_yindaqi_info(TextBox tb)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
-            //文件绝对路径
-            string strPath = string.Empty;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                strPath = ofd.FileName;
-                int index1 = ofd.FileName.LastIndexOf('站');
-                int index2 = ofd.FileName.LastIndexOf('表');
-                string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
-                DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                DsNames.Add(DsName, DataSets.Count);
-                DataSets.Add(ds);
-                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
-            }
-
-        }
-
-        /// <summary>
-        /// 导入辅助信息表加载到内存中,并将文件名加入字典中与DataSets下标对应 eg:"辅助信息表":4
-        /// </summary>
-        public static void Load_file_fuzhu_info(TextBox tb)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
-            //文件绝对路径
-            string strPath = string.Empty;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                strPath = ofd.FileName;
-                int index1 = ofd.FileName.LastIndexOf('站');
-                int index2 = ofd.FileName.LastIndexOf('表');
-                string DsName = ofd.FileName.Substring(index1 + 1, index2 - index1);
-                DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                DsNames.Add(DsName, DataSets.Count);
-                DataSets.Add(ds);
-                string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-                tb.Text = filename;
-            }
-
-        }
-        /// <summary>
-        /// 
+        /// 搜索进路栏，将搜索的ROWS标注颜色
         /// </summary>
         /// <param name="dv"></param>
         /// <param name="tb"></param>

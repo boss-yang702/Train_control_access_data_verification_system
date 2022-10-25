@@ -10,9 +10,6 @@ namespace 项目方案第一版
 {
     internal class Examine_guidaoquduan:Manager
     {
-        void func()
-        {
-            
-        }
+        
     }
 }
