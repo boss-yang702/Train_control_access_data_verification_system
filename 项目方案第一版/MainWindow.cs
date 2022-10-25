@@ -25,86 +25,13 @@ namespace 项目方案第一版
             y = this.Height;
             setTag(this);
         }
-        private void setTag(Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
-                if (con.Controls.Count > 0)
-                {
-                    setTag(con);
-                }
-            }
-        }
-        private void setControls(float newx, float newy, Control cons)
-        {
-            //遍历窗体中的控件，重新设置控件的值
-            foreach (Control con in cons.Controls)
-            {
-                //获取控件的Tag属性值，并分割后存储字符串数组
-                if (con.Tag != null)
-                {
-                    string[] mytag = con.Tag.ToString().Split(new char[] { ';' });
-                    //根据窗体缩放的比例确定控件的值
-                    con.Width = Convert.ToInt32(System.Convert.ToSingle(mytag[0]) * newx);//宽度
-                    con.Height = Convert.ToInt32(System.Convert.ToSingle(mytag[1]) * newy);//高度
-                    con.Left = Convert.ToInt32(System.Convert.ToSingle(mytag[2]) * newx);//左边距
-                    con.Top = Convert.ToInt32(System.Convert.ToSingle(mytag[3]) * newy);//顶边距
-                    Single currentSize = System.Convert.ToSingle(mytag[4]) * newy;//字体大小
-                    con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
-                    if (con.Controls.Count > 0)
-                    {
-                        setControls(newx, newy, con);
-                    }
-                }
-            }
-        }
-        private string SelectPath()
-
-        {
-            string path = string.Empty;
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog()
-            {
-                Filter = "Files (*.xls)|*.xls|(*.xlsx)|*.xlsx"//如果需要筛选txt文件（"Files (*.txt)|*.txt"）
-                //Filter = "Files (全部文件)|*.*"
-            };
-            var result = openFileDialog.ShowDialog();
-            if (result == true)
-            {
-                path = openFileDialog.FileName;
-            }
-            return path;
-        }
-        public static DataTable ReadExcel(string filePath)
-        {
-            try
-            {
-                //创建连接，引用协议
-                string strConn;
-                //strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
-                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";//此连接可以操作.xls与.xlsx文件
-                OleDbConnection OleConn = new OleDbConnection(strConn);
-                OleConn.Open();
-                String sql = "SELECT* FROM[Sheet1$]";//可是更改Sheet名称，比如sheet2，等等 
-                OleDbDataAdapter OleDaExcel = new OleDbDataAdapter(sql, OleConn);
-                DataSet OleDsExcle = new DataSet();
-                OleDaExcel.Fill(OleDsExcle, "Sheet1");
-                OleConn.Close();
-                return OleDsExcle.Tables["Sheet1"];
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show("数据绑定Excel失败!失败原因：" + err.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return null;
-            }
-        }
 
         private void 导入数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             导入文件 form2 = new 导入文件();
             form2.ShowDialog();
         }
-
+        
         private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
         {
 
@@ -146,7 +73,6 @@ namespace 项目方案第一版
                 form3.ShowDialog();
                 progressBar1.Value = 0;
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -157,14 +83,53 @@ namespace 项目方案第一版
             timer1.Enabled = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口
         {
             this.Close();
         }
 
-       private void textBox2_KeyDown(object sender, KeyEventArgs e)
+       private void textBox2_KeyDown(object sender, KeyEventArgs e)//进路数据表进路的搜索功能
         {
             Manager.Search(dataGridView2, textBox2, e);
+        }
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                {
+                    setTag(con);
+                }
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)//自适应窗体内控件大小
+        {
+            //遍历窗体中的控件，重新设置控件的值
+            foreach (Control con in cons.Controls)
+            {
+                //获取控件的Tag属性值，并分割后存储字符串数组
+                if (con.Tag != null)
+                {
+                    string[] mytag = con.Tag.ToString().Split(new char[] { ';' });
+                    //根据窗体缩放的比例确定控件的值
+                    con.Width = Convert.ToInt32(System.Convert.ToSingle(mytag[0]) * newx);//宽度
+                    con.Height = Convert.ToInt32(System.Convert.ToSingle(mytag[1]) * newy);//高度
+                    con.Left = Convert.ToInt32(System.Convert.ToSingle(mytag[2]) * newx);//左边距
+                    con.Top = Convert.ToInt32(System.Convert.ToSingle(mytag[3]) * newy);//顶边距
+                    Single currentSize = System.Convert.ToSingle(mytag[4]) * newy;//字体大小
+                    con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                    if (con.Controls.Count > 0)
+                    {
+                        setControls(newx, newy, con);
+                    }
+                }
+            }
+        }
+
+        private void qqToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

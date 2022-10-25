@@ -33,12 +33,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.导入数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.计划文件导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.进路数据导入 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +45,11 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.改变背景颜色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.字体样式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.使用说明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.版本解释ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -67,8 +71,7 @@
             // 
             this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.导入数据ToolStripMenuItem,
-            this.计划文件导入ToolStripMenuItem});
+            this.导入数据ToolStripMenuItem});
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
             this.toolStripSplitButton1.Size = new System.Drawing.Size(73, 24);
@@ -78,19 +81,17 @@
             // 导入数据ToolStripMenuItem
             // 
             this.导入数据ToolStripMenuItem.Name = "导入数据ToolStripMenuItem";
-            this.导入数据ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.导入数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.导入数据ToolStripMenuItem.Text = "导入数据";
             this.导入数据ToolStripMenuItem.Click += new System.EventHandler(this.导入数据ToolStripMenuItem_Click);
-            // 
-            // 计划文件导入ToolStripMenuItem
-            // 
-            this.计划文件导入ToolStripMenuItem.Name = "计划文件导入ToolStripMenuItem";
-            this.计划文件导入ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.计划文件导入ToolStripMenuItem.Text = "计划文件导入";
             // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.qqToolStripMenuItem,
+            this.改变背景颜色ToolStripMenuItem,
+            this.字体样式ToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -100,6 +101,9 @@
             // toolStripDropDownButton2
             // 
             this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.使用说明ToolStripMenuItem,
+            this.版本解释ToolStripMenuItem});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
@@ -126,15 +130,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // 进路数据导入
             // 
-            this.button3.Location = new System.Drawing.Point(854, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(267, 75);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "进路数据导入";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.进路数据导入.Location = new System.Drawing.Point(854, 113);
+            this.进路数据导入.Name = "进路数据导入";
+            this.进路数据导入.Size = new System.Drawing.Size(267, 75);
+            this.进路数据导入.TabIndex = 5;
+            this.进路数据导入.Text = "进路数据导入";
+            this.进路数据导入.UseVisualStyleBackColor = true;
+            this.进路数据导入.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 
@@ -163,7 +167,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(369, 45);
+            this.label2.Location = new System.Drawing.Point(380, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 9;
@@ -192,6 +196,37 @@
             this.dataGridView2.Size = new System.Drawing.Size(816, 546);
             this.dataGridView2.TabIndex = 11;
             // 
+            // qqToolStripMenuItem
+            // 
+            this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.qqToolStripMenuItem.Text = "清空数据";
+            this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
+            // 
+            // 改变背景颜色ToolStripMenuItem
+            // 
+            this.改变背景颜色ToolStripMenuItem.Name = "改变背景颜色ToolStripMenuItem";
+            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.改变背景颜色ToolStripMenuItem.Text = "背景颜色";
+            // 
+            // 字体样式ToolStripMenuItem
+            // 
+            this.字体样式ToolStripMenuItem.Name = "字体样式ToolStripMenuItem";
+            this.字体样式ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.字体样式ToolStripMenuItem.Text = "字体样式";
+            // 
+            // 使用说明ToolStripMenuItem
+            // 
+            this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.使用说明ToolStripMenuItem.Text = "使用说明";
+            // 
+            // 版本解释ToolStripMenuItem
+            // 
+            this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
+            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.版本解释ToolStripMenuItem.Text = "版本解释";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -203,7 +238,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.进路数据导入);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
@@ -224,10 +259,9 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem 导入数据ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 计划文件导入ToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button 进路数据导入;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
@@ -237,6 +271,11 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ToolStripMenuItem qqToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 改变背景颜色ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 字体样式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 使用说明ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 版本解释ToolStripMenuItem;
     }
 }
 

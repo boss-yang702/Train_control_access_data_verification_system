@@ -274,7 +274,7 @@ namespace 项目方案第一版
 
         }
         /// <summary>
-        /// 
+        /// 搜索进路并快速显示进路的位置
         /// </summary>
         /// <param name="dv"></param>
         /// <param name="tb"></param>
@@ -300,9 +300,48 @@ namespace 项目方案第一版
                         }
                     }
                 }
-                //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
             }
         }
+        public static DataTable ReadExcel(string filePath)
+        {
+            try
+            {
+                //创建连接，引用协议
+                string strConn;
+                //strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel8.0;HDR=False;IMEX=1'";
+                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" + filePath + ";Extended Properties='Excel 12.0; HDR=NO;IMEX=1'";//此连接可以操作.xls与.xlsx文件
+                OleDbConnection OleConn = new OleDbConnection(strConn);
+                OleConn.Open();
+                String sql = "SELECT* FROM[Sheet1$]";//可是更改Sheet名称，比如sheet2，等等 
+                OleDbDataAdapter OleDaExcel = new OleDbDataAdapter(sql, OleConn);
+                DataSet OleDsExcle = new DataSet();
+                OleDaExcel.Fill(OleDsExcle, "Sheet1");
+                OleConn.Close();
+                return OleDsExcle.Tables["Sheet1"];
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("数据绑定Excel失败!失败原因：" + err.Message, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+        }
+        private string SelectPath()
+
+        {
+            string path = string.Empty;
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog()
+            {
+                Filter = "Files (*.xls)|*.xls|(*.xlsx)|*.xlsx"//如果需要筛选txt文件（"Files (*.txt)|*.txt"）
+                //Filter = "Files (全部文件)|*.*"
+            };
+            var result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                path = openFileDialog.FileName;
+            }
+            return path;
+        }
+
     }
 
 }

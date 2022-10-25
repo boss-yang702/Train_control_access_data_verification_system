@@ -16,7 +16,19 @@ namespace 项目方案第一版
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            login login = new login();
+            login.ShowDialog();
+            if (login.DialogResult == DialogResult.OK)
+            {
+                login.Dispose();
+                Application.Run(new MainWindow());
+            }
+            else if (login.DialogResult == DialogResult.Cancel)
+            {
+                login.Dispose();
+                return;
+            }
+            //Application.Run(new MainWindow());
         }
     }
 }
