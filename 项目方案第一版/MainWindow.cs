@@ -78,7 +78,8 @@ namespace 项目方案第一版
             progressBar1.Maximum = 25;
             timer1.Enabled = true;
             //Examine_guidaoquduan.start_exam(textBox1.Text);
-            //Examine_yingdaqi.start_exam(textBox1.Text,dataGridView2);
+            Examine_yingdaqi.start_exam(textBox1.Text,dataGridView2);
+            
             //Examine_speed.start_exam(textBox1.Text);
         }
 

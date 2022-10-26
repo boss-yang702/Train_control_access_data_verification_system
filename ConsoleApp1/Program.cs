@@ -4,5 +4,6 @@
 //string[] SA= ss.Split('+');
 //int number = Convert.ToInt32(SA[0])*1000 + Convert.ToInt32(SA[1]);
 //Console.WriteLine(number); 
-105 - 3 - 01 - 083 - 1 105 - 3 - 02 - 001 105 - 3 - 03 - 001 - 2
-string input= 105 - 3 - 04 - 010 - 1 105-3-04-007-1 105-3-04-005-3 105-3-04-005-3 105-3-04-010-1105-3-04-010-1
+string bh = Regex.Replace("105 - 3 - 04 - 005 - 3", "[ \n\r]", "", RegexOptions.IgnoreCase);
+Match bh_pre = Regex.Match(bh, @"\d+-\d+-\d+", RegexOptions.IgnoreCase);
+string s = bh_pre.Value;

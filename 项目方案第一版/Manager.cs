@@ -22,7 +22,7 @@ namespace 项目方案第一版
         //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
         protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
 
-
+        public static DataGridView main_dv=new DataGridView();
         /// <summary>
         /// 输入文件路径
         /// </summary>
@@ -192,13 +192,33 @@ namespace 项目方案第一版
                 ds.DataSetName = DsName;
                 if (DataSets.ContainsKey(DsName))
                 {
-                    MessageBox.Show("该表格已导入,现直接显示");
-                    dav.DataSource = DataSets[DsName].Tables[0];
-                    tb.Text = DsName;
+                    DialogResult MsgBoxResult;//设置对话框的返回值
+                    MsgBoxResult = System.Windows.Forms.MessageBox.Show("该文件已导入，是否覆盖？", "这会替换系统中原本的数据集，不覆盖则会显示原本数据", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);//定义对话框的按钮式样
+                    if (MsgBoxResult.ToString() == "Yes")//如果对话框的返回值是YES（按"Y"按钮）
+                    {
+                        DataSets.Remove(DsName);
+                        DataSets.Add(DsName, ds);
+                        dav.DataSource = DataSets[DsName].Tables[0];
+                        tb.Text = DsName;
+                        //main_dv.Dispose();
+                        //main_dv.DataSource = ds.Copy();
+                        //选择了Yes，继续
+                    }
+                    if ( MsgBoxResult.ToString() == "No")//如果对话框的返回值是NO（按"N"按钮）
+                    {
+                        dav.DataSource = DataSets[DsName].Tables[0];
+                        //main_dv.Dispose();
+                        //main_dv.DataSource = ds.Copy();
+                        tb.Text = DsName;
+                        //选择了No，继续
+                    }
+                    
                     return;
                 }
                 DataSets.Add(DsName, ds);
                 dav.DataSource = DataSets[DsName].Tables[0];
+                //main_dv.Dispose();
+                //main_dv.DataSource = ds.Copy();
                 tb.Text = DsName;
             }
 
