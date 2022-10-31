@@ -70,6 +70,7 @@
     <Compile Include="Examine_guidaoquduan.cs" />
     <Compile Include="Examine_yingdaqi.cs" />
     <Compile Include="Examine_speed.cs" />
+    <Compile Include="guidaoquduan.cs" />
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>

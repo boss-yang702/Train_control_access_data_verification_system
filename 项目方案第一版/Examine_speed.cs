@@ -14,7 +14,6 @@ namespace 项目方案第一版
         public static void start_exam(string name)
         {
             Jinlu_table = DataSets[name].Tables[0];
-            MessageBox.Show(Jinlu_table.TableName, Jinlu_table.Rows[0][0].ToString());
         }
     }
 }

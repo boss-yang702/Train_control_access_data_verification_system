@@ -11,11 +11,16 @@ using System.Data.OleDb;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Threading;
+using Microsoft.Office.Interop.Excel;
+using Font = System.Drawing.Font;
 
 namespace 项目方案第一版
 {
     public partial class MainWindow : Form
     {
+        public static System.Data.DataTable dt;
+        public static string at;
+
         private float x;//定义当前窗体的宽度
         private float y;//定义当前窗体的高度
         public MainWindow()
@@ -43,7 +48,7 @@ namespace 项目方案第一版
         {
             
             Manager.Load_file(this.dataGridView2,textBox1);
-
+            
             //string path;
             //path = SelectPath();
             //string filename = System.IO.Path.GetFileName(path);//文件名  “Default.aspx”
@@ -77,7 +82,8 @@ namespace 项目方案第一版
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 25;
             timer1.Enabled = true;
-            Examine_guidaoquduan.start_exam(textBox1.Text);
+            dt=Examine_guidaoquduan.start_exam(textBox1.Text);
+            at = textBox1.Text;
             Examine_yingdaqi.start_exam(textBox1.Text);
             Examine_speed.start_exam(textBox1.Text);
         }

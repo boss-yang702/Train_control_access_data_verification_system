@@ -20,7 +20,7 @@ namespace 项目方案第一版
     internal abstract class Manager
     {
         //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
-        protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
+        public static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
 
 
         /// <summary>
@@ -30,6 +30,7 @@ namespace 项目方案第一版
         /// <returns>返回一个包含该文件的DateSet 里面有所有Sheet对应的Datatable</returns>
         private static DataSet ImportExcel(string filePath)
         {
+
             DataSet ds = null;
             OleDbConnection OleConn;
 
@@ -109,9 +110,9 @@ namespace 项目方案第一版
             if (dilog.ShowDialog() == DialogResult.OK)
             {
                 path = dilog.SelectedPath;
-                loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-                loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-                loding(path+@"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+                //loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+                //loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
+                loding(path+ @"\站内轨道区段信息表.xls");
                 return;
             }
             
@@ -139,7 +140,7 @@ namespace 项目方案第一版
         public static void Export(DataGridView dataGridView1)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "excel文件|*.XLS";
+            saveFileDialog.Filter = "excel文件|*.*";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -181,7 +182,7 @@ namespace 项目方案第一版
         public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -213,7 +214,7 @@ namespace 项目方案第一版
         public static void Load_file(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
