@@ -20,7 +20,7 @@ namespace 项目方案第一版
     internal abstract class Manager
     {
         //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
-        protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
+        public static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
 
         public static DataGridView main_dv=new DataGridView();
         /// <summary>
@@ -179,7 +179,7 @@ namespace 项目方案第一版
         public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.xls|所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -231,7 +231,7 @@ namespace 项目方案第一版
         public static void Load_file(TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.xls|所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)

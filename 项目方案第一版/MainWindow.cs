@@ -43,7 +43,7 @@ namespace 项目方案第一版
         {
             
             Manager.Load_file(this.dataGridView2,textBox1);
-
+            
             //string path;
             //path = SelectPath();
             //string filename = System.IO.Path.GetFileName(path);//文件名  “Default.aspx”
