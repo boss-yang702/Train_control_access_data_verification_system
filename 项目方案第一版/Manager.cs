@@ -228,7 +228,7 @@ namespace 项目方案第一版
         /// 导入线路数据表加载到内存中,建立字典
         /// </summary>
 
-        public static void Load_file(TextBox tb)
+        public static void Load_file(TextBox tb1,TextBox tb2,ref DataSet _ds)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "表格|*.xls|所有文件|*.*";
@@ -238,18 +238,14 @@ namespace 项目方案第一版
             {
                 strPath = ofd.FileName;
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx” 
-                int index1 = filename.LastIndexOf('表');
-                string DsName=filename.Substring(0, index1+1);
-                tb.Text = DsName;
+                int index1  = filename.LastIndexOf("东站");
+                int index2 = filename.LastIndexOf('表');
+                string DsName=filename.Substring(index1+2, 5);
+                tb1.Text = filename.Substring(0, index1 + 2);
+                tb2.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                if (DataSets.ContainsKey(DsName))
-                {
-                    MessageBox.Show("该表格已导入!");
-                    return;
-                }
-                DataSets.Add(DsName, ds);
-
+                //ds.DataSetName = DsName;
+                _ds = ds;
             } 
         }
 

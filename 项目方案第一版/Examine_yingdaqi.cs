@@ -64,7 +64,7 @@ namespace 项目方案第一版
                 if(start_pos== -1)
                 {
                     Responder_pos.indicate_warning(dv_jg, i);
-                    result=result+"没有" + bh + "应答器位置";
+                    Examine_yingdaqi.result=Examine_yingdaqi.result+"没有" + bh + "应答器位置";
                 }
                 string bh_pre = Regex.Match(bh, @"\d+-\d+-\d+-", RegexOptions.IgnoreCase).Value;//105-3-04- 
                 foreach (string j in jl)//有多个应答器单元编号/链接距离组合

@@ -17,7 +17,8 @@ namespace 项目方案第一版
          public Responder_pos(DataSet ds)
         {
             this.ds = ds;
-
+            //数据完整性检验
+            //Examine_yingdaqi
         }
         /// <summary>
         /// 输入源位置 偏移距离 目标位置范围，允许误差范围
