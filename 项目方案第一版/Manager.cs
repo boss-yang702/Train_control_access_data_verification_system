@@ -180,7 +180,7 @@ namespace 项目方案第一版
         public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.xls|所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -229,10 +229,10 @@ namespace 项目方案第一版
         /// 导入线路数据表加载到静态存储区中,建立字典
         /// </summary>
 
-        public static void Load_file(TextBox tb)
+        public static void Load_file(TextBox tb1,TextBox tb2,ref DataSet _ds)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls";
+            ofd.Filter = "表格|*.xls|所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -245,14 +245,8 @@ namespace 项目方案第一版
                 tb1.Text = filename.Substring(0, index1 + 2);
                 tb2.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                if (DataSets.ContainsKey(DsName))
-                {
-                    MessageBox.Show("该表格已导入!");
-                    return;
-                }
-                DataSets.Add(DsName, ds);
-
+                //ds.DataSetName = DsName;
+                _ds = ds;
             } 
         }
 

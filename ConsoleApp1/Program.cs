@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Data;
+using System.Text.RegularExpressions;
 //string s = "KAF15+545";
 //string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);
 //string[] SA= ss.Split('+');
@@ -7,3 +8,4 @@
 string bh = Regex.Replace("105 - 3 - 04 - 005 - 3", "[ \n\r]", "", RegexOptions.IgnoreCase);
 Match bh_pre = Regex.Match(bh, @"\d+-\d+-\d+", RegexOptions.IgnoreCase);
 string s = bh_pre.Value;
+

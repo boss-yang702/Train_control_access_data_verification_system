@@ -83,6 +83,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
+    <Compile Include="Responder_pos.cs" />
     <Compile Include="信息表显示.cs">
       <SubType>Form</SubType>
     </Compile>
