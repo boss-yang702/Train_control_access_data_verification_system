@@ -19,10 +19,10 @@ namespace 项目方案第一版
 {
     internal abstract class Manager
     {
-        //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
-        protected static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
+        //构建起Excel文件的名字信息与DataSet的字典对应关系，将文件导入字典，通过表名便可访问Dataset eg：DataSets[string name]
+        public static Dictionary<string, DataSet> DataSets =new Dictionary<string, DataSet>();
 
-        public static DataGridView main_dv=new DataGridView();
+
         /// <summary>
         /// 输入文件路径
         /// </summary>
@@ -126,6 +126,7 @@ namespace 项目方案第一版
             DataSet ds = ImportExcel(strPath);
             ds.DataSetName = DsName;
             DataSets.Add(DsName, ds);
+            
             信息表显示 frm = new 信息表显示(ds);
             frm.Show();
         }
@@ -225,7 +226,7 @@ namespace 项目方案第一版
         }
 
         /// <summary>
-        /// 导入线路数据表加载到内存中,建立字典
+        /// 导入线路数据表加载到静态存储区中,建立字典
         /// </summary>
 
         public static void Load_file(TextBox tb)
@@ -238,9 +239,11 @@ namespace 项目方案第一版
             {
                 strPath = ofd.FileName;
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx” 
-                int index1 = filename.LastIndexOf('表');
-                string DsName=filename.Substring(0, index1+1);
-                tb.Text = DsName;
+                int index1  = filename.LastIndexOf("东站");
+                int index2 = filename.LastIndexOf('表');
+                string DsName=filename.Substring(index1+2, index2-index1-1);
+                tb1.Text = filename.Substring(0, index1 + 2);
+                tb2.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
                 if (DataSets.ContainsKey(DsName))

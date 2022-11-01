@@ -16,12 +16,8 @@ namespace 项目方案第一版
     internal abstract class Examine_yingdaqi : Manager
     {
 
-        //进路数据表table
-        protected static DataTable Jinlu_table;
-        private static string result;
-       
-        private static DataSet yingdaqi_ds;
-
+        public static string result; 
+        static  Responder_pos re;
         //开始检验，获得结果,传入的DataGridView中标注错误，警告信息，如果错误则标红，信息不足则标黄
         public static void start_exam(string name,  DataGridView dv)
         {
@@ -30,15 +26,24 @@ namespace 项目方案第一版
                 result += "没有进路表\r\n";
                 return;
             }
-            Jinlu_table = DataSets[name].Tables[0];
-            main_dv= dv;
-      
+            //Jinlu_table = DataSets[name].Tables[0];
+            
             //在进路数据表的DataGridView中找到与应答器有关的列,缺少直接返回
-            DataGridViewColumn dv_bh = dv_find_colunm(main_dv, "应答器编号");
-            DataGridViewColumn dv_jg = dv_find_colunm(main_dv, "经过应答器");
-            if (dv_bh == null || dv_jg == null) return;
-
-            Exam_dataset_info(dv_bh, dv_jg,ref yingdaqi_ds);
+            DataGridViewColumn dvc_bh = dv_find_colunm(dv, "应答器编号");
+            DataGridViewColumn dvc_jg = dv_find_colunm(dv, "经过应答器");
+            if (dvc_bh == null || dvc_jg == null) return;
+            try
+            {
+                re = new Responder_pos(DataSets["应答器位置表"]);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("缺少应答器位置表！");
+                indicate_warning(dvc_jg);//直接在datagridview标黄某一列
+                return;
+            }
+            Exam_begin(dvc_bh, dvc_jg);
+        }
 
             DataTable dt1 = yingdaqi_ds.Tables[0];
             DataTable dt2 = yingdaqi_ds.Tables[1];
@@ -67,113 +72,54 @@ namespace 项目方案第一版
         /// <summary>
         /// 开始检查每个单元详细数据，并在DataGridView中标注结果
         /// </summary>
-        static void Exam_begin(DataGridViewColumn dv_bh, DataGridViewColumn dv_jg, DataTable dt1,DataTable dt2)
+        static void Exam_begin(DataGridViewColumn dvc_bh, DataGridViewColumn dvc_jg)
         {
 
-            for (int i = 3; i < dv_bh.DataGridView.RowCount; i++)
+            for (int i = 3; i < dvc_bh.DataGridView.RowCount; i++)
             {
-                string bh = Regex.Replace(main_dv[dv_bh.Name, i].Value.ToString().Trim(), "[ \n\r]", "", RegexOptions.IgnoreCase);
-                string[] jl = Regex.Replace(main_dv[dv_jg.Name, i].Value.ToString().ToString().Trim(), "[ \n\r]", "", RegexOptions.IgnoreCase).Split(',');
-                if (jl[0] == "-") continue;//经过应答器为-，则不检验，跳过
-                string bh_pre = Regex.Match(bh, @"\d+-\d+-\d+-", RegexOptions.IgnoreCase).Value;//105-3-04-
-                int start_pos = Get_yingdaqi_pos(bh, dt1, dt2);
-                foreach (string j in jl)//有多个应答器单元编号/链接距离组合
+                string bh = Regex.Replace(dvc_bh.DataGridView[dvc_bh.Name, i].Value.ToString(),@"\s+","");
+                string[] jl = Regex.Replace(dvc_bh.DataGridView[dvc_jg.Name, i].Value.ToString(),@"\s+","").Split(',');
+                if (jl[0] == "-")
                 {
-                    string[] js = j.Split('/');//分别得到后缀前半部分的编号 和 距离
+                    indicate_correct(dvc_jg, i);
+                    continue;//经过应答器为-，则不检验，跳过
+                }
+                int start_pos = re[bh];
+                if(start_pos== -1)
+                {
+                    Responder_pos.indicate_warning(dvc_jg, i);
+                    //result+="没有" + bh + "应答器位置";
+                    MessageBox.Show("没有" + bh + "应答器位置");
+                    indicate_warning(dvc_jg,i);
+                    continue;
+                }
+                string bh_pre = Regex.Match(bh, @"\d+-\d+-\d+-").Value;//105-3-04- 
+                foreach (string combination in jl)//有多个应答器单元编号/链接距离组合
+                {
+                    string[] js = combination.Split('/');//分别得到后缀前半部分的编号 和 距离 075/156
                     string des_pre = bh_pre + js[0];//目标编号前缀 105-3-04-075
-                    List<string> dess = Get_des_yingdaqibianhaos(bh_pre,dt1,dt2);//得到所有目标编号-1 -2 -3等
+
+                    List<string> dess = re.Get_des_yingdaqibianhaos(des_pre,re.ds);//得到所有目标编号-1 -2 -3等
                     List<int> des_positions = new List<int>();//每个目标应答器的位置List
                     foreach (string s in dess)//每个目标应答器有-1 -2 -3 等位置
                     {
-                        des_positions.Add(Get_yingdaqi_pos(s, dt1, dt2));
+                        des_positions.Add(re[bianhao]);
                     }
-                    int result = Compare(start_pos,Convert.ToInt32(js[1]), des_positions, 2);
-                    if (result == 1) continue;//正确不标注
-                    else if (result == 0) indicate_error(dv_jg, i);//错误把这个单元格表红
-                    else indicate_warning(ref dv_jg, i);//信息不足则标黄
+                    int result = re.Compare(start_pos,Convert.ToInt32(js[1]), des_positions, 2);
+                    if (result == 1)
+                    {
+                       indicate_correct(dvc_jg,i);
+                        continue;//标注绿色
+                    }
+                       
+                    else if (result == 0) indicate_error(dvc_jg, i);//错误把这个单元格表红
+                    else indicate_warning(dvc_jg, i);//信息不足则标黄
                 }
+              
             }
         }
-        /// <summary>
-        /// 输入源位置 偏移距离 目标位置范围，允许误差范围
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="deviation"></param>
-        /// <param name="des_positions"></param>
-        /// <param name="error_range"></param>
-        /// <returns>错误返回0 正确返回1 信息不足返回-1</returns>
-        static int Compare(int source, int deviation, List<int> des_positions,int error_range)
-        {
-            if (des_positions.Count == 0|| des_positions.Count == 1) return -1;//只有一个应答器，没有数据
-            int max = des_positions.Max();
-            int min = des_positions.Min();
-            
-            if((min-error_range)<=source && source <= (max+error_range))
-            {
-                return 1;//true
-            }
-            return 0;//false
-        }
-        static List<string> Get_des_yingdaqibianhaos(string bh_pre,DataTable dt1,DataTable dt2)
-        {
-            List<string> dess = new List<string>();
-            int bh_index = dt_find(dt1, "应答器编号");
-            for (int i = 1; i < dt1.Rows.Count; i++)
-            {
-                string temp1 = Regex.Replace(dt1.Rows[i][bh_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                if (bh_pre == temp1)
-                {
-                }
-            }
-            return dess;
-        }
-        /// <summary>
-        /// 输入两张表，一张上行，一张下行，输入一个应答器编号，
-        /// </summary>
-        /// <param name="bh"></param>
-        /// <param name="dt1"></param>
-        /// <param name="dt2"></param>
-        /// <returns>返回这个应答器编号对应的里程数，找不到则返回-1</returns>
-        static int Get_yingdaqi_pos(string bh, DataTable dt1, DataTable dt2)
-        {
-            int bh_index = dt_find(dt1, "应答器编号");
-            int licheng_index = dt_find(dt1, "里程");
-            //第一张表
-            for(int i = 2; i < dt1.Rows.Count; i++)
-            {
-                string temp1 = Regex.Replace(dt1.Rows[i][bh_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                if (bh == temp1)
-                {
-                    string temp = Regex.Replace( dt1.Rows[i][licheng_index].ToString().Trim(),"[\n\r ]","",RegexOptions.IgnoreCase);
-                    return Get_mile(temp);
-                }
-                
-            }
-            //第二张表
-            for (int i = 2; i < dt2.Rows.Count; i++)
-            {
-                string temp1 = Regex.Replace(dt2.Rows[i][bh_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                if (bh == temp1)
-                {
-                    string temp = Regex.Replace(dt1.Rows[i][licheng_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                    return Get_mile(temp);
-                }
 
-            }
-            return -1;
-        }
-        /// <summary>
-        /// 输入里程数，K15+500
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns>返回15000+500=15500</returns>
-        static int Get_mile(string s)
-        {
-            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);
-            string[] SA = ss.Split('+');
-            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);
-            return number;
-        }
+
         /// <summary>
         /// 找到colname对应的列，返回其列下标index
         /// </summary>
@@ -205,20 +151,11 @@ namespace 项目方案第一版
             MessageBox.Show("该进路信息表格缺少" + colname + "信息列");
             return null;
         }
-        /// <summary>
-        /// 检查导入的数据信息是否充足，如果缺少文件则直接将对应列标黄
-        /// </summary>
-        public static void Exam_dataset_info(DataGridViewColumn dv_bh, DataGridViewColumn dv_jg,ref DataSet ds)
-        {
-            //找到则赋值给全局变量yindaqi_ds，没找到就在dv_jg这一列标黄
-            if (!find_ds("应答器位置表",ref ds))
-            {
-                indicate_warning(ref dv_jg);//直接在datagridview标黄某一列
-               
-            }
-            
-        }
 
+        public static void indicate_correct(DataGridViewColumn col,int a)
+        {
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
+        }
         private static void indicate_error(DataGridViewColumn col, int a)
         {
             col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
@@ -236,26 +173,5 @@ namespace 项目方案第一版
             if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
             col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
         }
-        /// <summary>
-        /// 输入信息类型 (如应答器位置) ,一个Dataset  
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns>找到到该信息表格数据集 ，赋值给该DataSet,返回ture 没找到则会返回false</returns>
-        private static bool find_ds(string type, ref DataSet ds)
-        {
-            string[] keys=DataSets.Keys.ToArray();
-            foreach(string it in keys)
-            {
-                if (it.Contains(type))
-                {
-                    ds = DataSets[it];
-                    return true;
-                }
-            }
-            result += "缺少" + "type" + "表";
-            return false;
-        }
-
-
     }
 }
