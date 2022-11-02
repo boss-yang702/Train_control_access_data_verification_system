@@ -21,7 +21,7 @@ namespace 项目方案第一版
         //开始检验，获得结果,传入的DataGridView中标注错误，警告信息，如果错误则标红，信息不足则标黄
         public static void start_exam(string name,  DataGridView dv)
         {
-            if (name == "")
+            if (string.IsNullOrWhiteSpace(name))
             {
                 result += "没有进路表\r\n";
                 return;
@@ -43,54 +43,31 @@ namespace 项目方案第一版
                 return;
             }
             Exam_begin(dvc_bh, dvc_jg);
+          
         }
 
-            DataTable dt1 = yingdaqi_ds.Tables[0];
-            DataTable dt2 = yingdaqi_ds.Tables[1];
-            Exam_begin(dv_bh, dv_jg, dt1, dt2);
-        }
-        static void Trim(DataGridView dv)
-        {
-            for(int i = 0; i < dv.Rows.Count; i++)
-            {
-                for(int j = 0; j < dv.Rows[i].Cells.Count; j++)
-                {
-                    dv[i, j].Value = Regex.Replace(dv[i, j].ToString(), " ", "", RegexOptions.IgnoreCase);
-                }
-            }
-        }
-        static void Trim(DataTable dt)
-        {
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                for (int j = 0; j < dt.Columns.Count; j++)
-                {
-                    dt.Rows[i][j] = Regex.Replace(dt.Rows[i][j].ToString(), " ", "", RegexOptions.IgnoreCase);
-                }
-            }
-        }
         /// <summary>
         /// 开始检查每个单元详细数据，并在DataGridView中标注结果
         /// </summary>
         static void Exam_begin(DataGridViewColumn dvc_bh, DataGridViewColumn dvc_jg)
         {
 
-            for (int i = 3; i < dvc_bh.DataGridView.RowCount; i++)
+            for (int row = 3; row < dvc_bh.DataGridView.RowCount; row++)
             {
-                string bh = Regex.Replace(dvc_bh.DataGridView[dvc_bh.Name, i].Value.ToString(),@"\s+","");
-                string[] jl = Regex.Replace(dvc_bh.DataGridView[dvc_jg.Name, i].Value.ToString(),@"\s+","").Split(',');
+                string bh = Regex.Replace(dvc_bh.DataGridView[dvc_bh.Name, row].Value.ToString(),@"\s+","");
+                string[] jl = Regex.Replace(dvc_bh.DataGridView[dvc_jg.Name, row].Value.ToString(),@"\s+","").Split(',');
                 if (jl[0] == "-")
                 {
-                    indicate_correct(dvc_jg, i);
+                    indicate_correct(dvc_jg, row);
                     continue;//经过应答器为-，则不检验，跳过
                 }
                 int start_pos = re[bh];
                 if(start_pos== -1)
                 {
-                    Responder_pos.indicate_warning(dvc_jg, i);
+                    indicate_warning(dvc_jg, row);
                     //result+="没有" + bh + "应答器位置";
                     MessageBox.Show("没有" + bh + "应答器位置");
-                    indicate_warning(dvc_jg,i);
+                    indicate_warning(dvc_jg,row);
                     continue;
                 }
                 string bh_pre = Regex.Match(bh, @"\d+-\d+-\d+-").Value;//105-3-04- 
@@ -98,22 +75,19 @@ namespace 项目方案第一版
                 {
                     string[] js = combination.Split('/');//分别得到后缀前半部分的编号 和 距离 075/156
                     string des_pre = bh_pre + js[0];//目标编号前缀 105-3-04-075
-
-                    List<string> dess = re.Get_des_yingdaqibianhaos(des_pre,re.ds);//得到所有目标编号-1 -2 -3等
-                    List<int> des_positions = new List<int>();//每个目标应答器的位置List
-                    foreach (string s in dess)//每个目标应答器有-1 -2 -3 等位置
-                    {
-                        des_positions.Add(re[bianhao]);
-                    }
-                    int result = re.Compare(start_pos,Convert.ToInt32(js[1]), des_positions, 2);
+                    //得到所有目标编号-1 -2 -3等 通过编号得到每个目标应答器的位置再加到List中
+                    List<int> des_positions = re.Get_des_yingdaqibianhaos(des_pre);//
+                    //将起始位置，偏移距离，目标应答器位置组，误差范围传入比较，返回结果
+                    int deviation = Convert.ToInt32(js[1]);
+                    int result = re.Compare(start_pos,deviation, des_positions, 2);
+                    //根据结果在datagridview中标注颜色
                     if (result == 1)
                     {
-                       indicate_correct(dvc_jg,i);
+                       indicate_correct(dvc_jg,row);
                         continue;//标注绿色
                     }
-                       
-                    else if (result == 0) indicate_error(dvc_jg, i);//错误把这个单元格表红
-                    else indicate_warning(dvc_jg, i);//信息不足则标黄
+                    else if (result == 0) indicate_error(dvc_jg, row);//错误把这个单元格表红
+                    else indicate_warning(dvc_jg, row);//信息不足则标黄
                 }
               
             }
@@ -126,17 +100,7 @@ namespace 项目方案第一版
         /// <param name="dt"></param>
         /// <param name="colname"></param>
         /// <returns></returns>
-        static int dt_find(DataTable dt,string colname)
-        {
-            for(int i = 0; i < dt.Columns.Count; i++)
-            {
-                if (dt.Rows[1][i].ToString().Trim() == colname)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
+   
         //在传入的DataGridview中找到【应答器编号，经过应答器】的数据列，并返回；
         static DataGridViewColumn dv_find_colunm(DataGridView dv,string colname)
         {
@@ -164,11 +128,11 @@ namespace 项目方案第一版
         {
             return result;
         }
-        private static void indicate_warning(ref DataGridViewColumn col)
+        private static void indicate_warning( DataGridViewColumn col)
         {
             col.DefaultCellStyle.BackColor = Color.Yellow;
         }
-        private static void indicate_warning(ref DataGridViewColumn col,int a)
+        private static void indicate_warning( DataGridViewColumn col,int a)
         {
             if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
             col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;

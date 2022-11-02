@@ -7,7 +7,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.Reflection;
 
 namespace 项目方案第一版
@@ -98,19 +97,14 @@ namespace 项目方案第一版
         /// <param name="bh_pre"></param>
         /// <param name="ds"></param>
         /// <returns></returns>
-        public  List<string> Get_des_yingdaqibianhaos(string bh_pre, DataSet ds)
+        public  List<int> Get_des_yingdaqibianhaos(string bh_pre)
         {
-            List<string> dess = new List<string>();
-            int bh_index = dt_find_column_index(ds.Tables[0], "应答器编号");
-            foreach (DataTable dt in ds.Tables)
+            List<int> dess = new List<int>();
+            foreach (string item in res_pos.Keys)
             {
-                for (int i = 1; i < dt.Rows.Count; i++)
+                if (item.Contains(bh_pre))
                 {
-                    string temp1 = Regex.Replace(dt.Rows[i][bh_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                    if (temp1.Contains(bh_pre))
-                    {
-                        dess.Add(temp1);
-                    }
+                    dess.Add(res_pos[item]);
                 }
             }
             return dess;
@@ -179,36 +173,8 @@ namespace 项目方案第一版
             MessageBox.Show("该进路信息表格缺少" + colname + "信息列");
             return null;
         }
-        /// <summary>
-        /// 在Manager.DataSets里面检查导入的数据信息是否拥有，如果缺少文件则直接将对应列标黄
-        /// </summary>
-        public static void Exam_dataset_info(DataGridViewColumn dv_bh, DataGridViewColumn dv_jg, ref DataSet ds)
-        {
-            //找到则赋值给全局变量yindaqi_ds，没找到就在dv_jg这一列标黄
-            if (!find_ds("应答器位置表", ref ds))
-            {
-                indicate_warning(dv_jg);//直接在datagridview标黄某一列
-            }
 
-        }
-        public static void indicate_correct(DataGridViewColumn col, int a)
-        {
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
-        }
-        public static void indicate_error(DataGridViewColumn col, int a)
-        {
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
-        }
-
-       public static void indicate_warning(DataGridViewColumn col)
-        {
-            col.DefaultCellStyle.BackColor = Color.Yellow;
-        }
-        public static void indicate_warning(DataGridViewColumn col, int a)
-        {
-            if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
-        }
+ 
         /// <summary>
         /// 输入信息类型 (如应答器位置) ,一个Dataset  
         /// </summary>
