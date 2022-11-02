@@ -10,6 +10,7 @@ using MessageBox = System.Windows.Forms.MessageBox;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
+using System.Reflection.Emit;
 
 namespace 项目方案第一版
 {
@@ -71,25 +72,53 @@ namespace 项目方案第一版
                     continue;
                 }
                 string bh_pre = Regex.Match(bh, @"\d+-\d+-\d+-").Value;//105-3-04- 
-                foreach (string combination in jl)//有多个应答器单元编号/链接距离组合
+                
+                string sd = dvc_bh.DataGridView[5,row].Value.ToString();
+                if (Regex.IsMatch(sd, @"\bX+"))
                 {
-                    string[] js = combination.Split('/');//分别得到后缀前半部分的编号 和 距离 075/156
-                    string des_pre = bh_pre + js[0];//目标编号前缀 105-3-04-075
-                    //得到所有目标编号-1 -2 -3等 通过编号得到每个目标应答器的位置再加到List中
-                    List<int> des_positions = re.Get_des_yingdaqibianhaos(des_pre);//
-                    //将起始位置，偏移距离，目标应答器位置组，误差范围传入比较，返回结果
-                    int deviation = Convert.ToInt32(js[1]);
-                    int result = re.Compare(start_pos,deviation, des_positions, 2);
-                    //根据结果在datagridview中标注颜色
-                    if (result == 1)
+                    foreach (string combination in jl)//有多个应答器单元编号/链接距离组合
                     {
-                       indicate_correct(dvc_jg,row);
-                        continue;//标注绿色
+                        string[] js = combination.Split('/');//分别得到后缀前半部分的编号 和 距离 075/156
+                        string des_pre = bh_pre + js[0];//目标编号前缀 105-3-04-075
+                                                        //得到所有目标编号-1 -2 -3等 通过编号得到每个目标应答器的位置再加到List中
+                        List<int> des_positions = re.Get_des_yingdaqibianhaos(des_pre);//
+                                                                                       //将起始位置，偏移距离，目标应答器位置组，误差范围传入比较，返回结果
+                        int deviation = Convert.ToInt32(js[1]);
+                        
+                        int result = re.Compare(start_pos, deviation, des_positions, 2);
+                        //根据结果在datagridview中标注颜色
+                        if (result == 1)
+                        {
+                            indicate_correct(dvc_jg, row);
+                           
+                        }
+                        else if (result == 0) indicate_error(dvc_jg, row);//错误把这个单元格表红
+                        else indicate_warning(dvc_jg, row);//信息不足则标黄
+                        start_pos+=deviation;
                     }
-                    else if (result == 0) indicate_error(dvc_jg, row);//错误把这个单元格表红
-                    else indicate_warning(dvc_jg, row);//信息不足则标黄
                 }
-              
+                else
+                {
+                    foreach (string combination in jl)//有多个应答器单元编号/链接距离组合
+                    {
+                        string[] js = combination.Split('/');//分别得到后缀前半部分的编号 和 距离 075/156
+                        string des_pre = bh_pre + js[0];//目标编号前缀 105-3-04-075
+                                                        //得到所有目标编号-1 -2 -3等 通过编号得到每个目标应答器的位置再加到List中
+                        List<int> des_positions = re.Get_des_yingdaqibianhaos(des_pre);//
+                                                                                       //将起始位置，偏移距离，目标应答器位置组，误差范围传入比较，返回结果
+                        int deviation = Convert.ToInt32(js[1]);
+                        int result = re.Compare(start_pos, (-deviation), des_positions, 2);
+                        //根据结果在datagridview中标注颜色
+                        if (result == 1)
+                        {
+                            indicate_correct(dvc_jg, row);
+                            
+                        }
+                        else if (result == 0) indicate_error(dvc_jg, row);//错误把这个单元格表红
+                        else indicate_warning(dvc_jg, row);//信息不足则标黄
+                        start_pos-=deviation;
+                    }
+                }
             }
         }
 

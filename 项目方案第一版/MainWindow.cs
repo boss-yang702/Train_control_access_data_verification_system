@@ -73,10 +73,10 @@ namespace 项目方案第一版
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //progressBar1.Value = 0;
-            //progressBar1.Minimum = 0;
-            //progressBar1.Maximum = 25;
-            //timer1.Enabled = true;
+            progressBar1.Value = 0;
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 25;
+            timer1.Enabled = true;
             //Examine_guidaoquduan.start_exam(textBox1.Text);
             Examine_yingdaqi.start_exam(textBox1.Text,dataGridView2);
             
@@ -145,6 +145,12 @@ namespace 项目方案第一版
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //Manager.Haseload();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
         }
     }
 }

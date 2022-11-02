@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace 项目方案第一版
 {
-    internal abstract class Manager
+    internal  class Manager
     {
         //构建起Excel文件的名字信息与DataSet的字典对应关系，将文件导入字典，通过表名便可访问Dataset eg：DataSets[string name]
         public static Dictionary<string, DataSet> DataSets =new Dictionary<string, DataSet>();

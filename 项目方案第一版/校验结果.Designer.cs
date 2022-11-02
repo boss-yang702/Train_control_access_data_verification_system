@@ -73,6 +73,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "校验结果";
             this.Text = "进路数据校验结果";
+            this.Load += new System.EventHandler(this.校验结果_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

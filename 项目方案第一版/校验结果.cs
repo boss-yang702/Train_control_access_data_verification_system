@@ -21,5 +21,10 @@ namespace 项目方案第一版
         {
             this.Close();
         }
+
+        private void 校验结果_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

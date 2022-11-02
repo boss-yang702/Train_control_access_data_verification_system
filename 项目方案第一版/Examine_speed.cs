@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace 项目方案第一版
 {
-    internal abstract class Examine_speed : Manager
+    internal  class Examine_speed : Manager
     {
         private static DataTable Jinlu_table;
         public static void start_exam(string name)
