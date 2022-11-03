@@ -135,42 +135,42 @@ namespace 项目方案第一版
         /// 传入一个datagridview,通过这个datagridview导出一个Excel表格文件，可选择文件保存地址
         /// </summary>
         /// <param name="dataGridView1"></param>
-        public static void Export(DataGridView dataGridView1)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "excel文件|*.XLS";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-                if (app == null)
-                {
-                    MessageBox.Show("没有excel应用程序");
-                    return;
-                }
-                Microsoft.Office.Interop.Excel.Workbooks workbooks = app.Workbooks;
-                Microsoft.Office.Interop.Excel.Workbook workbook = workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
-                Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets[1];
+        //public static void Export(DataGridView dataGridView1)
+        //{
+        //    SaveFileDialog saveFileDialog = new SaveFileDialog();
+        //    saveFileDialog.Filter = "excel文件|*.XLS";
+        //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+        //        if (app == null)
+        //        {
+        //            MessageBox.Show("没有excel应用程序");
+        //            return;
+        //        }
+        //        Microsoft.Office.Interop.Excel.Workbooks workbooks = app.Workbooks;
+        //        Microsoft.Office.Interop.Excel.Workbook workbook = workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
+        //        Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets[1];
 
-                //写入标题
-                for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                {
-                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
-                }
-                //写入数据
-                for (int r = 0; r < dataGridView1.RowCount; r++)
-                {
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                    {
-                        worksheet.Cells[r + 2, i + 1] = dataGridView1.Rows[r].Cells[i].Value;
-                    }
-                }
-                worksheet.Columns.AutoFit();
-                MessageBox.Show("保存成功");
-                workbook.Saved = true;
-                workbook.SaveCopyAs(saveFileDialog.FileName);
-                app.Quit();
-            }
-        }
+        //        //写入标题
+        //        for (int i = 0; i < dataGridView1.ColumnCount; i++)
+        //        {
+        //            worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
+        //        }
+        //        //写入数据
+        //        for (int r = 0; r < dataGridView1.RowCount; r++)
+        //        {
+        //            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+        //            {
+        //                worksheet.Cells[r + 2, i + 1] = dataGridView1.Rows[r].Cells[i].Value;
+        //            }
+        //        }
+        //        worksheet.Columns.AutoFit();
+        //        MessageBox.Show("保存成功");
+        //        workbook.Saved = true;
+        //        workbook.SaveCopyAs(saveFileDialog.FileName);
+        //        app.Quit();
+        //    }
+        //}
 
 
         /// <summary>
