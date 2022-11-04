@@ -14,6 +14,7 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace 项目方案第一版
 {
@@ -99,78 +100,48 @@ namespace 项目方案第一版
 
             return ds;
         }
-        //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
-        public static void Haseload()
-        {
-           
-            string path;
-            FolderBrowserDialog dilog = new FolderBrowserDialog();
-            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
-            if (dilog.ShowDialog() == DialogResult.OK)
-            {
-                path = dilog.SelectedPath;
-                loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-                loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-                loding(path+@"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
-                return;
-            }
 
-   
-        }
-        private static void loding(string strPath)
-        {
-   
-            string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-            int index2 = filename.LastIndexOf('表');
-            string DsName = filename.Substring(0, index2 + 1);
-            DataSet ds = ImportExcel(strPath);
-            ds.DataSetName = DsName;
-            DataSets.Add(DsName, ds);
-            
-            信息表显示 frm = new 信息表显示(ds);
-            frm.Show();
-        }
 
         /// <summary>
         /// 传入一个datagridview,通过这个datagridview导出一个Excel表格文件，可选择文件保存地址
         /// </summary>
         /// <param name="dataGridView1"></param>
-        //public static void Export(DataGridView dataGridView1)
-        //{
-        //    SaveFileDialog saveFileDialog = new SaveFileDialog();
-        //    saveFileDialog.Filter = "excel文件|*.XLS";
-        //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-        //        if (app == null)
-        //        {
-        //            MessageBox.Show("没有excel应用程序");
-        //            return;
-        //        }
-        //        Microsoft.Office.Interop.Excel.Workbooks workbooks = app.Workbooks;
-        //        Microsoft.Office.Interop.Excel.Workbook workbook = workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
-        //        Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets[1];
+        public static void Export(DataGridView dataGridView1)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "excel文件|*.XLS";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                if (app == null)
+                {
+                    MessageBox.Show("没有excel应用程序");
+                    return;
+                }
+                Microsoft.Office.Interop.Excel.Workbooks workbooks = app.Workbooks;
+                Microsoft.Office.Interop.Excel.Workbook workbook = workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
+                Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.Worksheets[1];
 
-        //        //写入标题
-        //        for (int i = 0; i < dataGridView1.ColumnCount; i++)
-        //        {
-        //            worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
-        //        }
-        //        //写入数据
-        //        for (int r = 0; r < dataGridView1.RowCount; r++)
-        //        {
-        //            for (int i = 0; i < dataGridView1.Columns.Count; i++)
-        //            {
-        //                worksheet.Cells[r + 2, i + 1] = dataGridView1.Rows[r].Cells[i].Value;
-        //            }
-        //        }
-        //        worksheet.Columns.AutoFit();
-        //        MessageBox.Show("保存成功");
-        //        workbook.Saved = true;
-        //        workbook.SaveCopyAs(saveFileDialog.FileName);
-        //        app.Quit();
-        //    }
-        //}
+                //写入标题
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                {
+                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
+                }
+                //写入数据
+                for (int r = 0; r < dataGridView1.RowCount; r++)
+                {
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        worksheet.Cells[r + 2, i + 1] = dataGridView1.Rows[r].Cells[i].Value;
+                    }
+                }
+                worksheet.Columns.AutoFit();
+                MessageBox.Show("保存成功");
+                workbook.Saved = true;
+                workbook.SaveCopyAs(saveFileDialog.FileName);
+                app.Quit();
+            }
+        }
 
 
         /// <summary>
@@ -282,7 +253,54 @@ namespace 项目方案第一版
             }
         }
 
+        /// <summary>
+        /// 找到colname对应的列，返回其列下标index
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="colname"></param>
+        /// <returns></returns>
 
+        //在传入的DataGridview中找到【应答器编号，经过应答器】的数据列，并返回；
+        protected static DataGridViewColumn dv_find_colunm(DataGridView dv, string colname)
+        {
+            for (int i = 0; i < dv.ColumnCount; i++)
+            {
+                string temp = Regex.Replace(dv[i, 1].Value.ToString().Trim(), "[\n ]", "", RegexOptions.IgnoreCase);
+                if (temp == colname)
+                {
+                    return dv.Columns[i];
+                }
+            }
+            MessageBox.Show("该进路信息表格缺少" + colname + "信息列");
+            return null;
+        }
+
+        protected static void indicate_correct(DataGridViewColumn col, int a)
+        {
+            if (col.DataGridView[col.Index, a].Style.BackColor == Color.Yellow ||
+                col.DataGridView[col.Index, a].Style.BackColor == Color.Red) return;//绿色优先级最低
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
+        }
+        protected static void indicate_error(DataGridViewColumn col, int a)
+        {
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
+        }
+        
+        protected static void indicate_warning(DataGridViewColumn col)
+        {
+            if (col.DefaultCellStyle.BackColor == Color.Red) return;
+            col.DefaultCellStyle.BackColor = Color.Yellow;
+        }
+        protected static void indicate_warning(DataGridViewColumn col, int a)
+        {
+            if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
+        }
+
+        public static string mytrim(string input)
+        {
+            return Regex.Replace(input, @"\s+", "");
+        }
     }
 
 }

@@ -39,6 +39,7 @@ namespace 项目方案第一版
             setControls(newx, newy, this);
         }//窗口大小自动调整
         
+        //导入文件按钮
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
             
@@ -54,7 +55,7 @@ namespace 项目方案第一版
             //dataGridView2.Rows[3].Cells[2].Style.BackColor = Color.FromName("Red");
             //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
         }
-
+        //进度条
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (progressBar1.Value < progressBar1.Maximum)
@@ -70,7 +71,7 @@ namespace 项目方案第一版
                 progressBar1.Value = 0;
             }
         }
-
+        //开始检验按钮
         private void button1_Click(object sender, EventArgs e)
         {
             progressBar1.Value = 0;
@@ -80,7 +81,7 @@ namespace 项目方案第一版
             //Examine_guidaoquduan.start_exam(textBox1.Text);
             Examine_yingdaqi.start_exam(textBox1.Text,dataGridView2);
             
-            //Examine_speed.start_exam(textBox1.Text);
+            Examine_speed.start_exam(textBox1.Text,dataGridView2);
         }
 
         private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口

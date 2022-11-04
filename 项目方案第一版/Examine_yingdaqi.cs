@@ -39,7 +39,7 @@ namespace 项目方案第一版
             }
             catch(Exception ex)
             {
-                MessageBox.Show("缺少应答器位置表！");
+                MessageBox.Show("没有导入应答器位置表！");
                 indicate_warning(dvc_jg);//直接在datagridview标黄某一列
                 return;
             }
@@ -121,50 +121,10 @@ namespace 项目方案第一版
                 }
             }
         }
-
-
-        /// <summary>
-        /// 找到colname对应的列，返回其列下标index
-        /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="colname"></param>
-        /// <returns></returns>
-   
-        //在传入的DataGridview中找到【应答器编号，经过应答器】的数据列，并返回；
-        static DataGridViewColumn dv_find_colunm(DataGridView dv,string colname)
-        {
-            for(int i = 0; i < dv.ColumnCount; i++)
-            {
-                string temp = Regex.Replace( dv[i, 1].Value.ToString().Trim(),"[\n ]","",RegexOptions.IgnoreCase);
-                if (temp == colname)
-                {
-                    return dv.Columns[i];
-                }
-            }
-            MessageBox.Show("该进路信息表格缺少" + colname + "信息列");
-            return null;
-        }
-
-        public static void indicate_correct(DataGridViewColumn col,int a)
-        {
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
-        }
-        private static void indicate_error(DataGridViewColumn col, int a)
-        {
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
-        }
         public static string GetResult()
         {
             return result;
         }
-        private static void indicate_warning( DataGridViewColumn col)
-        {
-            col.DefaultCellStyle.BackColor = Color.Yellow;
-        }
-        private static void indicate_warning( DataGridViewColumn col,int a)
-        {
-            if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
-            col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
-        }
+
     }
 }

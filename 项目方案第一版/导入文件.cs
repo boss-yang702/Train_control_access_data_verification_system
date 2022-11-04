@@ -24,10 +24,14 @@ namespace 项目方案第一版
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DataSet ds_ = ds;
             Manager.Load_file(textBox1,textBox2,ref ds);
-            Current_index = 0;
-            dataGridView1.DataSource = ds.Tables[Current_index];
-            label3.Text = ds.Tables[Current_index].TableName;
+            if (ds != ds_)
+            {
+                Current_index = 0;
+                dataGridView1.DataSource = ds.Tables[Current_index];
+                label3.Text = ds.Tables[Current_index].TableName;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
