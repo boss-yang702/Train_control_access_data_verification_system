@@ -73,7 +73,7 @@ namespace 项目方案第一版
                     for(int i = 0; i < xlsds.Count() ; i++)
                     {
                         string[] sd_cd = xlsds[i].Split('/');//s[0]为速度 s[1]为长度
-                        if (sd_cd[0] == speeds[i].ToString() && sd_cd[1] == Miles[i].ToString())
+                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1])- Miles[i])<=1)
                         {
                             continue;
                         }
@@ -89,7 +89,7 @@ namespace 项目方案第一版
                     for (int i = 0; i < xlsds.Count(); i++)
                     {
                         string[] sd_cd = xlsds[i].Split('/');//s[0]为速度 s[1]为长度
-                        if (sd_cd[0] == speeds[i].ToString() && sd_cd[1] == Miles[xlsds.Count()-i-1].ToString())
+                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1]) - Miles[xlsds.Count()-i-1]) <= 1)
                         {
                             continue;
                         }
@@ -128,9 +128,11 @@ namespace 项目方案第一版
                 }
                 else if (Regex.IsMatch(dc, @"\(\d+\)"))
                 {
-                    string s = Regex.Replace(dc,@"[()]","");
-                    int temp = current_station.data[Convert.ToInt32(s)].pos;
-                    Pos.Add(temp);
+                    int s = Convert.ToInt32(Regex.Replace(dc,@"[()]",""));
+                    if (current_station.data[s].dir == "正线")
+                    {
+                        Pos.Add(current_station.data[s].pos);
+                    }
                 }
                 else
                 {

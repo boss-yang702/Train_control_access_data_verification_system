@@ -20,7 +20,7 @@ namespace 项目方案第一版
         public static string result; 
         static  Responder_pos re;
         //开始检验，获得结果,传入的DataGridView中标注错误，警告信息，如果错误则标红，信息不足则标黄
-        public static void start_exam(string name,  DataGridView dv)
+        public static void start_exam(string name,   DataGridView dv)
         {
             if (string.IsNullOrWhiteSpace(name))
             {

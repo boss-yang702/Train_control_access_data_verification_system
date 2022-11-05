@@ -24,6 +24,39 @@ namespace 项目方案第一版
         public static Dictionary<string, DataSet> DataSets =new Dictionary<string, DataSet>();
 
 
+
+        //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
+        public static void Haseload()
+        {
+
+            string path;
+            FolderBrowserDialog dilog = new FolderBrowserDialog();
+            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
+            if (dilog.ShowDialog() == DialogResult.OK)
+            {
+                path = dilog.SelectedPath;
+                loding(path + @"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+                loding(path + @"\怀衡线怀化南至衡阳东站始终端信号机信息表.xlsx");
+                loding(path + @"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+                return;
+            }
+
+        }
+        private static void loding(string strPath)
+        {
+
+            string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+            int index1 = filename.IndexOf("东站");
+            int index2 = filename.LastIndexOf('表');
+            string DsName = filename.Substring(index1+2, index2-index1-1);
+            DataSet ds = ImportExcel(strPath);
+            ds.DataSetName = DsName;
+            DataSets.Add(DsName, ds);
+
+            信息表显示 frm = new 信息表显示(ds);
+            frm.Show();
+        }
+
         /// <summary>
         /// 输入文件路径
         /// </summary>
@@ -151,7 +184,7 @@ namespace 项目方案第一版
         public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls|所有文件|*.*";
+            ofd.Filter = "所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -171,6 +204,7 @@ namespace 项目方案第一版
                         DataSets.Remove(DsName);
                         DataSets.Add(DsName, ds);
                         dav.DataSource = DataSets[DsName].Tables[0];
+                        
                         tb.Text = DsName;
                         //main_dv.Dispose();
                         //main_dv.DataSource = ds.Copy();
@@ -203,7 +237,7 @@ namespace 项目方案第一版
         public static void Load_file(TextBox tb1,TextBox tb2,ref DataSet _ds)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.xls|所有文件|*.*";
+            ofd.Filter = "所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)

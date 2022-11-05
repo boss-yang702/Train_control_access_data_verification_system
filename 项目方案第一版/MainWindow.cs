@@ -16,6 +16,7 @@ namespace 项目方案第一版
 {
     public partial class MainWindow : Form
     {
+        public static DataTable main_dt;
         private float x;//定义当前窗体的宽度
         private float y;//定义当前窗体的高度
         public MainWindow()
@@ -74,14 +75,21 @@ namespace 项目方案第一版
         //开始检验按钮
         private void button1_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
-            progressBar1.Minimum = 0;
-            progressBar1.Maximum = 25;
-            timer1.Enabled = true;
+            //progressBar1.Value = 0;
+            //progressBar1.Minimum = 0;
+            //progressBar1.Maximum = 25;
+            //timer1.Enabled = true;
             //Examine_guidaoquduan.start_exam(textBox1.Text);
-            Examine_yingdaqi.start_exam(textBox1.Text,dataGridView2);
-            
-            Examine_speed.start_exam(textBox1.Text,dataGridView2);
+            校验结果 result_window = new 校验结果();
+
+            result_window.dataGridView1.DataSource = dataGridView2.DataSource;
+            result_window.Show();
+            Examine_yingdaqi.start_exam(textBox1.Text,result_window.dataGridView1);
+
+            Examine_speed.start_exam(textBox1.Text, result_window.dataGridView1);
+           
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口
@@ -145,7 +153,7 @@ namespace 项目方案第一版
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //Manager.Haseload();
+            Manager.Haseload();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
