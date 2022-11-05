@@ -15,6 +15,7 @@ namespace 项目方案第一版
         public 校验结果()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
