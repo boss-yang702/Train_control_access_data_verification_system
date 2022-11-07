@@ -22,9 +22,9 @@ namespace 项目方案第一版
         public MainWindow()
         {
             InitializeComponent();
-            x = this.Width;
-            y = this.Height;
-            setTag(this);
+            //x = this.Width;
+            //y = this.Height;
+            //setTag(this);
         }
 
         private void 导入数据ToolStripMenuItem_Click(object sender, EventArgs e)
