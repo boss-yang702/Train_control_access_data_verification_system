@@ -46,9 +46,9 @@ namespace 项目方案第一版
         {
 
             string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-            int index1 = filename.IndexOf("东站");
+            //int index1 = filename.IndexOf("东站");
             int index2 = filename.LastIndexOf('表');
-            string DsName = filename.Substring(index1+2, index2-index1-1);
+            string DsName = filename.Substring(0, index2+1);
             DataSet ds = ImportExcel(strPath);
             ds.DataSetName = DsName;
             DataSets.Add(DsName, ds);
@@ -234,7 +234,7 @@ namespace 项目方案第一版
         /// 导入线路数据表加载到静态存储区中,建立字典
         /// </summary>
 
-        public static void Load_file(TextBox tb1,TextBox tb2,ref DataSet _ds)
+        public static void Load_file(TextBox tb1,ref DataSet _ds)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "所有文件|*.*";
@@ -244,18 +244,24 @@ namespace 项目方案第一版
             {
                 strPath = ofd.FileName;
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx” 
-                int index1  = filename.LastIndexOf("东站");
+                //int index1  = filename.LastIndexOf("东站");
                 int index2 = filename.LastIndexOf('表');
-                string DsName=filename.Substring(index1+2, index2-index1-1);
-                tb1.Text = filename.Substring(0, index1 + 2);
-                tb2.Text = DsName;
+                string DsName=filename.Substring(0, index2+1);
+                tb1.Text = DsName;
+                //tb2.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
                 //ds.DataSetName = DsName;
                 _ds = ds;
             } 
         }
 
+        //删除某一个表格数据
+        public static void Delete_file(string name)
+        {
+            
+           DataSets.Remove(name);
 
+        }
         /// <summary>
         /// 搜索进路栏，将搜索的ROWS标注颜色
         /// </summary>
@@ -309,17 +315,21 @@ namespace 项目方案第一版
             return null;
         }
 
+        //对某一列某一行的单元格标注绿色，即正确
         protected static void indicate_correct(DataGridViewColumn col, int a)
         {
             if (col.DataGridView[col.Index, a].Style.BackColor == Color.Yellow ||
                 col.DataGridView[col.Index, a].Style.BackColor == Color.Red) return;//绿色优先级最低
             col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
         }
+        //对某一列某一行的单元格标注红色，即错误
+
         protected static void indicate_error(DataGridViewColumn col, int a)
         {
             col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
         }
-        
+        //对某一列某一行的单元格标注黄色，即缺乏数据
+
         protected static void indicate_warning(DataGridViewColumn col)
         {
             if (col.DefaultCellStyle.BackColor == Color.Red) return;
@@ -331,6 +341,7 @@ namespace 项目方案第一版
             col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
         }
 
+        //对输入的字符串去除不可见字符，再返回
         public static string mytrim(string input)
         {
             return Regex.Replace(input, @"\s+", "");

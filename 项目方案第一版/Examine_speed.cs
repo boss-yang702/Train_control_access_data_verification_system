@@ -31,15 +31,16 @@ namespace 项目方案第一版
             DataGridViewColumn dvc_zd = dv_find_colunm(dv, "终端信号机名称");
             DataGridViewColumn dvc_dc = dv_find_colunm(dv, "道岔");
             DataGridViewColumn dvc_xlsd = dv_find_colunm(dv, "线路速度");
-            
+  
             if (dvc_sd == null || dvc_zd == null||dvc_dc == null || dvc_xlsd == null) return;
             try
             {
-                 swis= new Switches(DataSets["道岔信息表"]);
+                string s=Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].ToString();
+                swis = new Switches(DataSets["怀衡线怀化南至衡阳东站道岔信息表"]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("没有导入道岔信息表！");
+                MessageBox.Show(ex.Message);
                 indicate_warning(dvc_sd);//直接在datagridview标黄某一列
                 indicate_warning(dvc_zd);//直接在datagridview标黄某一列
                 indicate_warning(dvc_dc);//直接在datagridview标黄某一列
@@ -49,6 +50,8 @@ namespace 项目方案第一版
             current_station= swis.Get_one_station(name);
             Exam_begin(dvc_sd, dvc_zd, dvc_dc, dvc_xlsd);
         }
+
+
         static void  Exam_begin(DataGridViewColumn dvc_sd,DataGridViewColumn dvc_zd,
             DataGridViewColumn dvc_dc,DataGridViewColumn dvc_xlsd)
         {
@@ -58,7 +61,7 @@ namespace 项目方案第一版
                 string zd = mytrim(dvc_dc.DataGridView[dvc_zd.Name, row].Value.ToString());
                 string[] dcs = mytrim(dvc_dc.DataGridView[dvc_dc.Name, row].Value.ToString()).Split(',');
                 string[] xlsds = mytrim(dvc_dc.DataGridView[dvc_xlsd.Name, row].Value.ToString()).Split(',');
-                List<int> Miles = Get_Miles(sd,zd,dcs);
+                List<int> Miles = Get_roads(sd,zd,dcs);
                 int[] speeds= Get_Speed1(sd,zd,Miles.Count);
 
                 //生成的数量不一致，直接标红
@@ -103,6 +106,7 @@ namespace 项目方案第一版
 
             }
         }
+        
         private static int Get_mile(string s)
         {
             if (s.Equals("-")) return -1;
@@ -111,9 +115,9 @@ namespace 项目方案第一版
             int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
             return number;
         }
-        static List<int> Get_Miles(string sd,string zd,string[] dcs)
+        static List<int> Get_roads(string sd,string zd,string[] dcs)
         {
-            List<int> Miles = new List<int>();
+            List<int> roads = new List<int>();
             List<int> Pos = new List<int>();
             foreach(string dc in dcs)
             {
@@ -139,18 +143,11 @@ namespace 项目方案第一版
                     continue;
                 }
             }
-            //Pos.Add(sd.pos)
-            //Pos.Add(zd.pos)
-            //添加洞口站信息
-            DataTable dt = DataSets["始终端信号机信息表"].Tables[0];
-            for(int i = 1; i < 15; i++)
-            {
-                if (sd == dt.Rows[i][0].ToString().Trim()|| zd == dt.Rows[i][0].ToString().Trim())
-                {
-                    Pos.Add(Get_mile(dt.Rows[i][1].ToString().Trim()));
-                }
-            }
-           
+            int[] start_end = Get_Beginning2Start(current_station.Station_name, sd, zd);
+            
+            Pos.Add(start_end[0]);
+            Pos.Add(start_end[1]);
+            
             //从小到大排序，每相邻两个做差值得到两个点之间的距离，加到Miles中去
             Pos.Sort();
             for(int i = 0; i < Pos.Count-1; i++)
@@ -158,10 +155,50 @@ namespace 项目方案第一版
                 int a = Pos[i];
                 int b = Pos[i + 1];
                 int D_value = b-a;
-                Miles.Add(D_value);
+                roads.Add(D_value);
             }
-            return Miles;
+            return roads;
         }
+        /// <summary>
+        /// 获取始终端信号机位置
+        /// </summary>
+        /// <param name="station_name"></param>
+        /// <param name="sd"></param>
+        /// <param name="zd"></param>
+        /// <returns></returns>
+        static int[] Get_Beginning2Start(string station_name,string sd,string zd)
+        {
+            int[] ints = new int[2];
+            DataTable dt = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
+             for (int col = 0; col < dt.Columns.Count; col++)
+               {
+                    if (dt.Rows[0][col].ToString().Contains(station_name))
+                    {
+                        
+                        for (int i = 1; i<dt.Rows.Count; i++)
+                        {
+                            if (dt.Rows[i][col].ToString() == sd)
+                            {
+                                ints[0] = Get_mile(dt.Rows[i][col + 1].ToString());
+                            }
+                            if (dt.Rows[i][col].ToString() == zd)
+                            {
+                                ints[1] = Get_mile(dt.Rows[i][col + 1].ToString());
+                            }
+                        }
+                    }
+             }
+            
+           
+            return ints;
+        }
+        /// <summary>
+        /// 获取该条进路每一段速度
+        /// </summary>
+        /// <param name="sd"></param>
+        /// <param name="zd"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         static int[] Get_Speed1(string sd,string zd,int count)
         {
             int[] speeds = new int[count];

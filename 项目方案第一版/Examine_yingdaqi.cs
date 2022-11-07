@@ -35,7 +35,7 @@ namespace 项目方案第一版
             if (dvc_bh == null || dvc_jg == null) return;
             try
             {
-                re = new Responder_pos(DataSets["应答器位置表"]);
+                re = new Responder_pos(DataSets["怀衡线怀化南至衡阳东站应答器位置表"]);
             }
             catch(Exception ex)
             {

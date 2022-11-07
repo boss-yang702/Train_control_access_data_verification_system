@@ -60,6 +60,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +108,12 @@
     <Compile Include="已导入数据.Designer.cs">
       <DependentUpon>已导入数据.cs</DependentUpon>
     </Compile>
+    <Compile Include="查看已导入文件.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="查看已导入文件.Designer.cs">
+      <DependentUpon>查看已导入文件.cs</DependentUpon>
+    </Compile>
     <Compile Include="校验结果.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="已导入数据.resx">
       <DependentUpon>已导入数据.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="查看已导入文件.resx">
+      <DependentUpon>查看已导入文件.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="校验结果.resx">
       <DependentUpon>校验结果.cs</DependentUpon>

@@ -25,7 +25,7 @@ namespace 项目方案第一版
         private void button1_Click(object sender, EventArgs e)
         {
             DataSet ds_ = ds;
-            Manager.Load_file(textBox1,textBox2,ref ds);
+            Manager.Load_file(textBox1,ref ds);
             if (ds != ds_)
             {
                 Current_index = 0;
