@@ -166,7 +166,7 @@ namespace 项目方案第一版
         {
             int[] speeds = new int[count];
             //speed从列车所在地开始生成，由近及远
-            if (sd == "X" || sd == "S")
+            if (sd == "X"||sd=="XH"||sd =="XY" || sd == "S" || sd == "SH" || sd == "SY")
             {
                 //正向接车
                 switch (count)
@@ -189,10 +189,25 @@ namespace 项目方案第一版
                         speeds[2] = 160;
                         speeds[3] = 45;
                         break;
+                    case 5:
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
+                        break;
+                    case 6:
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
+                        speeds[5] = 45;
+                        break;
                 }
                     
             }
-            else if (sd == "XF" || sd == "SF")
+            else if (sd == "XF" || sd == "SF"||sd == "XYF" || sd == "SYF"||sd == "XHF" || sd == "SHF")
             {
                 //反向接车
                 switch (count)
@@ -215,9 +230,24 @@ namespace 项目方案第一版
                         speeds[2] = 200;
                         speeds[3] = 45;
                         break;
+                    case 5:
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
+                        break;
+                    case 6:
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
+                        speeds[5] = 45;
+                        break;
                 }
             }
-            else if (zd == "XF" || zd == "SF")
+            else if (zd == "XF" || zd == "SF"||zd == "XYF" || zd == "SYF"||zd == "XHF" || zd == "SHF")
             {
                 //正向发车
                 switch (count)
@@ -240,10 +270,26 @@ namespace 项目方案第一版
                         speeds[2] = 45;
                         speeds[3] = 200;
                         break;
+                    case 5:
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
+                        break;
+                    case 6:
+
+                        speeds[0] = 45;
+                        speeds[1] = 200;
+                        speeds[2] = 45;
+                        speeds[3] = 160;
+                        speeds[4] = 45;
+                        speeds[5] = 200;
+                        break;
                 }
 
             }
-            else if (zd == "X" || zd == "S")
+            else if (zd == "X" || zd == "S"||zd == "XY" || zd == "SY"||zd == "XH" || zd == "SH")
             {
                 //反向发车
                 switch (count)
@@ -265,6 +311,21 @@ namespace 项目方案第一版
                         speeds[1] = 200;
                         speeds[2] = 45;
                         speeds[3] = 160;
+                        break;
+                    case 5:
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
+                        break;
+                    case 6:
+                        speeds[0] = 45;
+                        speeds[1] = 160;
+                        speeds[2] = 45;
+                        speeds[3] = 200;
+                        speeds[4] = 45;
+                        speeds[5] = 160;
                         break;
                 }
             }
