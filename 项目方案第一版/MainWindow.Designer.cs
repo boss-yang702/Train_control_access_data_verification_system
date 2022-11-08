@@ -53,6 +53,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,8 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1261, 27);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1282, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -169,7 +171,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(854, 264);
+            this.button1.Location = new System.Drawing.Point(891, 112);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 72);
             this.button1.TabIndex = 3;
@@ -179,7 +181,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(854, 403);
+            this.button2.Location = new System.Drawing.Point(891, 455);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(267, 72);
             this.button2.TabIndex = 4;
@@ -189,7 +191,7 @@
             // 
             // 进路数据导入
             // 
-            this.进路数据导入.Location = new System.Drawing.Point(854, 113);
+            this.进路数据导入.Location = new System.Drawing.Point(891, 15);
             this.进路数据导入.Name = "进路数据导入";
             this.进路数据导入.Size = new System.Drawing.Size(267, 75);
             this.进路数据导入.TabIndex = 5;
@@ -232,7 +234,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(854, 569);
+            this.progressBar1.Location = new System.Drawing.Point(891, 574);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(267, 31);
             this.progressBar1.TabIndex = 10;
@@ -253,12 +255,26 @@
             this.dataGridView2.RowTemplate.Height = 27;
             this.dataGridView2.Size = new System.Drawing.Size(833, 567);
             this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "应答器",
+            "轨道区段",
+            "线路速度"});
+            this.checkedListBox1.Location = new System.Drawing.Point(891, 213);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
+            this.checkedListBox1.TabIndex = 12;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1261, 652);
+            this.ClientSize = new System.Drawing.Size(1282, 667);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
@@ -307,6 +323,7 @@
         private System.Windows.Forms.ToolStripMenuItem 查看导入的具体数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 

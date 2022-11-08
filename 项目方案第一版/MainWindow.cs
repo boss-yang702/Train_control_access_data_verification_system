@@ -54,7 +54,7 @@ namespace 项目方案第一版
             
 
         }
-
+        //进度条
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -139,7 +139,8 @@ namespace 项目方案第一版
 
         private void 查看导入的具体数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            查看已导入文件 ccc = new 查看已导入文件();
+            ccc.ShowDialog();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -150,6 +151,12 @@ namespace 项目方案第一版
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //Manager.Haseload();           
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
         }
     }
 }

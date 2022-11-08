@@ -14,15 +14,49 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace 项目方案第一版
 {
-    internal abstract class Manager
+    internal  class Manager
     {
-        //构建起文件名与DataSet的字典对应关系，将文件导入字典，通过文件名便可访问Dataset eg：DataSets[string name]
-        public static Dictionary<string, DataSet> DataSets = new Dictionary<string, DataSet>();
+        //构建起Excel文件的名字信息与DataSet的字典对应关系，将文件导入字典，通过表名便可访问Dataset eg：DataSets[string name]
+        public static Dictionary<string, DataSet> DataSets =new Dictionary<string, DataSet>();
 
-        public static DataGridView main_dv=new DataGridView();
+
+
+        //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
+        public static void Haseload()
+        {
+
+            string path;
+            FolderBrowserDialog dilog = new FolderBrowserDialog();
+            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
+            if (dilog.ShowDialog() == DialogResult.OK)
+            {
+                path = dilog.SelectedPath;
+                loding(path + @"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
+                loding(path + @"\怀衡线怀化南至衡阳东站始终端信号机信息表.xlsx");
+                loding(path + @"\怀衡线怀化南至衡阳东站应答器位置表-V1.0.9.xls");
+                return;
+            }
+
+        }
+        private static void loding(string strPath)
+        {
+
+            string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
+            //int index1 = filename.IndexOf("东站");
+            int index2 = filename.LastIndexOf('表');
+            string DsName = filename.Substring(0, index2+1);
+            DataSet ds = ImportExcel(strPath);
+            ds.DataSetName = DsName;
+            DataSets.Add(DsName, ds);
+
+            信息表显示 frm = new 信息表显示(ds);
+            frm.Show();
+        }
+
         /// <summary>
         /// 输入文件路径
         /// </summary>
@@ -100,38 +134,7 @@ namespace 项目方案第一版
 
             return ds;
         }
-        //程序启动时默认加载相应文件，方便调试，请修改相应的默认路径
-        public static void Haseload()
-        {
-      
-            string path;
-            FolderBrowserDialog dilog = new FolderBrowserDialog();
-            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
-            if (dilog.ShowDialog() == DialogResult.OK)
-            {
-                path = dilog.SelectedPath;
-                //loding(path+@"\怀衡线怀化南至衡阳东站道岔信息表-V1.0.4.xls");
-                //loding(path+@"\怀衡线怀化南至衡阳东站线路数据表-V1.0.6.xls");
-                loding(path+ @"\站内轨道区段信息表.xls");
-                return;
-            }
-            
 
-   
-
-        }
-        private static void loding(string strPath)
-        {
-   
-            string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx”
-            int index2 = filename.LastIndexOf('表');
-            string DsName = filename.Substring(0, index2 + 1);
-            DataSet ds = ImportExcel(strPath);
-            ds.DataSetName = DsName;
-            DataSets.Add(DsName, ds);
-            信息表显示 frm = new 信息表显示(ds);
-            frm.Show();
-        }
 
         /// <summary>
         /// 传入一个datagridview,通过这个datagridview导出一个Excel表格文件，可选择文件保存地址
@@ -182,7 +185,7 @@ namespace 项目方案第一版
         public static void Load_file(DataGridView dav,TextBox tb)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.*";
+            ofd.Filter = "所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -204,6 +207,7 @@ namespace 项目方案第一版
                         DataSets.Remove(DsName);
                         DataSets.Add(DsName, ds);
                         dav.DataSource = DataSets[DsName].Tables[0];
+                        
                         tb.Text = DsName;
                         chengzhanming_1 = DsName;
                         //main_dv.Dispose();
@@ -232,35 +236,37 @@ namespace 项目方案第一版
         }
 
         /// <summary>
-        /// 导入线路数据表,等其他信息加载到内存中,建立字典
+        /// 导入线路数据表加载到静态存储区中,建立字典
         /// </summary>
 
-        public static void Load_file(TextBox tb)
+        public static void Load_file(TextBox tb1,ref DataSet _ds)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "表格|*.*";
+            ofd.Filter = "所有文件|*.*";
             //文件绝对路径
             string strPath = string.Empty;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 strPath = ofd.FileName;
                 string filename = System.IO.Path.GetFileName(strPath);//文件名  “Default.aspx” 
-                int index1 = filename.LastIndexOf('表');
-                string DsName=filename.Substring(0, index1+1);
-                tb.Text = DsName;
+                //int index1  = filename.LastIndexOf("东站");
+                int index2 = filename.LastIndexOf('表');
+                string DsName=filename.Substring(0, index2+1);
+                tb1.Text = DsName;
+                //tb2.Text = DsName;
                 DataSet ds = ImportExcel(strPath);
-                ds.DataSetName = DsName;
-                if (DataSets.ContainsKey(DsName))
-                {
-                    MessageBox.Show("该表格已导入!");
-                    return;
-                }
-                DataSets.Add(DsName, ds);
-
+                //ds.DataSetName = DsName;
+                _ds = ds;
             } 
         }
 
+        //删除某一个表格数据
+        public static void Delete_file(string name)
+        {
+            
+           DataSets.Remove(name);
 
+        }
         /// <summary>
         /// 搜索进路栏，将搜索的ROWS标注颜色
         /// </summary>
@@ -292,7 +298,59 @@ namespace 项目方案第一版
             }
         }
 
+        /// <summary>
+        /// 找到colname对应的列，返回其列下标index
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="colname"></param>
+        /// <returns></returns>
 
+        //在传入的DataGridview中找到【应答器编号，经过应答器】的数据列，并返回；
+        protected static DataGridViewColumn dv_find_colunm(DataGridView dv, string colname)
+        {
+            for (int i = 0; i < dv.ColumnCount; i++)
+            {
+                string temp = Regex.Replace(dv[i, 1].Value.ToString().Trim(), "[\n ]", "", RegexOptions.IgnoreCase);
+                if (temp == colname)
+                {
+                    return dv.Columns[i];
+                }
+            }
+            MessageBox.Show("该进路信息表格缺少" + colname + "信息列");
+            return null;
+        }
+
+        //对某一列某一行的单元格标注绿色，即正确
+        protected static void indicate_correct(DataGridViewColumn col, int a)
+        {
+            if (col.DataGridView[col.Index, a].Style.BackColor == Color.Yellow ||
+                col.DataGridView[col.Index, a].Style.BackColor == Color.Red) return;//绿色优先级最低
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Green;
+        }
+        //对某一列某一行的单元格标注红色，即错误
+
+        protected static void indicate_error(DataGridViewColumn col, int a)
+        {
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Red;
+        }
+        //对某一列某一行的单元格标注黄色，即缺乏数据
+
+        protected static void indicate_warning(DataGridViewColumn col)
+        {
+            if (col.DefaultCellStyle.BackColor == Color.Red) return;
+            col.DefaultCellStyle.BackColor = Color.Yellow;
+        }
+        protected static void indicate_warning(DataGridViewColumn col, int a)
+        {
+            if (col.DefaultCellStyle.BackColor == Color.Red) return;//已经是红色则不改，黄色优先级低于红色
+            col.DataGridView[col.Index, a].Style.BackColor = Color.Yellow;
+        }
+
+        //对输入的字符串去除不可见字符，再返回
+        public static string mytrim(string input)
+        {
+            return Regex.Replace(input, @"\s+", "");
+        }
     }
 
 }
