@@ -57,21 +57,21 @@ namespace 项目方案第一版
             //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
         }
         //进度条
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (progressBar1.Value < progressBar1.Maximum)
-            {
-                progressBar1.Value++;
-            }
-            else
-            {
-                校验结果 form3 = new 校验结果();
-                timer1.Enabled = false;
-                Thread.Sleep(300);
-                form3.ShowDialog();
-                progressBar1.Value = 0;
-            }
-        }
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    if (progressBar1.Value < progressBar1.Maximum)
+        //    {
+        //        progressBar1.Value++;
+        //    }
+        //    else
+        //    {
+        //        校验结果 form3 = new 校验结果();
+        //        timer1.Enabled = false;
+        //        Thread.Sleep(300);
+        //        form3.ShowDialog();
+        //        progressBar1.Value = 0;
+        //    }
+        //}
         //开始检验按钮
         private void button1_Click(object sender, EventArgs e)
         {
@@ -80,13 +80,13 @@ namespace 项目方案第一版
             //progressBar1.Maximum = 25;
             //timer1.Enabled = true;
             //Examine_guidaoquduan.start_exam(textBox1.Text);
-            校验结果 result_window = new 校验结果();
+            //校验结果 result_window = new 校验结果();
+            
+            //result_window.dataGridView1.DataSource = dataGridView2.DataSource;
+            //result_window.Show();
+            //Examine_yingdaqi.start_exam(textBox1.Text,result_window.dataGridView1);
 
-            result_window.dataGridView1.DataSource = dataGridView2.DataSource;
-            result_window.Show();
-            Examine_yingdaqi.start_exam(textBox1.Text,result_window.dataGridView1);
-
-            Examine_speed.start_exam(textBox1.Text, result_window.dataGridView1);
+            //Examine_speed.start_exam(textBox1.Text, result_window.dataGridView1);
            
 
 

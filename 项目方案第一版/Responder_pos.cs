@@ -39,7 +39,7 @@ namespace 项目方案第一版
                     bh = Regex.Replace(bh, @"\s+", "");
                     string lc=dt.Rows[row][3].ToString();
                     lc = Regex.Replace(lc, @"\s+", "");
-                    int pos = Get_mile(lc);
+                    int pos = Manager.Get_mile(lc);
                     res_pos.Add(bh, pos);
                 }
             }
@@ -61,14 +61,7 @@ namespace 项目方案第一版
                 
             }
         }
-        private int Get_mile(string s)
-        {
-            if (s.Equals("-")) return -1;
-            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);//去除字母
-            string[] SA = ss.Split('+');//分割+
-            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
-            return number;
-        }
+
  
         /// <summary>
         /// 输入源位置 偏移距离 目标位置范围，允许误差范围
@@ -128,7 +121,7 @@ namespace 项目方案第一版
                     if (bh == temp1)
                     {
                         string temp = Regex.Replace(dt.Rows[i][licheng_index].ToString().Trim(), "[\n\r ]", "", RegexOptions.IgnoreCase);
-                        return Get_mile(temp);
+                        return Manager.Get_mile(temp);
                     }
                 }
             }
