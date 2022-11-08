@@ -51,7 +51,7 @@ namespace 项目方案第一版
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string DsName = textBox2.Text;
+            string DsName = textBox1.Text;
             ds.DataSetName = DsName;
             if (Manager.DataSets.ContainsKey(DsName))
             {

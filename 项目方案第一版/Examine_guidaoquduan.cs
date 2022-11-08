@@ -25,15 +25,15 @@ namespace 项目方案第一版
             {
                 strings[qq] = "";
             }
-            try
-            {
-                guidaoquduan.fengzhuang_duizhao();
-            }
-            catch
-            {
-                MessageBox.Show("请导入站内轨道区段信息表");
-                return;
-            }           
+            //try
+            //{
+            //    guidaoquduan.fengzhuang_duizhao();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("请导入站内轨道区段信息表");
+            //    return;
+            //}           
             try
             {
                 guidaoquduan.fengzhuang_zaipinbiao();
