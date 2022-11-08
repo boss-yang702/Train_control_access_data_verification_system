@@ -95,5 +95,10 @@ namespace 项目方案第一版
             this.dataGridView1.DataSource = ds.Tables[Current_index];
             label3.Text = ds.Tables[Current_index].TableName;
         }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

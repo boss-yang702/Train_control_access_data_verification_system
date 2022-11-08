@@ -20,7 +20,8 @@ namespace 项目方案第一版
     public partial class MainWindow : Form
     {
 
-        public static string[] strings1 = new string[1000];
+        public static string[] strings1 = new string[2000];
+        public static string[] strings4 = new string[2000];
         public static string at;
 
 
@@ -69,12 +70,68 @@ namespace 项目方案第一版
                 Thread.Sleep(300);
                 aaa.dataGridView1.DataSource = dataGridView2.DataSource;
                 aaa.Show();
-                Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
-                for (int pp = 0; pp < strings1.Length; pp++)
+
+                if (checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
                 {
-                    strings1[pp] = "";
+                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
                 }
-                strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                if (checkedListBox1.GetItemChecked(1)&& !checkedListBox1.GetItemChecked(0)&& !checkedListBox1.GetItemChecked(2))
+                {
+                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                    for (int pp = 0; pp < strings1.Length; pp++)
+                    {
+                        strings1[pp] = "";
+                        strings4[pp] = "";
+                    }
+                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
+                }
+                if (checkedListBox1.GetItemChecked(2)&&!checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1))
+                {
+                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+                }
+                if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
+                {
+                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
+                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                    for (int pp = 0; pp < strings1.Length; pp++)
+                    {
+                        strings1[pp] = "";
+                    }
+                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                }
+                if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(1) && checkedListBox1.GetItemChecked(2))
+                {
+                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
+                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                    for (int pp = 0; pp < strings1.Length; pp++)
+                    {
+                        strings1[pp] = "";
+                    }
+                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+                }
+                if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(2) && !checkedListBox1.GetItemChecked(1))
+                {
+                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
+                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+                }
+                if (checkedListBox1.GetItemChecked(1) && checkedListBox1.GetItemChecked(2) && !checkedListBox1.GetItemChecked(0))
+                {
+                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                    for (int pp = 0; pp < strings1.Length; pp++)
+                    {
+                        strings1[pp] = "";
+                    }
+                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+                }
+                if(!checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
+                {
+                    aaa.Hide();
+                    MessageBox.Show("请勾选需要校验的数据");
+                    return;
+                }
                 progressBar1.Value = 0;
             }
         }
@@ -155,6 +212,13 @@ namespace 项目方案第一版
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
+        }
+
+        private void 使用说明ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path1 = @"C:\Users\波霸\Desktop\帮助文档.docx";  //打开D盘下的log.txt文件
+
+            System.Diagnostics.Process.Start(path1);
         }
     }
 }

@@ -28,6 +28,11 @@ namespace 项目方案第一版
             {
                 this.textBox9.Text = this.textBox9.Text + MainWindow.strings1[i]+ "\r\n"+ "\r\n";
             }
+            for (int i = 0; i < MainWindow.strings4.Length - 1; i++)
+            {
+                this.textBox2.Text = this.textBox2.Text + MainWindow.strings4[i] + "\r\n" + "\r\n";
+            }
+
 
 
             //int M = 3;

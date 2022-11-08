@@ -129,7 +129,7 @@
             // qqToolStripMenuItem
             // 
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.qqToolStripMenuItem.Text = "清空当前";
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
@@ -160,8 +160,9 @@
             // 使用说明ToolStripMenuItem
             // 
             this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.使用说明ToolStripMenuItem.Text = "使用说明";
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.使用说明ToolStripMenuItem.Text = "查看使用步骤";
+            this.使用说明ToolStripMenuItem.Click += new System.EventHandler(this.使用说明ToolStripMenuItem_Click);
             // 
             // 版本解释ToolStripMenuItem
             // 
@@ -264,7 +265,7 @@
             "应答器",
             "轨道区段",
             "线路速度"});
-            this.checkedListBox1.Location = new System.Drawing.Point(891, 213);
+            this.checkedListBox1.Location = new System.Drawing.Point(891, 214);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
             this.checkedListBox1.TabIndex = 12;
