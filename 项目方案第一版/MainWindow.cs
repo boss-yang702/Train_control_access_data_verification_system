@@ -13,13 +13,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Threading;
 using Microsoft.Office.Interop.Excel;
 using Font = System.Drawing.Font;
+using System.Xml.Linq;
 
 namespace 项目方案第一版
 {
     public partial class MainWindow : Form
     {
-        public static System.Data.DataTable dt;
+
+        public static string[] strings1 = new string[1000];
         public static string at;
+
 
         private float x;//定义当前窗体的宽度
         private float y;//定义当前窗体的高度
@@ -49,43 +52,40 @@ namespace 项目方案第一版
             
             Manager.Load_file(this.dataGridView2,textBox1);
             
-            //string path;
-            //path = SelectPath();
-            //string filename = System.IO.Path.GetFileName(path);//文件名  “Default.aspx”
-            //textBox1.Text = filename;
-            //DataTable dt = ReadExcel(path); ;//存放Excel表的内容到DataTable中
-            //dataGridView2.DataSource = dt;
-            //textBox2.Text = dataGridView2.Rows[3].Cells[3].Value.ToString();
-            //dataGridView2.Rows[3].Cells[2].Style.BackColor = Color.FromName("Red");
-            //dataGridView2.Rows[3].DefaultCellStyle.BackColor = Color.FromName("Skyblue");
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             if (progressBar1.Value < progressBar1.Maximum)
             {
                 progressBar1.Value++;
             }
             else
             {
-                校验结果 form3 = new 校验结果();
+                校验结果 aaa = new 校验结果();
                 timer1.Enabled = false;
                 Thread.Sleep(300);
-                form3.ShowDialog();
+                aaa.dataGridView1.DataSource = dataGridView2.DataSource;
+                aaa.Show();
+                Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                for (int pp = 0; pp < strings1.Length; pp++)
+                {
+                    strings1[pp] = "";
+                }
+                strings1 = (string[])Examine_guidaoquduan.strings.Clone();
                 progressBar1.Value = 0;
             }
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             progressBar1.Value = 0;
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 25;
             timer1.Enabled = true;
-            dt=Examine_guidaoquduan.start_exam(textBox1.Text);
-            at = textBox1.Text;
-            Examine_yingdaqi.start_exam(textBox1.Text);
-            Examine_speed.start_exam(textBox1.Text);
+
         }
 
         private void button2_Click(object sender, EventArgs e)//关闭进路校验窗口
@@ -149,7 +149,7 @@ namespace 项目方案第一版
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            Manager.Haseload();
+            //Manager.Haseload();           
         }
     }
 }
