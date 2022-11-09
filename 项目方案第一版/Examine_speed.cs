@@ -16,9 +16,7 @@ namespace 项目方案第一版
         
         public static string result;
         static Switches.Single_Station_Switchs current_station;
-        static Switches swis;
-        static 始终端信号机表 start_end_sheet;
-        static DataGridViewColumn dvc_jinlu;
+         static Switches swis;
         //开始检验，获得结果,传入的DataGridView中标注错误，警告信息，如果错误则标红，信息不足则标黄
         public static void start_exam(string name, DataGridView dv)
         {
@@ -27,31 +25,25 @@ namespace 项目方案第一版
                 result += "主窗体没有进路表\r\n";
                 return;
             }
-            if (name.Contains("所站"))
-             {
-                v1 = 100;
-                v2 = 80;
-                v3 = 160;
-            }
+
             //在进路数据表的DataGridView中找到与应答器有关的列,缺少直接返回
             DataGridViewColumn dvc_sd = dv_find_colunm(dv, "始端信号机");
             DataGridViewColumn dvc_zd = dv_find_colunm(dv, "终端信号机名称");
             DataGridViewColumn dvc_dc = dv_find_colunm(dv, "道岔");
             DataGridViewColumn dvc_xlsd = dv_find_colunm(dv, "线路速度");
-            dvc_jinlu = dv_find_colunm(dv, "进路");
-            if (dvc_sd == null || dvc_zd == null || dvc_dc == null || dvc_xlsd == null) 
-            {
-                MessageBox.Show("请重新检查进路表信息是否完整");
-                return;
-            }
+  
+            if (dvc_sd == null || dvc_zd == null||dvc_dc == null || dvc_xlsd == null) return;
             try
-            {//检查信息表是否完整
-                start_end_sheet=new 始终端信号机表(Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"]);
+            {
+                string s=Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].ToString();
                 swis = new Switches(DataSets["怀衡线怀化南至衡阳东站道岔信息表"]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("缺少始终端信号机信息表或道岔信息表");
+                MessageBox.Show(ex.Message);
+                indicate_warning(dvc_sd);//直接在datagridview标黄某一列
+                indicate_warning(dvc_zd);//直接在datagridview标黄某一列
+                indicate_warning(dvc_dc);//直接在datagridview标黄某一列
                 indicate_warning(dvc_xlsd);//直接在datagridview标黄某一列
                 return;
             }
@@ -63,42 +55,28 @@ namespace 项目方案第一版
         static void  Exam_begin(DataGridViewColumn dvc_sd,DataGridViewColumn dvc_zd,
             DataGridViewColumn dvc_dc,DataGridViewColumn dvc_xlsd)
         {
-
             for(int row = 3; row < dvc_sd.DataGridView.RowCount; row++)
             {
-                //提取进路信息表信息
                 string sd = mytrim(dvc_dc.DataGridView[dvc_sd.Name, row].Value.ToString());
                 string zd = mytrim(dvc_dc.DataGridView[dvc_zd.Name, row].Value.ToString());
                 string[] dcs = mytrim(dvc_dc.DataGridView[dvc_dc.Name, row].Value.ToString()).Split(',');
                 string[] xlsds = mytrim(dvc_dc.DataGridView[dvc_xlsd.Name, row].Value.ToString()).Split(',');
+                List<int> Miles = Get_roads(sd,zd,dcs);
+                int[] speeds= Get_Speed1(sd,zd,Miles.Count);
 
-                List<int> Poss = Get_Poss(sd,zd,dcs);
-                if (Poss.Contains(0)) //有信号机位置缺失，信息不足
-                {
-                    indicate_warning(dvc_xlsd, row);
-                    continue; 
-                };
-                List<int> Roads = Get_Roads(Poss);
-                int[] speeds= Get_Speed1(sd,zd, Roads.Count);
-                if(speeds==null)//没有速度信息
-                {
-                    indicate_warning(dvc_xlsd,row);
-                    continue;
-                }
                 //生成的数量不一致，直接标红
-                if (Roads.Count != xlsds.Count())
+                if (Miles.Count != xlsds.Count())
                 {
                     indicate_error(dvc_xlsd, row);
                     continue;
                 }
                 
-                if (sd == "XF" || sd == "X" || sd == "XH" || sd == "XHF" 
-                    || zd == "SF" || zd == "S" ||zd == "SHF" || zd == "SH" || zd == "SY" || zd == "SYF")
+                if (sd == "XF" || sd == "X" || zd == "SF" || zd == "S")
                 {
                     for(int i = 0; i < xlsds.Count() ; i++)
                     {
                         string[] sd_cd = xlsds[i].Split('/');//s[0]为速度 s[1]为长度
-                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1])- Roads[i])<=1)
+                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1])- Miles[i])<=1)
                         {
                             continue;
                         }
@@ -114,7 +92,7 @@ namespace 项目方案第一版
                     for (int i = 0; i < xlsds.Count(); i++)
                     {
                         string[] sd_cd = xlsds[i].Split('/');//s[0]为速度 s[1]为长度
-                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1]) - Roads[xlsds.Count()-i-1]) <= 1)
+                        if (sd_cd[0] == speeds[i].ToString() && Math.Abs(Convert.ToInt32(sd_cd[1]) - Miles[xlsds.Count()-i-1]) <= 1)
                         {
                             continue;
                         }
@@ -129,28 +107,35 @@ namespace 项目方案第一版
             }
         }
         
-        
-        static List<int> Get_Poss(string sd,string zd,string[] dcs)
+        private static int Get_mile(string s)
         {
-            //List<int> roads = new List<int>();
-            List<int> Poss = new List<int>();
+            if (s.Equals("-")) return -1;
+            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);//去除字母
+            string[] SA = ss.Split('+');//分割+
+            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
+            return number;
+        }
+        static List<int> Get_roads(string sd,string zd,string[] dcs)
+        {
+            List<int> roads = new List<int>();
+            List<int> Pos = new List<int>();
             foreach(string dc in dcs)
             {
-                if (Regex.IsMatch(dc, @"\(\d+/\d+\)"))    //（1/3）双反位道岔
+                if (Regex.IsMatch(dc, @"\(\d+/\d+\)"))    //（1/3）(3)双反位道岔
                 {
                     List<int> temp = current_station.Mymatch(dc);
-                    if (temp==null) continue;
+                    if (temp.Count == 0) continue;
                     foreach (int a in temp)
                     {
-                        Poss.Add(a);
+                        Pos.Add(a);
                     }
                 }
-                else if (Regex.IsMatch(dc, @"\(\d+\)"))//(3)
+                else if (Regex.IsMatch(dc, @"\(\d+\)"))
                 {
                     int s = Convert.ToInt32(Regex.Replace(dc,@"[()]",""));
                     if (current_station.data[s].dir == "正线")
                     {
-                        Poss.Add(current_station.data[s].pos);
+                        Pos.Add(current_station.data[s].pos);
                     }
                 }
                 else
@@ -158,21 +143,18 @@ namespace 项目方案第一版
                     continue;
                 }
             }
-            Poss.Add(start_end_sheet[current_station.Station_name, sd]);
-            Poss.Add(start_end_sheet[current_station.Station_name, zd]);
-
-            return Poss;
-        }
-        static List<int> Get_Roads(List<int> Poss)
-        {
-            List<int> roads=new List<int>();
-            //从小到大排序，每相邻两个做差值得到两个点之间的距离，加到roads中去
-            Poss.Sort();
-            for (int i = 0; i < Poss.Count - 1; i++)
+            int[] start_end = Get_Beginning2Start(current_station.Station_name, sd, zd);
+            
+            Pos.Add(start_end[0]);
+            Pos.Add(start_end[1]);
+            
+            //从小到大排序，每相邻两个做差值得到两个点之间的距离，加到Miles中去
+            Pos.Sort();
+            for(int i = 0; i < Pos.Count-1; i++)
             {
-                int a = Poss[i];
-                int b = Poss[i + 1];
-                int D_value = b - a;
+                int a = Pos[i];
+                int b = Pos[i + 1];
+                int D_value = b-a;
                 roads.Add(D_value);
             }
             return roads;
@@ -184,32 +166,32 @@ namespace 项目方案第一版
         /// <param name="sd"></param>
         /// <param name="zd"></param>
         /// <returns></returns>
-        //static int[] Get_Beginning2Start(string station_name,string sd,string zd)
-        //{
-        //    int[] ints = new int[2];
-        //    DataTable dt = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
-        //     for (int col = 0; col < dt.Columns.Count; col++)
-        //       {
-        //            if (dt.Rows[0][col].ToString().Contains(station_name))
-        //            {
-
-        //                for (int i = 1; i<dt.Rows.Count; i++)
-        //                {
-        //                    if (dt.Rows[i][col].ToString() == sd)
-        //                    {
-        //                        ints[0] = Get_mile(dt.Rows[i][col + 1].ToString());
-        //                    }
-        //                    if (dt.Rows[i][col].ToString() == zd)
-        //                    {
-        //                        ints[1] = Get_mile(dt.Rows[i][col + 1].ToString());
-        //                    }
-        //                }
-        //            }
-        //     }
-
-
-        //    return ints;
-        //}
+        static int[] Get_Beginning2Start(string station_name,string sd,string zd)
+        {
+            int[] ints = new int[2];
+            DataTable dt = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
+             for (int col = 0; col < dt.Columns.Count; col++)
+               {
+                    if (dt.Rows[0][col].ToString().Contains(station_name))
+                    {
+                        
+                        for (int i = 1; i<dt.Rows.Count; i++)
+                        {
+                            if (dt.Rows[i][col].ToString() == sd)
+                            {
+                                ints[0] = Get_mile(dt.Rows[i][col + 1].ToString());
+                            }
+                            if (dt.Rows[i][col].ToString() == zd)
+                            {
+                                ints[1] = Get_mile(dt.Rows[i][col + 1].ToString());
+                            }
+                        }
+                    }
+             }
+            
+           
+            return ints;
+        }
         /// <summary>
         /// 获取该条进路每一段速度
         /// </summary>
@@ -217,50 +199,47 @@ namespace 项目方案第一版
         /// <param name="zd"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        static int v1=200;
-        static int v2=45;
-        static int v3=160;
         static int[] Get_Speed1(string sd,string zd,int count)
         {
             int[] speeds = new int[count];
             //speed从列车所在地开始生成，由近及远
-            if (sd == "X"||sd=="XH"||sd =="XY" || sd == "S" || sd == "SH" || sd == "SY"||Regex.IsMatch(sd,@"\bD+")||Regex.IsMatch(sd, @"\bD+"))
+            if (sd == "X"||sd=="XH"||sd =="XY" || sd == "S" || sd == "SH" || sd == "SY")
             {
                 //正向接车
                 switch (count)
                 { 
                     case 1: 
-                        speeds[0] = v1;
+                        speeds[0] = 200;
                         break;
                     case 2:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
                         break;
                     case 3:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
                         break;
                     case 4:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
-                        speeds[3] = v2;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
                         break;
                     case 5:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
-                        speeds[3] = v2;
-                        speeds[4] = v1;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
                         break;
                     case 6:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
-                        speeds[3] = v2;
-                        speeds[4] = v1;
-                        speeds[5] = v2;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
+                        speeds[5] = 45;
                         break;
                 }
                     
@@ -271,37 +250,37 @@ namespace 项目方案第一版
                 switch (count)
                 { 
                     case 1: 
-                        speeds[0] = v3;
+                        speeds[0] = 160;
                         break;
                     case 2:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
                         break;
                     case 3:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
                         break;
                     case 4:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
-                        speeds[3] = v2;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
                         break;
                     case 5:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
-                        speeds[3] = v2;
-                        speeds[4] = v3;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
                         break;
                     case 6:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
-                        speeds[3] = v2;
-                        speeds[4] = v3;
-                        speeds[5] = v2; 
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
+                        speeds[5] = 45;
                         break;
                 }
             }
@@ -311,38 +290,38 @@ namespace 项目方案第一版
                 switch (count)
                 {
                     case 1:
-                        speeds[0] = v1;
+                        speeds[0] = 200;
                         break;
                     case 2:
-                        speeds[0] = v2;
-                        speeds[1] = v1;
+                        speeds[0] = 45;
+                        speeds[1] = 200;
                         break;
                     case 3:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
                         break;
                     case 4:
-                        speeds[0] = v2;
-                        speeds[1] = v3;
-                        speeds[2] = v2;
-                        speeds[3] = v1;
+                        speeds[0] = 45;
+                        speeds[1] = 160;
+                        speeds[2] = 45;
+                        speeds[3] = 200;
                         break;
                     case 5:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
-                        speeds[3] = v2;
-                        speeds[4] = v1;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
+                        speeds[3] = 45;
+                        speeds[4] = 200;
                         break;
                     case 6:
 
-                        speeds[0] = v2;
-                        speeds[1] = v1;
-                        speeds[2] = v2;
-                        speeds[3] = v3;
-                        speeds[4] = v2;
-                        speeds[5] = v1;
+                        speeds[0] = 45;
+                        speeds[1] = 200;
+                        speeds[2] = 45;
+                        speeds[3] = 160;
+                        speeds[4] = 45;
+                        speeds[5] = 200;
                         break;
                 }
 
@@ -353,37 +332,37 @@ namespace 项目方案第一版
                 switch (count)
                 {
                     case 1:
-                        speeds[0] = v3;
+                        speeds[0] = 160;
                         break;
                     case 2:
-                        speeds[0] = v2;
-                        speeds[1] = v3;
+                        speeds[0] = 45;
+                        speeds[1] = 160;
                         break;
                     case 3:
-                        speeds[0] = v1;
-                        speeds[1] = v2;
-                        speeds[2] = v3;
+                        speeds[0] = 200;
+                        speeds[1] = 45;
+                        speeds[2] = 160;
                         break;
                     case 4:
-                        speeds[0] = v2;
-                        speeds[1] = v1;
-                        speeds[2] = v2;
-                        speeds[3] = v3;
+                        speeds[0] = 45;
+                        speeds[1] = 200;
+                        speeds[2] = 45;
+                        speeds[3] = 160;
                         break;
                     case 5:
-                        speeds[0] = v3;
-                        speeds[1] = v2;
-                        speeds[2] = v1;
-                        speeds[3] = v2;
-                        speeds[4] = v3;
+                        speeds[0] = 160;
+                        speeds[1] = 45;
+                        speeds[2] = 200;
+                        speeds[3] = 45;
+                        speeds[4] = 160;
                         break;
                     case 6:
-                        speeds[0] = v2;
-                        speeds[1] = v3;
-                        speeds[2] = v2;
-                        speeds[3] = v1;
-                        speeds[4] = v2;
-                        speeds[5] = v3;
+                        speeds[0] = 45;
+                        speeds[1] = 160;
+                        speeds[2] = 45;
+                        speeds[3] = 200;
+                        speeds[4] = 45;
+                        speeds[5] = 160;
                         break;
                 }
             }

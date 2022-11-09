@@ -30,36 +30,29 @@ namespace 项目方案第一版
             /// <returns></returns>
             public List<int> Mymatch(string dc)
             {
-                
                 string[] ss= Regex.Replace(dc, @"[()]", "").Split('/');
                 int[] nums=new int[2];
                 nums[0] = Convert.ToInt32(ss[0]);
                 nums[1] = Convert.ToInt32(ss[1]);
                 List<int> pos = new List<int>();
-                try
+                if (data[nums[0]].dir=="正线"&& data[nums[1]].dir == "正线")//两端都是干线
                 {
-                    if (data[nums[0]].dir == "正线" && data[nums[1]].dir == "正线")//两端都是干线
-                    {
+                    
+                    pos.Add(data[nums[0]].pos);
+                    pos.Add(data[nums[1]].pos);
+                    return pos;
+                }else if(data[nums[0]].dir == "侧线" && data[nums[1]].dir == "正线")//一段干线，一段侧线,返回正线上道岔的位置
+                {
+                    pos.Add(data[nums[1]].pos);
 
-                        pos.Add(data[nums[0]].pos);
-                        pos.Add(data[nums[1]].pos);
-                        return pos;
-                    }
-                    else if (data[nums[0]].dir == "侧线" && data[nums[1]].dir == "正线")//一段干线，一段侧线,返回正线上道岔的位置
-                    {
-                        pos.Add(data[nums[1]].pos);
-
-                    }
-                    else if (data[nums[0]].dir == "正线" && data[nums[1]].dir == "侧线")
-                    {
-                        pos.Add(data[nums[0]].pos);
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                }else if(data[nums[0]].dir == "正线" || data[nums[1]].dir == "侧线")
+                {
+                    pos.Add(data[nums[0]].pos);
                 }
-                catch { pos.Add(0); }
+                else
+                {
+                    return null;
+                }
                 return pos;
             }
             
@@ -72,7 +65,7 @@ namespace 项目方案第一版
         {
             this.ds = ds;
             Create();
-            
+            int a = 10;
         }
         public Single_Station_Switchs Get_one_station(string name)
         {
@@ -113,7 +106,7 @@ namespace 项目方案第一版
                 }
                 rowdata temp = new rowdata();
                 int number = Convert.ToInt32(mytrim(dr[2].ToString()));
-                temp.pos = Manager.Get_mile(mytrim(dr[3].ToString()));
+                temp.pos = Get_mile(mytrim(dr[3].ToString()));
                 temp.dir = mytrim(dr[4].ToString());
                 current.data.Add(number,temp);
             }
@@ -124,7 +117,14 @@ namespace 项目方案第一版
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-       
+        private int Get_mile(string s)
+        {
+            if (s.Equals("-")) return -1;
+            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);//去除字母
+            string[] SA = ss.Split('+');//分割+
+            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
+            return number;
+        }
         /// <summary>
         /// 去除不可见字符
         /// </summary>

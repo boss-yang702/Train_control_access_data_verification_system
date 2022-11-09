@@ -69,7 +69,7 @@ namespace 项目方案第一版
 
         private void 校验结果_Load(object sender, EventArgs e)
         {
-
+           
             //DataTable b = MainWindow.dt;
             //textBox1.Text = MainWindow.at;
             //textBox1.Text += "校验表";

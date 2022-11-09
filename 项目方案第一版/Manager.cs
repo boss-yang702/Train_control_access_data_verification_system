@@ -351,14 +351,6 @@ namespace 项目方案第一版
         {
             return Regex.Replace(input, @"\s+", "");
         }
-        public static int Get_mile(string s)
-        {
-            if (s.Equals("-")) return -1;
-            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);//去除字母
-            string[] SA = ss.Split('+');//分割+
-            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
-            return number;
-        }
     }
 
 }

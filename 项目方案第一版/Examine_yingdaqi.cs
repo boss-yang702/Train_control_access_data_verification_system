@@ -65,9 +65,9 @@ namespace 项目方案第一版
                 int start_pos = re[bh];
                 if(start_pos== -1)
                 {
-                    
+                    indicate_warning(dvc_jg, row);
                     //result+="没有" + bh + "应答器位置";
-                    //MessageBox.Show("没有" + bh + "应答器位置");
+                    MessageBox.Show("没有" + bh + "应答器位置");
                     indicate_warning(dvc_jg,row);
                     continue;
                 }
