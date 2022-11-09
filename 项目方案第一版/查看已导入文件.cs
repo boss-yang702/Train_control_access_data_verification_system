@@ -67,6 +67,14 @@ namespace 项目方案第一版
 
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Lasttable();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Nexttable();
+        }
     }
 }
