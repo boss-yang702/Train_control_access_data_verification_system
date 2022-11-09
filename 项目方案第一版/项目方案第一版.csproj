@@ -201,7 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="20221108162545_50f89838fc054904a303568d11ce3300.ico" />
-    <None Include="Resources\v2-cd25dd72c3e921450790f0eb9b1bfa83_r.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -159,17 +159,9 @@ namespace 项目方案第一版
                         
                     }
                 }
-                try
+                if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Yellow") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
                 {
-                    if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Yellow") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
-                    {
-                        dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Green");
-                    }
-
-                }
-                catch
-                { 
-                
+                    dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Green");
                 }
             }
         }      

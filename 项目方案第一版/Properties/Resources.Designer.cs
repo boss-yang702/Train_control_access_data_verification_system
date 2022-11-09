@@ -59,15 +59,5 @@ namespace 项目方案第一版.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap v2_cd25dd72c3e921450790f0eb9b1bfa83_r {
-            get {
-                object obj = ResourceManager.GetObject("v2-cd25dd72c3e921450790f0eb9b1bfa83_r", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
