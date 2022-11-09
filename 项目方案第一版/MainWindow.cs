@@ -56,10 +56,7 @@ namespace 项目方案第一版
             label5.Hide();
             label6.Hide();
             label7.Hide();
-
             Manager.Load_file(this.dataGridView2,textBox1);
-
-
         }
         //进度条
         private void timer1_Tick(object sender, EventArgs e)
