@@ -23,6 +23,7 @@ namespace 项目方案第一版
         public static string[] strings1 = new string[2000];
         public static string[] strings4 = new string[2000];
         public static string at;
+        public static bool att;
 
 
         private float x;//定义当前窗体的宽度
@@ -39,6 +40,7 @@ namespace 项目方案第一版
         {
             导入文件 form2 = new 导入文件();
             form2.ShowDialog();
+
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -50,10 +52,12 @@ namespace 项目方案第一版
         
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            
+            label4.Hide();
+            label3.Hide();
+            label5.Hide();
+            label6.Hide();
+            label7.Hide();
             Manager.Load_file(this.dataGridView2,textBox1);
-            
-
         }
         //进度条
         private void timer1_Tick(object sender, EventArgs e)
@@ -70,6 +74,14 @@ namespace 项目方案第一版
                 Thread.Sleep(300);
                 aaa.dataGridView1.DataSource = dataGridView2.DataSource;
                 aaa.Show();
+                if (checkedListBox1.GetItemChecked(3))
+                {
+                    att = true;
+                }
+                else
+                {
+                    att = false;
+                }
 
                 if (checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
                 {
@@ -99,6 +111,8 @@ namespace 项目方案第一版
                         strings1[pp] = "";
                     }
                     strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
+
                 }
                 if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(1) && checkedListBox1.GetItemChecked(2))
                 {
@@ -109,12 +123,16 @@ namespace 项目方案第一版
                         strings1[pp] = "";
                     }
                     strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
+
                     Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
                 }
                 if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(2) && !checkedListBox1.GetItemChecked(1))
                 {
                     Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
                     Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+
+
                 }
                 if (checkedListBox1.GetItemChecked(1) && checkedListBox1.GetItemChecked(2) && !checkedListBox1.GetItemChecked(0))
                 {
@@ -124,6 +142,8 @@ namespace 项目方案第一版
                         strings1[pp] = "";
                     }
                     strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
+
                     Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
                 }
                 if(!checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
@@ -196,7 +216,8 @@ namespace 项目方案第一版
 
         private void 查看导入的具体数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            查看已导入文件 ccc = new 查看已导入文件();
+            ccc.ShowDialog();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)

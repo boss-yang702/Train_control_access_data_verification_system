@@ -100,6 +100,7 @@
     <Compile Include="信息表显示.Designer.cs">
       <DependentUpon>信息表显示.cs</DependentUpon>
     </Compile>
+    <Compile Include="始终端信号机表.cs" />
     <Compile Include="导入文件.cs">
       <SubType>Form</SubType>
     </Compile>

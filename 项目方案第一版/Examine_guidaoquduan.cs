@@ -94,21 +94,23 @@ namespace 项目方案第一版
                         }
                     }
                 }
-
-                for (int ii = 0; ii < guidaoquduan.zaipinduizhao.Length; ii++)
+                if (MainWindow.att)
                 {
-                    if (guidaoquduan.xinxi[M].chezhanming == guidaoquduan.zaipinduizhao[ii].chezhanming)
+                    for (int ii = 0; ii < guidaoquduan.zaipinduizhao.Length; ii++)
                     {
-                        
-                        if (guidaoquduan.xinxi[M].mingcheng_quduan == guidaoquduan.zaipinduizhao[ii].quduan)
+                        if (guidaoquduan.xinxi[M].chezhanming == guidaoquduan.zaipinduizhao[ii].chezhanming)
                         {
-                            if (guidaoquduan.xinxi[M].zaipin != guidaoquduan.zaipinduizhao[ii].zaipin)
+
+                            if (guidaoquduan.xinxi[M].mingcheng_quduan == guidaoquduan.zaipinduizhao[ii].quduan)
                             {
-                                int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                                dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
-                                strings[z] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipinduizhao[ii].zaipin;
-                                z++;
-                                break;
+                                if (guidaoquduan.xinxi[M].zaipin != guidaoquduan.zaipinduizhao[ii].zaipin)
+                                {
+                                    int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
+                                    dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
+                                    strings[z] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipinduizhao[ii].zaipin;
+                                    z++;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -141,27 +143,37 @@ namespace 项目方案第一版
                         
                     }
                 }
-                int ccc = guidao4.Count(p => p == guidaoquduan.xinxi[M].mingcheng_quduan);
-                if (ccc == 0)
+                if (MainWindow.att)
                 {
-                    try
+                    int ccc = guidao4.Count(p => p == guidaoquduan.xinxi[M].mingcheng_quduan);
+                    if (ccc == 0)
                     {
-                        if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
+                        try
                         {
-                            dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
-                            int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                            strings3[d] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
-                            d++;
+                            if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
+                            {
+                                dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
+                                int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
+                                strings3[d] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
+                                d++;
+                            }
+                        }
+                        catch
+                        {
+
                         }
                     }
-                    catch
-                    { 
-                        
+                }
+                try
+                {
+                    if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Yellow") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
+                    {
+                        dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Green");
                     }
                 }
-                if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Yellow") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
-                {
-                    dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Green");
+                catch
+                { 
+                
                 }
             }
         }      
