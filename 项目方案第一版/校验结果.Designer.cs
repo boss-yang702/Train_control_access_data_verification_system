@@ -199,7 +199,7 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.DataGridView dataGridView1;
+//public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;

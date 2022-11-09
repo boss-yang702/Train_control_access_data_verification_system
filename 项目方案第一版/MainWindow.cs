@@ -39,6 +39,7 @@ namespace 项目方案第一版
         {
             导入文件 form2 = new 导入文件();
             form2.ShowDialog();
+
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -50,9 +51,14 @@ namespace 项目方案第一版
         
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            
+            label4.Hide();
+            label3.Hide();
+            label5.Hide();
+            label6.Hide();
+            label7.Hide();
+
             Manager.Load_file(this.dataGridView2,textBox1);
-            
+
 
         }
         //进度条

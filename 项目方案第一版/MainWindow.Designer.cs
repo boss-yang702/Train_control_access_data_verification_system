@@ -54,6 +54,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +134,7 @@
             // qqToolStripMenuItem
             // 
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.qqToolStripMenuItem.Text = "清空当前";
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
@@ -160,14 +165,14 @@
             // 使用说明ToolStripMenuItem
             // 
             this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.使用说明ToolStripMenuItem.Text = "查看使用步骤";
             this.使用说明ToolStripMenuItem.Click += new System.EventHandler(this.使用说明ToolStripMenuItem_Click);
             // 
             // 版本解释ToolStripMenuItem
             // 
             this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
-            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.版本解释ToolStripMenuItem.Text = "版本解释";
             // 
             // button1
@@ -270,11 +275,61 @@
             this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
             this.checkedListBox1.TabIndex = 12;
             // 
+            // label3
+            // 
+            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
+            this.label3.Location = new System.Drawing.Point(15, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(833, 567);
+            this.label3.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
+            this.label4.Location = new System.Drawing.Point(107, 289);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(161, 149);
+            this.label4.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
+            this.label5.Location = new System.Drawing.Point(619, 303);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(138, 106);
+            this.label5.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(250, 155);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(371, 44);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "欢迎使用校验系统";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(327, 544);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(257, 40);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "欢迎高琛主讲";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 667);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.progressBar1);
@@ -325,6 +380,11 @@
         private System.Windows.Forms.ToolStripMenuItem 保存文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
