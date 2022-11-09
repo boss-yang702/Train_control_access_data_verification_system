@@ -50,7 +50,12 @@ namespace 项目方案第一版
         
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            
+            pictureBox1.Hide();
+            label4.Hide();
+            label3.Hide();
+            label5.Hide();
+            label7.Hide();
+            label6.Hide();
             Manager.Load_file(this.dataGridView2,textBox1);
             
 
@@ -206,7 +211,8 @@ namespace 项目方案第一版
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //Manager.Haseload();           
+            //Manager.Haseload();
+            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)

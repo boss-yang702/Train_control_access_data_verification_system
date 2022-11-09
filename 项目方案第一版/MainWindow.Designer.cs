@@ -54,8 +54,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -68,7 +75,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1282, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1394, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -129,7 +136,7 @@
             // qqToolStripMenuItem
             // 
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.qqToolStripMenuItem.Text = "清空当前";
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
@@ -160,19 +167,19 @@
             // 使用说明ToolStripMenuItem
             // 
             this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.使用说明ToolStripMenuItem.Text = "查看使用步骤";
             this.使用说明ToolStripMenuItem.Click += new System.EventHandler(this.使用说明ToolStripMenuItem_Click);
             // 
             // 版本解释ToolStripMenuItem
             // 
             this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
-            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.版本解释ToolStripMenuItem.Text = "版本解释";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(891, 112);
+            this.button1.Location = new System.Drawing.Point(1012, 146);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 72);
             this.button1.TabIndex = 3;
@@ -182,7 +189,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(891, 455);
+            this.button2.Location = new System.Drawing.Point(1012, 545);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(267, 72);
             this.button2.TabIndex = 4;
@@ -192,7 +199,7 @@
             // 
             // 进路数据导入
             // 
-            this.进路数据导入.Location = new System.Drawing.Point(891, 15);
+            this.进路数据导入.Location = new System.Drawing.Point(1012, 30);
             this.进路数据导入.Name = "进路数据导入";
             this.进路数据导入.Size = new System.Drawing.Size(267, 75);
             this.进路数据导入.TabIndex = 5;
@@ -235,7 +242,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(891, 574);
+            this.progressBar1.Location = new System.Drawing.Point(1012, 672);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(267, 31);
             this.progressBar1.TabIndex = 10;
@@ -250,11 +257,11 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 73);
+            this.dataGridView2.Location = new System.Drawing.Point(15, 105);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 27;
-            this.dataGridView2.Size = new System.Drawing.Size(833, 567);
+            this.dataGridView2.Size = new System.Drawing.Size(825, 535);
             this.dataGridView2.TabIndex = 11;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -265,16 +272,77 @@
             "应答器",
             "轨道区段",
             "线路速度"});
-            this.checkedListBox1.Location = new System.Drawing.Point(891, 214);
+            this.checkedListBox1.Location = new System.Drawing.Point(1012, 279);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
             this.checkedListBox1.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(15, 105);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(825, 535);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
+            this.label3.Location = new System.Drawing.Point(12, 105);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(828, 535);
+            this.label3.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(256, 178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(337, 40);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "欢迎使用校验系统";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(230, 545);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(445, 60);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "欢迎主讲人高琛";
+            // 
+            // label6
+            // 
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
+            this.label6.Location = new System.Drawing.Point(489, 295);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(312, 155);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
+            this.label7.Location = new System.Drawing.Point(137, 302);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(156, 148);
+            this.label7.TabIndex = 18;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1282, 667);
+            this.ClientSize = new System.Drawing.Size(1394, 750);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.progressBar1);
@@ -294,6 +362,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +394,12 @@
         private System.Windows.Forms.ToolStripMenuItem 保存文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
