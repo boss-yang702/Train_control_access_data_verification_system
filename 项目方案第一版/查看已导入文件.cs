@@ -38,6 +38,7 @@ namespace 项目方案第一版
             Current_index = 0;
             dataGridView1.DataSource = ds.Tables[Current_index];
             label1.Text = ds.DataSetName;
+            label2.Text = ds.Tables[Current_index].TableName;
         }
 
         private void 查看已导入文件_KeyUp(object sender, KeyEventArgs e)
@@ -67,6 +68,14 @@ namespace 项目方案第一版
 
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Lasttable();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Nexttable();
+        }
     }
 }
