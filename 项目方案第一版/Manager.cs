@@ -64,7 +64,6 @@ namespace 项目方案第一版
         /// <returns>返回一个包含该文件的DateSet 里面有所有Sheet对应的Datatable</returns>
         private static DataSet ImportExcel(string filePath)
         {
-
             DataSet ds = null;
             OleDbConnection OleConn;
 
@@ -143,7 +142,7 @@ namespace 项目方案第一版
         public static void Export(DataGridView dataGridView1)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "excel文件|*.*";
+            saveFileDialog.Filter = "excel文件|*.XLS";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -177,7 +176,7 @@ namespace 项目方案第一版
             }
         }
 
-        public  static string chengzhanming_1;
+
         /// <summary>
         /// 打开文件对话框，导入进路信息表并显示在加载进来的DataGridview中,并将文件名加入字典中与DataSets下标对应 eg:"进路信息表":0
         /// </summary>
@@ -196,8 +195,6 @@ namespace 项目方案第一版
                 string DsName = filename.Substring(0, index2+1);
                 DataSet ds = ImportExcel(strPath);
                 ds.DataSetName = DsName;
-                chengzhanming_1 = DsName;
-                tb.Text = DsName;
                 if (DataSets.ContainsKey(DsName))
                 {
                     DialogResult MsgBoxResult;//设置对话框的返回值
@@ -209,7 +206,6 @@ namespace 项目方案第一版
                         dav.DataSource = DataSets[DsName].Tables[0];
                         
                         tb.Text = DsName;
-                        chengzhanming_1 = DsName;
                         //main_dv.Dispose();
                         //main_dv.DataSource = ds.Copy();
                         //选择了Yes，继续
@@ -219,7 +215,6 @@ namespace 项目方案第一版
                         dav.DataSource = DataSets[DsName].Tables[0];
                         //main_dv.Dispose();
                         //main_dv.DataSource = ds.Copy();
-                        chengzhanming_1 = DsName;
                         tb.Text = DsName;
                         //选择了No，继续
                     }
@@ -350,6 +345,14 @@ namespace 项目方案第一版
         public static string mytrim(string input)
         {
             return Regex.Replace(input, @"\s+", "");
+        }
+        public static int Get_mile(string s)
+        {
+            if (s.Equals("-")) return -1;
+            string ss = Regex.Replace(s, "[a - zA-Z]", "", RegexOptions.IgnoreCase);//去除字母
+            string[] SA = ss.Split('+');//分割+
+            int number = Convert.ToInt32(SA[0]) * 1000 + Convert.ToInt32(SA[1]);//计算里程
+            return number;
         }
     }
 
