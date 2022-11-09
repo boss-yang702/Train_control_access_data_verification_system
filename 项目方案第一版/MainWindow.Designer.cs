@@ -269,7 +269,8 @@
             this.checkedListBox1.Items.AddRange(new object[] {
             "应答器",
             "轨道区段",
-            "线路速度"});
+            "线路速度",
+            "载频区段"});
             this.checkedListBox1.Location = new System.Drawing.Point(891, 214);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
@@ -306,7 +307,7 @@
             this.label6.Font = new System.Drawing.Font("宋体", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(250, 155);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(371, 44);
+            this.label6.Size = new System.Drawing.Size(363, 43);
             this.label6.TabIndex = 16;
             this.label6.Text = "欢迎使用校验系统";
             // 
@@ -379,12 +380,12 @@
         private System.Windows.Forms.ToolStripMenuItem 查看导入的具体数据ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 

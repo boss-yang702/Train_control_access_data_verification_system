@@ -137,10 +137,20 @@ namespace 项目方案第一版
                             }
                             if (weizhi0 != -1 && weizhi1 == -1)
                             {
-                                //int xx = Regex.Matches(aa, "定").Count;
-                                //if(xx==2)
+                                int xx=Regex.Matches(aa,"定").Count;
+                                int cc = Regex.Matches(aa, "#").Count;
+                            //int xx = Regex.Matches(aa, "定").Count;
+                                if(xx==2)
                                 duizhao[j].daocha_weizhi = "全定位";
-                                //if(xx==1)
+                                if (xx == 1)
+                                { 
+                                    if(cc==2)
+                                    duizhao[j].daocha_weizhi = "全定位";
+                                if (cc == 1)
+                                {
+                                    duizhao[j].daocha_weizhi = mytrim(Convert.ToString(ds.Rows[i][2]).Replace("#道岔", "").Replace("#", "").Replace("、", "").Replace(",", "").Replace(" ", ""));
+                                }
+                                }
                                 //duizhao[j].daocha_weizhi = mytrim(Convert.ToString(ds.Rows[i][2]).Replace("#道岔", "").Replace("#", "").Replace("、", "").Replace(",", "").Replace(" ", ""));
                             }
                         }

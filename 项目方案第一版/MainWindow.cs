@@ -23,6 +23,7 @@ namespace 项目方案第一版
         public static string[] strings1 = new string[2000];
         public static string[] strings4 = new string[2000];
         public static string at;
+        public static bool att;
 
 
         private float x;//定义当前窗体的宽度
@@ -73,6 +74,14 @@ namespace 项目方案第一版
                 Thread.Sleep(300);
                 aaa.dataGridView1.DataSource = dataGridView2.DataSource;
                 aaa.Show();
+                if (checkedListBox1.GetItemChecked(3))
+                {
+                    att = true;
+                }
+                else
+                {
+                    att = false;
+                }
 
                 if (checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
                 {
