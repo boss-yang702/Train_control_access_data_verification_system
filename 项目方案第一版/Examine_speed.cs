@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace 项目方案第一版
         static Switches swis;
         static 始终端信号机表 start_end_sheet;
         static DataGridViewColumn dvc_jinlu;
+        static string sta_name;
         //开始检验，获得结果,传入的DataGridView中标注错误，警告信息，如果错误则标红，信息不足则标黄
         public static void start_exam(string name, DataGridView dv)
         {
@@ -27,12 +29,7 @@ namespace 项目方案第一版
                 result += "主窗体没有进路表\r\n";
                 return;
             }
-            if (name.Contains("所站"))
-             {
-                v1 = 100;
-                v2 = 80;
-                v3 = 160;
-            }
+            sta_name = name;
             //在进路数据表的DataGridView中找到与应答器有关的列,缺少直接返回
             DataGridViewColumn dvc_sd = dv_find_colunm(dv, "始端信号机");
             DataGridViewColumn dvc_zd = dv_find_colunm(dv, "终端信号机名称");
@@ -79,8 +76,18 @@ namespace 项目方案第一版
                     continue; 
                 };
                 List<int> Roads = Get_Roads(Poss);
-                int[] speeds= Get_Speed1(sd,zd, Roads.Count);
-                if(speeds==null)//没有速度信息
+                int[] speeds;
+                if (sta_name.Contains("所站"))
+                {
+                    v1 = 100;
+                    v2 = 80;
+                    v3 = 160;
+                speeds= Get_Speed2(sd,zd, Roads.Count);
+                }else
+                {
+                    speeds = Get_Speed1(sd, zd, Roads.Count);
+                }
+                if (speeds==null)//没有速度信息
                 {
                     indicate_warning(dvc_xlsd,row);
                     continue;
@@ -177,37 +184,50 @@ namespace 项目方案第一版
             }
             return roads;
         }
-        /// <summary>
-        /// 获取始终端信号机位置
-        /// </summary>
-        /// <param name="station_name"></param>
-        /// <param name="sd"></param>
-        /// <param name="zd"></param>
-        /// <returns></returns>
-        //static int[] Get_Beginning2Start(string station_name,string sd,string zd)
-        //{
-        //    int[] ints = new int[2];
-        //    DataTable dt = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
-        //     for (int col = 0; col < dt.Columns.Count; col++)
-        //       {
-        //            if (dt.Rows[0][col].ToString().Contains(station_name))
-        //            {
+        
+        
+        ///所站专属
+        static int[] Get_Speed2(string sd, string zd, int count)
+        {
+            int[] speeds = new int[count];
+            if (1 == count && (sd == "X" || sd == "SF"))
+            {
+                speeds[0] = 100;
+            }
+            else if (1 == count && (sd == "S" || sd == "XF"))
+            {
+                speeds[0] = 160;
+            }
+            else if (2 == count &&  sd == "SF")
+            {
+                speeds[0] = 100;
+                speeds[0] = 80;
 
-        //                for (int i = 1; i<dt.Rows.Count; i++)
-        //                {
-        //                    if (dt.Rows[i][col].ToString() == sd)
-        //                    {
-        //                        ints[0] = Get_mile(dt.Rows[i][col + 1].ToString());
-        //                    }
-        //                    if (dt.Rows[i][col].ToString() == zd)
-        //                    {
-        //                        ints[1] = Get_mile(dt.Rows[i][col + 1].ToString());
-        //                    }
-        //                }
-        //            }
-        //     }
+            }
+            else if (2 == count && sd == "XH")
+            {
+                speeds[0] = 80;
+                speeds[0] = 100;
 
+            }
+            else if (2 == count && sd == "S")
+            {
+                speeds[0] = 160;
+                speeds[0] = 80;
 
+            }
+            else if (2 == count && sd == "XHF")
+            {
+                speeds[0] = 80;
+                speeds[0] = 160;
+
+            }
+            else
+            {
+                return null;
+            }
+            return speeds;
+        }
         //    return ints;
         //}
         /// <summary>
