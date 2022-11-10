@@ -148,9 +148,16 @@ namespace 项目方案第一版
                 }
                 if(!checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
                 {
-                    aaa.Hide();
-                    MessageBox.Show("请勾选需要校验的数据");
-                    return;
+                    att = true;
+                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
+                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
+                    for (int pp = 0; pp < strings1.Length; pp++)
+                    {
+                        strings1[pp] = "";
+                    }
+                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
+                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
+                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
                 }
                 progressBar1.Value = 0;
             }
