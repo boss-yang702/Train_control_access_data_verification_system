@@ -244,8 +244,8 @@ namespace 项目方案第一版
 
         private void 使用说明ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path1 = @"C:\Users\波霸\Desktop\帮助文档.docx";  //打开D盘下的log.txt文件
-
+            string str = Directory.GetCurrentDirectory();
+            string path1 = @str + "\\帮助文档.docx";  //打开D盘下的log.txt文件
             System.Diagnostics.Process.Start(path1);
         }
     }

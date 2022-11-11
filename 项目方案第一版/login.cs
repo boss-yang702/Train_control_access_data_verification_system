@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,5 +62,13 @@ namespace 项目方案第一版
             {
                 textBox2.PasswordChar = '*';   //显示*
             }
-    }   }
+    }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            string str = Directory.GetCurrentDirectory();
+            string path1 = @str+ "\\登录账号密码.txt";  //打开D盘下的log.txt文件
+            System.Diagnostics.Process.Start(path1);
+        }
+    }
 }

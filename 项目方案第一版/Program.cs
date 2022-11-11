@@ -28,7 +28,7 @@ namespace 项目方案第一版
                 login.Dispose();
                 return;
             }
-            Application.Run(new MainWindow());
+            //Application.Run(new MainWindow());
         }
     }
 }

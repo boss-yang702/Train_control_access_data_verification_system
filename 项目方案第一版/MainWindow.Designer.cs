@@ -73,7 +73,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1282, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1282, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -88,7 +88,7 @@
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(73, 24);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(73, 28);
             this.toolStripSplitButton1.Text = "菜单栏";
             // 
             // 导入数据ToolStripMenuItem
@@ -129,7 +129,6 @@
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(53, 24);
             this.toolStripDropDownButton1.Text = "工具";
-            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // qqToolStripMenuItem
             // 
@@ -177,32 +176,36 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PowderBlue;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Location = new System.Drawing.Point(891, 112);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 72);
             this.button1.TabIndex = 3;
             this.button1.Text = "开始校验";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.PowderBlue;
             this.button2.Location = new System.Drawing.Point(891, 455);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(267, 72);
             this.button2.TabIndex = 4;
             this.button2.Text = "退出";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // 进路数据导入
             // 
+            this.进路数据导入.BackColor = System.Drawing.Color.PowderBlue;
             this.进路数据导入.Location = new System.Drawing.Point(891, 15);
             this.进路数据导入.Name = "进路数据导入";
             this.进路数据导入.Size = new System.Drawing.Size(267, 75);
             this.进路数据导入.TabIndex = 5;
             this.进路数据导入.Text = "进路数据导入";
-            this.进路数据导入.UseVisualStyleBackColor = true;
+            this.进路数据导入.UseVisualStyleBackColor = false;
             this.进路数据导入.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
@@ -240,6 +243,7 @@
             // 
             // progressBar1
             // 
+            this.progressBar1.BackColor = System.Drawing.Color.PowderBlue;
             this.progressBar1.Location = new System.Drawing.Point(891, 574);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(267, 31);
@@ -325,6 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1282, 667);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -342,6 +347,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "列车进路数据校验";

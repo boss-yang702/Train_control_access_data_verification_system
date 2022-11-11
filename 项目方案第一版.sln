@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "窗体应用", "窗体应�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{043467BD-B8BD-45D5-9A7D-18BBC9C1E7ED}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "数据校验系统最终版", "数据校验系统最终版\数据校验系统最终版.vdproj", "{F15CCA35-04F0-4221-B250-6FDA6BBAD328}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "数据校验系统升级版", "数据校验系统升级版\数据校验系统升级版.vdproj", "{AA9C184B-993C-4CAD-9871-BE81F6ECD97D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,14 @@ Global
 		{043467BD-B8BD-45D5-9A7D-18BBC9C1E7ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{043467BD-B8BD-45D5-9A7D-18BBC9C1E7ED}.Release|x64.ActiveCfg = Release|Any CPU
 		{043467BD-B8BD-45D5-9A7D-18BBC9C1E7ED}.Release|x64.Build.0 = Release|Any CPU
+		{F15CCA35-04F0-4221-B250-6FDA6BBAD328}.Debug|Any CPU.ActiveCfg = Debug
+		{F15CCA35-04F0-4221-B250-6FDA6BBAD328}.Debug|x64.ActiveCfg = Debug
+		{F15CCA35-04F0-4221-B250-6FDA6BBAD328}.Release|Any CPU.ActiveCfg = Release
+		{F15CCA35-04F0-4221-B250-6FDA6BBAD328}.Release|x64.ActiveCfg = Release
+		{AA9C184B-993C-4CAD-9871-BE81F6ECD97D}.Debug|Any CPU.ActiveCfg = Debug
+		{AA9C184B-993C-4CAD-9871-BE81F6ECD97D}.Debug|x64.ActiveCfg = Debug
+		{AA9C184B-993C-4CAD-9871-BE81F6ECD97D}.Release|Any CPU.ActiveCfg = Release
+		{AA9C184B-993C-4CAD-9871-BE81F6ECD97D}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

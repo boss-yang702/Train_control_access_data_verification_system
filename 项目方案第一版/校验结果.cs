@@ -102,6 +102,11 @@ namespace 项目方案第一版
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //private void 校验结果_Load(object sender, EventArgs e)
         //{
 
