@@ -201,25 +201,25 @@ namespace 项目方案第一版
             else if (2 == count &&  sd == "SF")
             {
                 speeds[0] = 100;
-                speeds[0] = 80;
+                speeds[1] = 80;
 
             }
             else if (2 == count && sd == "XH")
             {
                 speeds[0] = 80;
-                speeds[0] = 100;
+                speeds[1] = 100;
 
             }
             else if (2 == count && sd == "S")
             {
                 speeds[0] = 160;
-                speeds[0] = 80;
+                speeds[1] = 80;
 
             }
             else if (2 == count && sd == "XHF")
             {
                 speeds[0] = 80;
-                speeds[0] = 160;
+                speeds[1] = 160;
 
             }
             else
