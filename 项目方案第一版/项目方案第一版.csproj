@@ -93,6 +93,12 @@
     <Compile Include="Examine_guidaoquduan.cs" />
     <Compile Include="Examine_yingdaqi.cs" />
     <Compile Include="Examine_speed.cs" />
+    <Compile Include="修改密码.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改密码.Designer.cs">
+      <DependentUpon>修改密码.cs</DependentUpon>
+    </Compile>
     <Compile Include="guidaoquduan.cs" />
     <Compile Include="login.cs">
       <SubType>Form</SubType>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="信息表显示.resx">
       <DependentUpon>信息表显示.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改密码.resx">
+      <DependentUpon>修改密码.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="导入文件.resx">
       <DependentUpon>导入文件.cs</DependentUpon>

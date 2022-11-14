@@ -52,11 +52,7 @@ namespace 项目方案第一版
         
         private void button3_Click(object sender, EventArgs e)//进路数据导入
         {
-            label4.Hide();
-            label3.Hide();
-            label5.Hide();
-            label6.Hide();
-            label7.Hide();
+
             Manager.Load_file(this.dataGridView2,textBox1);
         }
         //进度条
@@ -218,6 +214,10 @@ namespace 项目方案第一版
 
         private void qqToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dataGridView2.DataSource = null;
+            label3.Show();
+
+            label6.Show();
 
         }
 
@@ -245,8 +245,43 @@ namespace 项目方案第一版
         private void 使用说明ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string str = Directory.GetCurrentDirectory();
-            string path1 = @str + "\\帮助文档.docx";  //打开D盘下的log.txt文件
+            string path1 = @str + "\\软件使用说明.doc";  //打开D盘下的log.txt文件
             System.Diagnostics.Process.Start(path1);
+        }
+
+        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            修改密码 bbb = new 修改密码();
+            bbb.ShowDialog();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (dataGridView2.DataSource != null)
+            {
+                label3.Hide();
+
+                label6.Hide();
+            }
+
+        }
+
+        private void 改变背景颜色ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 保存文档ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("保存成功");
+        }
+
+        private void 版本解释ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string str = Directory.GetCurrentDirectory();
+            string path1 = @str + "\\解释权.txt";  //打开D盘下的log.txt文件
+            System.Diagnostics.Process.Start(path1);
+
         }
     }
 }

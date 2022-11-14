@@ -21,18 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6FB4B9EEC0804E67BD85807FDBDCD0AD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8F0D85752C1A425DB250334D1342A220"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9ED45C679CB943188385785C1450F317"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -51,14 +39,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9ED45C679CB943188385785C1450F317"
+        "MsmKey" = "8:_F4CDB81E8D9C417CBC07EF3BF1384128"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8F0D85752C1A425DB250334D1342A220"
+        "OwnerKey" = "8:_9ED45C679CB943188385785C1450F317"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -79,6 +67,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -95,6 +99,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -129,58 +149,7 @@
             "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\登录账号密码.txt"
             "TargetName" = "8:登录账号密码.txt"
             "Tag" = "8:"
-            "Folder" = "8:_1C2C851A0616453D8E19B892BF762485"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FB4B9EEC0804E67BD85807FDBDCD0AD"
-            {
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\帮助文档.docx"
-            "TargetName" = "8:帮助文档.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_1C2C851A0616453D8E19B892BF762485"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8F0D85752C1A425DB250334D1342A220"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:项目方案第一版, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_8F0D85752C1A425DB250334D1342A220"
-                    {
-                    "Name" = "8:项目方案第一版.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8E2EA3366B0C43B5A5F33EB09F47A803"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -211,7 +180,7 @@
             "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_1C2C851A0616453D8E19B892BF762485"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -231,7 +200,7 @@
             "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.exe.config"
             "TargetName" = "8:项目方案第一版.exe.config"
             "Tag" = "8:"
-            "Folder" = "8:_1C2C851A0616453D8E19B892BF762485"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -251,7 +220,27 @@
             "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.pdb"
             "TargetName" = "8:项目方案第一版.pdb"
             "Tag" = "8:"
-            "Folder" = "8:_1C2C851A0616453D8E19B892BF762485"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4CDB81E8D9C417CBC07EF3BF1384128"
+            {
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\软件使用说明.doc"
+            "TargetName" = "8:软件使用说明.doc"
+            "Tag" = "8:"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -282,6 +271,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C41BCDE9C027434DB88B45802E8F9ED0"
+                    {
+                    "Name" = "8:数据校验文件"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_99EB1DECB18D418994342FA514B7C216"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_26BD184DA4294ADCB28994ECC457BE2D"
@@ -323,7 +323,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:数据校验系统升级版"
         "ProductCode" = "8:{DBA88BA3-4DF5-4B55-8EE6-D4FF82F0FB89}"
-        "PackageCode" = "8:{E47303C5-BC3C-47CE-A051-1D163D9574E7}"
+        "PackageCode" = "8:{6BCF8EBC-47E1-4422-A8E8-9B94F85DDC76}"
         "UpgradeCode" = "8:{CDC8F5F6-FA9E-484F-A778-379D1AF734E1}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
