@@ -39,7 +39,6 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.改变背景颜色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.字体样式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.使用说明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.版本解释ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +70,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1282, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1282, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -86,8 +85,9 @@
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(73, 28);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(73, 24);
             this.toolStripSplitButton1.Text = "菜单栏";
+            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
             // 
             // 导入数据ToolStripMenuItem
             // 
@@ -122,33 +122,26 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.qqToolStripMenuItem,
-            this.改变背景颜色ToolStripMenuItem,
-            this.字体样式ToolStripMenuItem});
+            this.改变背景颜色ToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(53, 28);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(53, 24);
             this.toolStripDropDownButton1.Text = "工具";
             // 
             // qqToolStripMenuItem
             // 
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.qqToolStripMenuItem.Text = "清空当前";
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
             // 改变背景颜色ToolStripMenuItem
             // 
             this.改变背景颜色ToolStripMenuItem.Name = "改变背景颜色ToolStripMenuItem";
-            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.改变背景颜色ToolStripMenuItem.Text = "背景颜色";
             this.改变背景颜色ToolStripMenuItem.Click += new System.EventHandler(this.改变背景颜色ToolStripMenuItem_Click);
-            // 
-            // 字体样式ToolStripMenuItem
-            // 
-            this.字体样式ToolStripMenuItem.Name = "字体样式ToolStripMenuItem";
-            this.字体样式ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.字体样式ToolStripMenuItem.Text = "字体样式";
             // 
             // toolStripDropDownButton2
             // 
@@ -159,20 +152,20 @@
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(53, 28);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(53, 24);
             this.toolStripDropDownButton2.Text = "帮助";
             // 
             // 使用说明ToolStripMenuItem
             // 
             this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.使用说明ToolStripMenuItem.Text = "查看使用步骤";
             this.使用说明ToolStripMenuItem.Click += new System.EventHandler(this.使用说明ToolStripMenuItem_Click);
             // 
             // 版本解释ToolStripMenuItem
             // 
             this.版本解释ToolStripMenuItem.Name = "版本解释ToolStripMenuItem";
-            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.版本解释ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.版本解释ToolStripMenuItem.Text = "版本解释";
             this.版本解释ToolStripMenuItem.Click += new System.EventHandler(this.版本解释ToolStripMenuItem_Click);
             // 
@@ -360,7 +353,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ToolStripMenuItem qqToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 改变背景颜色ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 字体样式ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 使用说明ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 版本解释ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看导入的具体数据ToolStripMenuItem;
