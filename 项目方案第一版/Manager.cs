@@ -62,7 +62,7 @@ namespace 项目方案第一版
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns>返回一个包含该文件的DateSet 里面有所有Sheet对应的Datatable</returns>
-        private static DataSet ImportExcel(string filePath)
+        public static DataSet ImportExcel(string filePath)
         {
             DataSet ds = null;
             OleDbConnection OleConn;
@@ -254,6 +254,7 @@ namespace 项目方案第一版
                 _ds = ds;
             } 
         }
+        
 
         //删除某一个表格数据
         public static void Delete_file(string name)

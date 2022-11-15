@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
-
+using System.Runtime.CompilerServices;
 
 namespace 项目方案第一版
 {
@@ -99,6 +99,187 @@ namespace 项目方案第一版
         private void button5_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public  void Select_Directory()
+        {
+
+            string path_;
+            FolderBrowserDialog dilog = new FolderBrowserDialog();
+            dilog.Description = "请选择存放线路数据表，道岔信息表等文件夹";
+            if (dilog.ShowDialog() == DialogResult.OK)
+            {
+                path_ = dilog.SelectedPath;
+                string[] strPaths = Directory.GetFiles(path_, "*.*");
+                foreach (string path in strPaths)
+                {
+                    string filename = System.IO.Path.GetFileName(path);
+                    if (filename.Contains("应答器"))
+                    {
+                        dss[0] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox5.Text = DsName;
+                        dss[0].DataSetName = DsName;
+                    }
+                    if (filename.Contains("道岔"))
+                    {
+                        dss[1] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox4.Text = DsName;
+                        dss[1].DataSetName = DsName;
+                    }
+                    if (filename.Contains("始终端信号机"))
+                    {
+                        dss[2] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox3.Text = DsName;
+                        dss[2].DataSetName = DsName;
+                    }
+                    if (filename.Contains("线路数据"))
+                    {
+                        dss[3] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox2.Text = DsName;
+                        dss[3].DataSetName = DsName;
+                    }
+                    if (filename.Contains("轨道区段"))
+                    {
+                        dss[4] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox6.Text = DsName;
+                        dss[4].DataSetName = DsName;
+                    }
+                }
+            }
+        }
+        public void Load_file()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "所有文件|*.*";
+            ofd.Multiselect = true;
+            //文件绝对路径
+            string[] strPaths;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                strPaths = ofd.FileNames;
+
+                foreach(string path in strPaths)
+                {
+                    string filename = System.IO.Path.GetFileName(path);
+                    if (filename.Contains("应答器"))
+                    {
+                        dss[0] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox5.Text = DsName;
+                        dss[0].DataSetName = DsName;
+                    }
+                    if (filename.Contains("道岔"))
+                    {
+                        dss[1] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox4.Text = DsName;
+                        dss[1].DataSetName = DsName;
+                    }
+                    if (filename.Contains("始终端信号机"))
+                    {
+                        dss[2] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox3.Text = DsName;
+                        dss[2].DataSetName = DsName;
+                    }
+                    if (filename.Contains("线路数据"))
+                    {
+                        dss[3] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox2.Text = DsName;
+                        dss[3].DataSetName = DsName;
+                    }
+                    if (filename.Contains("轨道区段"))
+                    {
+                        dss[4] = Manager.ImportExcel(path);
+                        int index2 = filename.LastIndexOf('表');
+                        string DsName = filename.Substring(0, index2 + 1);
+                        textBox6.Text = DsName;
+                        dss[4].DataSetName = DsName;
+                    }
+                }
+                
+            }
+        }
+         static DataSet[] dss = new DataSet[5];
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Load_file();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            foreach( DataSet ds in dss)
+            {
+                if (ds!=null)
+                {
+                    Manager.DataSets.Add(ds.DataSetName, ds);
+                }
+            }
+            MessageBox.Show("导入成功！");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Select_Directory();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ds = dss[0];
+            textBox1.Text = ds.DataSetName;
+            Current_index = 0;
+            dataGridView1.DataSource = ds.Tables[Current_index];
+            label3.Text = ds.Tables[Current_index].TableName;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ds = dss[1];
+            textBox1.Text = ds.DataSetName;
+            Current_index = 0;
+            dataGridView1.DataSource = ds.Tables[Current_index];
+            label3.Text = ds.Tables[Current_index].TableName;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ds = dss[2];
+            textBox1.Text = ds.DataSetName;
+            Current_index = 0;
+            dataGridView1.DataSource = ds.Tables[Current_index];
+            label3.Text = ds.Tables[Current_index].TableName;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            ds = dss[3];
+            textBox1.Text = ds.DataSetName;
+            Current_index = 0;
+            dataGridView1.DataSource = ds.Tables[Current_index];
+            label3.Text = ds.Tables[Current_index].TableName;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            ds = dss[4];
+            textBox1.Text = ds.DataSetName;
+            Current_index = 0;
+            dataGridView1.DataSource = ds.Tables[Current_index];
+            label3.Text = ds.Tables[Current_index].TableName;
         }
     }
 }
