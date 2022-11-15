@@ -15,38 +15,50 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_08E51B75ADBA4EB9AC4B37294C3E9CEF"
+        "MsmKey" = "8:_17080679A91C498F8EDCD2C8F388E13D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9ED45C679CB943188385785C1450F317"
+        "MsmKey" = "8:_51726E2FE6FF4205914518CEDB7673F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C25CA535F1744D78906D446480CC7EB3"
+        "MsmKey" = "8:_535494AB533E442A98B14171D013CA9C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DCF94A2460A24E588004708CE89D91D0"
+        "MsmKey" = "8:_643C9BB66F8740E5801CD25E5AECEF57"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F4CDB81E8D9C417CBC07EF3BF1384128"
+        "MsmKey" = "8:_BD4158FD55674DE1B7CFE650AEF5F225"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D2B5552819EC4BD4AB14291FB90B6822"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E6D25271B7AB42DAB527AB030E447DA4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9ED45C679CB943188385785C1450F317"
+        "OwnerKey" = "8:_BD4158FD55674DE1B7CFE650AEF5F225"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -144,60 +156,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_08E51B75ADBA4EB9AC4B37294C3E9CEF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17080679A91C498F8EDCD2C8F388E13D"
             {
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\登录账号密码.txt"
-            "TargetName" = "8:登录账号密码.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9ED45C679CB943188385785C1450F317"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:项目方案第一版, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_9ED45C679CB943188385785C1450F317"
-                    {
-                    "Name" = "8:项目方案第一版.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C25CA535F1744D78906D446480CC7EB3"
-            {
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.exe.config"
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\项目方案第一版.exe.config"
             "TargetName" = "8:项目方案第一版.exe.config"
             "Tag" = "8:"
             "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
@@ -215,9 +176,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DCF94A2460A24E588004708CE89D91D0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51726E2FE6FF4205914518CEDB7673F6"
             {
-            "SourcePath" = "8:..\\项目方案第一版\\bin\\Release\\项目方案第一版.pdb"
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\项目方案第一版.pdb"
             "TargetName" = "8:项目方案第一版.pdb"
             "Tag" = "8:"
             "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
@@ -235,10 +196,101 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4CDB81E8D9C417CBC07EF3BF1384128"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_535494AB533E442A98B14171D013CA9C"
+            {
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\帮助文档.txt"
+            "TargetName" = "8:帮助文档.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_643C9BB66F8740E5801CD25E5AECEF57"
+            {
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\登录账号密码.txt"
+            "TargetName" = "8:登录账号密码.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BD4158FD55674DE1B7CFE650AEF5F225"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:项目方案第一版, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BD4158FD55674DE1B7CFE650AEF5F225"
+                    {
+                    "Name" = "8:项目方案第一版.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\项目方案第一版.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2B5552819EC4BD4AB14291FB90B6822"
             {
             "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\软件使用说明.doc"
             "TargetName" = "8:软件使用说明.doc"
+            "Tag" = "8:"
+            "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E6D25271B7AB42DAB527AB030E447DA4"
+            {
+            "SourcePath" = "8:..\\项目方案第一版\\bin\\Debug\\解释权.txt"
+            "TargetName" = "8:解释权.txt"
             "Tag" = "8:"
             "Folder" = "8:_C41BCDE9C027434DB88B45802E8F9ED0"
             "Condition" = "8:"
@@ -323,7 +375,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:数据校验系统升级版"
         "ProductCode" = "8:{DBA88BA3-4DF5-4B55-8EE6-D4FF82F0FB89}"
-        "PackageCode" = "8:{6BCF8EBC-47E1-4422-A8E8-9B94F85DDC76}"
+        "PackageCode" = "8:{4C35979C-EA9B-4873-ABB4-358F916CA846}"
         "UpgradeCode" = "8:{CDC8F5F6-FA9E-484F-A778-379D1AF734E1}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
