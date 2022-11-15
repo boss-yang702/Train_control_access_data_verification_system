@@ -317,9 +317,9 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            //this.Controls.Add(this.label5);
+            //this.Controls.Add(this.label4);
+            //this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
