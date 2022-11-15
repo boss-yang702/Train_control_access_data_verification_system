@@ -69,6 +69,11 @@ namespace 项目方案第一版
                 timer1.Enabled = false;
                 Thread.Sleep(300);
                 aaa.dataGridView1.DataSource = dataGridView2.DataSource;
+                if (aaa.dataGridView1.DataSource != null)
+                {
+                    aaa.label5.Hide();
+                    aaa.label6.Hide();
+                }
                 aaa.Show();
                 if (checkedListBox1.GetItemChecked(3))
                 {
@@ -144,16 +149,7 @@ namespace 项目方案第一版
                 }
                 if(!checkedListBox1.GetItemChecked(0) && !checkedListBox1.GetItemChecked(1) && !checkedListBox1.GetItemChecked(2))
                 {
-                    att = true;
-                    Examine_yingdaqi.start_exam(textBox1.Text, aaa.dataGridView1);
-                    Examine_guidaoquduan.start_exam(textBox1.Text, aaa.dataGridView1);
-                    for (int pp = 0; pp < strings1.Length; pp++)
-                    {
-                        strings1[pp] = "";
-                    }
-                    strings1 = (string[])Examine_guidaoquduan.strings.Clone();
-                    strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
-                    Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+                    MessageBox.Show("请勾选校验数据");
                 }
                 progressBar1.Value = 0;
             }
@@ -281,7 +277,32 @@ namespace 项目方案第一版
             string str = Directory.GetCurrentDirectory();
             string path1 = @str + "\\解释权.txt";  //打开D盘下的log.txt文件
             System.Diagnostics.Process.Start(path1);
+        }
 
+        private void checkAllItemEvent(ItemCheckEventArgs e, CheckedListBox box)
+        {
+            if (e.Index == 4)
+            {
+                if (e.NewValue == CheckState.Checked)
+                {
+                    checkedListBox1.SetItemChecked(0, true);
+                    checkedListBox1.SetItemChecked(1, true);
+                    checkedListBox1.SetItemChecked(2, true);
+                    checkedListBox1.SetItemChecked(3, true);
+                }
+                else if (e.NewValue == CheckState.Unchecked)
+                {
+                    checkedListBox1.SetItemChecked(0, false);
+                    checkedListBox1.SetItemChecked(1, false);
+                    checkedListBox1.SetItemChecked(2, false);
+                    checkedListBox1.SetItemChecked(3, false);
+                }
+            }
+        } 
+
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            checkAllItemEvent(e, checkedListBox1);
         }
     }
 }

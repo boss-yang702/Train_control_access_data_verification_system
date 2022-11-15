@@ -15,14 +15,16 @@ namespace 项目方案第一版
         public 查看已导入文件()
         {
             InitializeComponent();
+            label3.Show();
+            label4.Show();
+
         }
 
         private void 查看已导入文件_Load(object sender, EventArgs e)
         {
             foreach(string item in Manager.DataSets.Keys)
             {
-                listBox1.Items.Add(item);
-                
+                listBox1.Items.Add(item);               
             }
         }
 
@@ -34,6 +36,8 @@ namespace 项目方案第一版
         DataSet ds;
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
+            label3.Hide();
+            label4.Hide();
             ds = Manager.DataSets[listBox1.SelectedItem.ToString()];
             Current_index = 0;
             dataGridView1.DataSource = ds.Tables[Current_index];

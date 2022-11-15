@@ -50,9 +50,18 @@ namespace 项目方案第一版
                 MessageBox.Show("请导入怀衡线怀化南至衡阳东站线路数据表");
                 return;
             }
-            guidaoquduan.fengzhuang_xinhaoji(name);
-            guidaoquduan.fengzhuang_jinluxinxibiao(name);
-            guidaoquduan.fengzhuang_xinhaoji(name);
+            try
+            {
+
+                guidaoquduan.fengzhuang_xinhaoji(name);
+                guidaoquduan.fengzhuang_jinluxinxibiao(name);
+                guidaoquduan.fengzhuang_xinhaoji(name);
+            }
+            catch
+            {
+                MessageBox.Show("进路数据表");
+                return;
+            }
             int uuu = 0;
             for (int x = 0; x < guidaoquduan.duizhao.Length; x++)
             {
@@ -86,7 +95,7 @@ namespace 项目方案第一版
                                 {
                                     int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
                                     dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
-                                    strings[z] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的长度应由" + guidaoquduan.xinxi[M].changdu + "改为" + guidaoquduan.duizhao[o].changdu;
+                                    strings[z] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的长度应由" + guidaoquduan.xinxi[M].changdu + "改为" + guidaoquduan.duizhao[o].changdu;
                                     z++;
                                     break;
                                 }
@@ -107,7 +116,7 @@ namespace 项目方案第一版
                                 {
                                     int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
                                     dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
-                                    strings[z] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipinduizhao[ii].zaipin;
+                                    strings[z] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipinduizhao[ii].zaipin;
                                     z++;
                                     break;
                                 }
@@ -121,7 +130,7 @@ namespace 项目方案第一版
                     {
                         int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
                         dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
-                        strings[z] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的信号机类型应由" + guidaoquduan.xinxi[M].xinhaoji + "改为" + guidaoquduan.xinhaoji[M].leixing;
+                        strings[z] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的信号机类型应由" + guidaoquduan.xinxi[M].xinhaoji + "改为" + guidaoquduan.xinhaoji[M].leixing;
                         z++;
                     }
                 }
@@ -134,7 +143,7 @@ namespace 项目方案第一版
                         {
                             dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
                             int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                            strings3[d] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的长度信息缺失";
+                            strings3[d] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的长度信息缺失";
                             d++;
                         }
                     }
@@ -154,7 +163,7 @@ namespace 项目方案第一版
                             {
                                 dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
                                 int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                                strings3[d] = "第" + kkkk + "行" + "该进路" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
+                                strings3[d] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
                                 d++;
                             }
                         }

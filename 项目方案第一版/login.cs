@@ -70,5 +70,67 @@ namespace 项目方案第一版
             string path1 = @str+ "\\登录账号密码.txt";  //打开D盘下的log.txt文件
             System.Diagnostics.Process.Start(path1);
         }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                string userName = this.textBox1.Text;
+                string userPassword = this.textBox2.Text;
+                if (userName.Equals("") || userPassword.Equals(""))
+                {
+                    MessageBox.Show("用户名或密码不能为空！");
+                }
+
+                else
+                {
+                    //用户名和密码验证正确，提示成功，并执行跳转界面。
+                    if (userName.Equals("123") && userPassword.Equals("123"))
+                    {
+                        MessageBox.Show("登录成功！");
+                        //跳转主界面
+                        this.DialogResult = DialogResult.OK;
+                        this.Dispose();
+                        this.Close();
+                    }
+                    //用户名和密码验证错误，提示错误。
+                    else
+                    {
+                        MessageBox.Show("用户名或密码错误！");
+                    }
+                }
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                string userName = this.textBox1.Text;
+                string userPassword = this.textBox2.Text;
+                if (userName.Equals("") || userPassword.Equals(""))
+                {
+                    MessageBox.Show("用户名或密码不能为空！");
+                }
+
+                else
+                {
+                    //用户名和密码验证正确，提示成功，并执行跳转界面。
+                    if (userName.Equals("123") && userPassword.Equals("123"))
+                    {
+                        MessageBox.Show("登录成功！");
+                        //跳转主界面
+                        this.DialogResult = DialogResult.OK;
+                        this.Dispose();
+                        this.Close();
+                    }
+                    //用户名和密码验证错误，提示错误。
+                    else
+                    {
+                        MessageBox.Show("用户名或密码错误！");
+                    }
+                }
+            }
+        }
     }
 }

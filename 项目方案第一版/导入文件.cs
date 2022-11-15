@@ -32,6 +32,20 @@ namespace 项目方案第一版
                 dataGridView1.DataSource = ds.Tables[Current_index];
                 label3.Text = ds.Tables[Current_index].TableName;
             }
+            if (dataGridView1.DataSource != null)
+            {
+                label2.Hide();
+                label4.Hide();
+                label5.Hide();
+
+            }
+            else
+            {
+                label2.Show();
+                label4.Show();
+                label5.Show();
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -79,6 +93,10 @@ namespace 项目方案第一版
                 MessageBox.Show("导入成功！");
 
             }
+            label2.Show();
+            label4.Show();
+            label5.Show();
+            textBox1.Text = null;
 
         }
 

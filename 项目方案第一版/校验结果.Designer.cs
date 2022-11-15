@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(789, 605);
+            this.dataGridView1.Size = new System.Drawing.Size(1127, 694);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -70,7 +72,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(947, 691);
+            this.button1.Location = new System.Drawing.Point(1313, 726);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 62);
@@ -91,7 +93,7 @@
             this.textBox9.BackColor = System.Drawing.SystemColors.Window;
             this.textBox9.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox9.ForeColor = System.Drawing.Color.Red;
-            this.textBox9.Location = new System.Drawing.Point(838, 55);
+            this.textBox9.Location = new System.Drawing.Point(1177, 55);
             this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
@@ -122,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(835, 24);
+            this.label2.Location = new System.Drawing.Point(1174, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 15);
@@ -133,7 +135,7 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.textBox2.Location = new System.Drawing.Point(838, 412);
+            this.textBox2.Location = new System.Drawing.Point(1177, 425);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -144,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(835, 365);
+            this.label3.Location = new System.Drawing.Point(1174, 384);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 15);
@@ -164,7 +166,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1246, 691);
+            this.button2.Location = new System.Drawing.Point(1642, 726);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 62);
             this.button2.TabIndex = 33;
@@ -172,12 +174,32 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(11, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(1127, 694);
+            this.label5.TabIndex = 34;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("方正舒体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(415, 224);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(298, 42);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "请选择进路校验";
+            // 
             // 校验结果
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1588, 778);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(1924, 803);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -217,5 +239,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label6;
     }
 }

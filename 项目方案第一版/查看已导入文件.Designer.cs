@@ -37,6 +37,8 @@
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,11 +125,30 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(306, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(1254, 793);
+            this.label3.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("方正舒体", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(745, 153);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(313, 39);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "请选择查看的数据";
+            // 
             // 查看已导入文件
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2373, 1365);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -157,5 +178,7 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
