@@ -127,18 +127,18 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(306, 48);
+            this.label3.Location = new System.Drawing.Point(455, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1254, 793);
+            this.label3.Size = new System.Drawing.Size(1885, 1269);
             this.label3.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("方正舒体", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(745, 153);
+            this.label4.Location = new System.Drawing.Point(1172, 257);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(313, 39);
+            this.label4.Size = new System.Drawing.Size(507, 63);
             this.label4.TabIndex = 7;
             this.label4.Text = "请选择查看的数据";
             // 

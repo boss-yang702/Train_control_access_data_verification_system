@@ -65,6 +65,7 @@ namespace 项目方案第一版
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (ds == null) return;
             string DsName = textBox1.Text;
             ds.DataSetName = DsName;
             if (Manager.DataSets.ContainsKey(DsName))
@@ -244,7 +245,21 @@ namespace 项目方案第一版
             {
                 if (ds!=null)
                 {
-                    Manager.DataSets.Add(ds.DataSetName, ds);
+                    try
+                    {
+                        Manager.DataSets.Add(ds.DataSetName, ds);
+                    }
+                    catch
+                    {
+                        DialogResult MsgBoxResult;//设置对话框的返回值
+                        MsgBoxResult = System.Windows.Forms.MessageBox.Show(ds.DataSetName+"已导入，是否覆盖？", "这会替换系统中原本的数据集，不覆盖则会显示原本数据", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);//定义对话框的按钮式样
+                        if (MsgBoxResult.ToString() == "Yes")//如果对话框的返回值是YES（按"Y"按钮）
+                        {
+                            Manager.DataSets.Remove(ds.DataSetName);
+                            Manager.DataSets.Add(ds.DataSetName, ds);
+                        }
+
+                    }
                 }
             }
             MessageBox.Show("导入成功！");
