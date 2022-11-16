@@ -11,6 +11,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Microsoft.Office.Core;
 
 namespace 项目方案第一版
 {
@@ -133,6 +134,8 @@ namespace 项目方案第一版
             {
                 path_ = dilog.SelectedPath;
                 string[] strPaths = Directory.GetFiles(path_, "*.XLS");
+                string[] strPaths_ = Directory.GetFiles(path_, "*.xlsx");
+                strPaths = (strPaths.Concat(strPaths_)).ToArray();
                 foreach (string path in strPaths)
                 {
                     string filename = System.IO.Path.GetFileName(path);
@@ -142,7 +145,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox5.Text = DsName;
-                        dss[0].DataSetName = DsName;
+                        dss[0].DataSetName = "怀衡线怀化南至衡阳东站应答器位置表";
                     }
                     if (filename.Contains("道岔"))
                     {
@@ -150,7 +153,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox4.Text = DsName;
-                        dss[1].DataSetName = DsName;
+                        dss[1].DataSetName = "怀衡线怀化南至衡阳东站道岔信息表";
                     }
                     if (filename.Contains("始终端信号机"))
                     {
@@ -158,7 +161,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox3.Text = DsName;
-                        dss[2].DataSetName = DsName;
+                        dss[2].DataSetName = "怀衡线怀化南至衡阳东站始终端信号机信息表";
                     }
                     if (filename.Contains("线路数据"))
                     {
@@ -166,7 +169,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox2.Text = DsName;
-                        dss[3].DataSetName = DsName;
+                        dss[3].DataSetName = "怀衡线怀化南至衡阳东站线路数据表";
                     }
                     if (filename.Contains("轨道区段"))
                     {
@@ -174,7 +177,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox6.Text = DsName;
-                        dss[4].DataSetName = DsName;
+                        dss[4].DataSetName = "站内轨道区段信息表";
                     }
                 }
             }
@@ -199,7 +202,8 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox5.Text = DsName;
-                        dss[0].DataSetName = DsName;
+                        dss[0].DataSetName = "怀衡线怀化南至衡阳东站应答器位置表";
+
                     }
                     if (filename.Contains("道岔"))
                     {
@@ -207,7 +211,8 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox4.Text = DsName;
-                        dss[1].DataSetName = DsName;
+                        dss[1].DataSetName = "怀衡线怀化南至衡阳东站道岔信息表";
+
                     }
                     if (filename.Contains("始终端信号机"))
                     {
@@ -215,7 +220,8 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox3.Text = DsName;
-                        dss[2].DataSetName = DsName;
+                        dss[2].DataSetName = "怀衡线怀化南至衡阳东站始终端信号机信息表";
+
                     }
                     if (filename.Contains("线路数据"))
                     {
@@ -223,7 +229,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox2.Text = DsName;
-                        dss[3].DataSetName = DsName;
+                        dss[3].DataSetName = "怀衡线怀化南至衡阳东站线路数据表";
                     }
                     if (filename.Contains("轨道区段"))
                     {
@@ -231,7 +237,7 @@ namespace 项目方案第一版
                         int index2 = filename.LastIndexOf('表');
                         string DsName = filename.Substring(0, index2 + 1);
                         textBox6.Text = DsName;
-                        dss[4].DataSetName = DsName;
+                        dss[4].DataSetName = "站内轨道区段信息表";
                     }
                 }
                 
