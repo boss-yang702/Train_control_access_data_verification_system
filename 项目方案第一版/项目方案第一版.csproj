@@ -93,6 +93,12 @@
     <Compile Include="Examine_guidaoquduan.cs" />
     <Compile Include="Examine_yingdaqi.cs" />
     <Compile Include="Examine_speed.cs" />
+    <Compile Include="背景颜色.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="背景颜色.Designer.cs">
+      <DependentUpon>背景颜色.cs</DependentUpon>
+    </Compile>
     <Compile Include="加载窗体.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="背景颜色.resx">
+      <DependentUpon>背景颜色.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

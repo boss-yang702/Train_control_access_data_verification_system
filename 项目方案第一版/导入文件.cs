@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace 项目方案第一版
 {
@@ -20,6 +21,7 @@ namespace 项目方案第一版
         public 导入文件()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -97,8 +99,10 @@ namespace 项目方案第一版
             //label2.Show();
             //label4.Show();
             //label5.Show();
-            textBox1.Text = null;
+            Thread.Sleep(200);
 
+            textBox1.Text = null;
+            dataGridView1.DataSource = null;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -128,7 +132,7 @@ namespace 项目方案第一版
             if (dilog.ShowDialog() == DialogResult.OK)
             {
                 path_ = dilog.SelectedPath;
-                string[] strPaths = Directory.GetFiles(path_, "*.*");
+                string[] strPaths = Directory.GetFiles(path_, "*.XLS");
                 foreach (string path in strPaths)
                 {
                     string filename = System.IO.Path.GetFileName(path);
@@ -263,6 +267,8 @@ namespace 项目方案第一版
                 }
             }
             MessageBox.Show("导入成功！");
+            Thread.Sleep(200);
+            dataGridView1.DataSource = null;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -313,6 +319,19 @@ namespace 项目方案第一版
             Current_index = 0;
             dataGridView1.DataSource = ds.Tables[Current_index];
             label3.Text = ds.Tables[Current_index].TableName;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (dataGridView1.DataSource != null)
+            {
+                label2.Hide();
+            }
+            if (dataGridView1.DataSource == null)
+            {
+                label2.Show();
+            }
+
         }
     }
 }

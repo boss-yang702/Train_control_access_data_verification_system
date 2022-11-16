@@ -264,7 +264,8 @@ namespace 项目方案第一版
 
         private void 改变背景颜色ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            背景颜色 kkk = new 背景颜色();
+            kkk.ShowDialog();
         }
 
         private void 保存文档ToolStripMenuItem_Click(object sender, EventArgs e)

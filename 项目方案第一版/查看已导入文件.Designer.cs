@@ -47,11 +47,10 @@
             // 
             this.listBox1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 38;
-            this.listBox1.Location = new System.Drawing.Point(18, 19);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Location = new System.Drawing.Point(12, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(398, 1258);
+            this.listBox1.Size = new System.Drawing.Size(267, 796);
             this.listBox1.TabIndex = 0;
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
@@ -59,22 +58,20 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(459, 77);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(306, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1881, 1269);
+            this.dataGridView1.Size = new System.Drawing.Size(1254, 793);
             this.dataGridView1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(525, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(379, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 38);
+            this.label1.Size = new System.Drawing.Size(63, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
@@ -82,10 +79,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(1948, 19);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(1321, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 38);
+            this.label2.Size = new System.Drawing.Size(63, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "label2";
             // 
@@ -95,20 +91,19 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.关于ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 42);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 28);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(136, 38);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1140, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(760, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(213, 66);
+            this.button1.Size = new System.Drawing.Size(142, 41);
             this.button1.TabIndex = 4;
             this.button1.Text = "上一张";
             this.button1.UseVisualStyleBackColor = true;
@@ -116,10 +111,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1558, 4);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(1039, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 66);
+            this.button2.Size = new System.Drawing.Size(121, 41);
             this.button2.TabIndex = 5;
             this.button2.Text = "下一张";
             this.button2.UseVisualStyleBackColor = true;
@@ -127,26 +121,29 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(455, 77);
+            this.label3.Location = new System.Drawing.Point(306, 48);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1885, 1269);
+            this.label3.Size = new System.Drawing.Size(1254, 793);
             this.label3.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("方正舒体", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(1172, 257);
+            this.label4.Location = new System.Drawing.Point(847, 208);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(507, 63);
+            this.label4.Size = new System.Drawing.Size(313, 39);
             this.label4.TabIndex = 7;
             this.label4.Text = "请选择查看的数据";
             // 
             // 查看已导入文件
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2373, 1365);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(1573, 869);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -155,7 +152,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "查看已导入文件";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "查看已导入文件";
