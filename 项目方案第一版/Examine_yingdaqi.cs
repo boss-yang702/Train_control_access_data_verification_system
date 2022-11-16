@@ -24,7 +24,7 @@ namespace 项目方案第一版
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                result += "没有进路表\r\n";
+                MessageBox.Show("进路表名为空！");
                 return;
             }
             //Jinlu_table = DataSets[name].Tables[0];

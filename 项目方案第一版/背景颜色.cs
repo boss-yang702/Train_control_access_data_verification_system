@@ -46,6 +46,7 @@ namespace 项目方案第一版
             try
             {
                 mainWindow.BackColor = Color.FromName(label1.Text);
+                this.Close();
             }
             catch
             {

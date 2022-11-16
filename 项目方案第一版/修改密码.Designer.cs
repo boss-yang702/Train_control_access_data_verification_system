@@ -91,27 +91,30 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.Location = new System.Drawing.Point(118, 305);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 45);
             this.button1.TabIndex = 6;
             this.button1.Text = "确认修改";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.PowderBlue;
             this.button2.Location = new System.Drawing.Point(336, 305);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 44);
             this.button2.TabIndex = 7;
             this.button2.Text = "退出";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // 修改密码
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(626, 383);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
