@@ -19,7 +19,7 @@ namespace 项目方案第一版
         {
            
             DataTable dt = ds.Tables[0];
-            for(int col = 0; col < dt.Columns.Count; col++)
+            for(int col = 0; col < dt.Columns.Count; col+=3)
             {
                 if (!string.IsNullOrEmpty(dt.Rows[0][col].ToString()))
                 {
@@ -30,7 +30,7 @@ namespace 项目方案第一版
                     {
                         if (string.IsNullOrEmpty(dt.Rows[row][col].ToString())) break;
                         string name=dt.Rows[row][col].ToString();
-                        string lc = dt.Rows[row][col + 1].ToString();
+                        string lc = dt.Rows[row][col + 2].ToString();
                         int pos = Manager.Get_mile(lc);
                         one_Station_Annunciator.Add(name, pos);
                     }
