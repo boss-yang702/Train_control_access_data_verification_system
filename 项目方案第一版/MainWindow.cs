@@ -306,10 +306,5 @@ namespace 项目方案第一版
         {
             checkAllItemEvent(e, checkedListBox1);
         }
-
-        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
-        {
-
-        }
     }
 }
