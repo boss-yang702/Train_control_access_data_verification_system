@@ -12,9 +12,11 @@ namespace 项目方案第一版
 {
     public partial class 背景颜色 : Form
     {
-        public 背景颜色()
+        MainWindow mainWindow;
+        public 背景颜色(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,7 +43,21 @@ namespace 项目方案第一版
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                mainWindow.BackColor = Color.FromName(label1.Text);
+            }
+            catch
+            {
+                MessageBox.Show("请选择颜色");
+            }
+        }
+   
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            label1.Text = "AliceBlue";
+            mainWindow.BackColor = Color.AliceBlue;
         }
     }
 }

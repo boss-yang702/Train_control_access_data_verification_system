@@ -34,6 +34,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -42,7 +43,8 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
-            this.button1.Location = new System.Drawing.Point(486, 338);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(572, 338);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 71);
             this.button1.TabIndex = 0;
@@ -53,7 +55,8 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.PowderBlue;
-            this.button2.Location = new System.Drawing.Point(174, 338);
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(65, 338);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(135, 71);
             this.button2.TabIndex = 1;
@@ -101,12 +104,25 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "请选择颜色";
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.PowderBlue;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(316, 338);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(138, 71);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "初始化";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // 背景颜色
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -114,7 +130,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "背景颜色";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "背景颜色";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -132,5 +148,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

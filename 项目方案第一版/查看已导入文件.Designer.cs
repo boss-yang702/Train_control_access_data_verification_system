@@ -101,7 +101,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(760, 2);
+            this.button1.Location = new System.Drawing.Point(682, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 41);
             this.button1.TabIndex = 4;
@@ -111,7 +111,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1039, 2);
+            this.button2.Location = new System.Drawing.Point(994, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 41);
             this.button2.TabIndex = 5;
@@ -131,7 +131,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("方正舒体", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(847, 208);
+            this.label4.Location = new System.Drawing.Point(726, 296);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(313, 39);
