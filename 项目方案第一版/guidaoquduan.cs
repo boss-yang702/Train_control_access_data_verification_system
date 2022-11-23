@@ -23,14 +23,26 @@ namespace 项目方案第一版
         private static DataTable dz;
         private static DataTable dr;
         private static DataTable dm;
-
-
+        private static DataTable dk;
         private static DataTable dt;
+        private static DataTable dp;
         public static xinxi_guidao[] xinxi = new xinxi_guidao[1000];
         public static duizhaobiao[] duizhao = new duizhaobiao[677];
         public static zaipinxinxi[] zaipinduizhao = new zaipinxinxi[2500];
         public static xinhaojileixing[] xinhaoji = new xinhaojileixing[1000];
+        public static zaipinbiao[] zaipin = new zaipinbiao[1000];
         private static DataTable ds;
+
+        public struct zaipinbiao
+        {
+            public string chezhanming;
+            public string quduan;
+            public string zaipin;
+            public string jinluleixing;
+            public string shiduanxinhaoji;
+            public string zhongduanxinhaoji;
+            public string state;
+        }
         public struct zaipinxinxi
         {
             public string zaipin;
@@ -206,6 +218,19 @@ namespace 项目方案第一版
                     {
                         xinxi[n].changdu = Convert.ToInt32(GN[0]);
                         xinxi[n].zaipin = GN[1];
+                        zaipin[n].zaipin = GN[1];
+                        zaipin[n].chezhanming = name;//载频
+                        zaipin[n].quduan = GN[3];
+                        if (mytrim(Convert.ToString(dt.Rows[i][4])).IndexOf("发") != -1)
+                        {
+                            zaipin[n].jinluleixing = "发车";
+                        }
+                        else
+                        {
+                            zaipin[n].jinluleixing = "接车";
+                        }
+                        zaipin[n].shiduanxinhaoji = Convert.ToString(dt.Rows[i][5]);
+                        zaipin[n].zhongduanxinhaoji = Convert.ToString(dt.Rows[i][7]);
                         xinxi[n].xinhaoji = GN[2];
                         xinxi[n].mingcheng_quduan = GN[3];
                         xinxi[n].jinluming = panduanjinlu[j];
@@ -519,6 +544,22 @@ namespace 项目方案第一版
                     }
                 }
             }
+        }
+        public static void fengzhuang_zaipin(string name)
+        {
+            dp = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
+            string[] chezhanming = new string[11];
+            for (int i = 0; i < zaipin.Length; i++)
+            {
+                for (int j = 0; j < 36; j=j+3)
+                {
+                    if (zaipin[i].chezhanming == Convert.ToString(dp.Rows[0][j]))
+                    {
+
+                    }
+                }
+            }
+        
         }
     }
 }
