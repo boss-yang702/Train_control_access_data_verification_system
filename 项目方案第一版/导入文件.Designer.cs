@@ -62,7 +62,7 @@
             this.textBox1.Location = new System.Drawing.Point(243, 94);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(402, 34);
+            this.textBox1.Size = new System.Drawing.Size(402, 50);
             this.textBox1.TabIndex = 0;
             // 
             // button3
@@ -84,7 +84,7 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(237, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 33);
+            this.label1.Size = new System.Drawing.Size(182, 52);
             this.label1.TabIndex = 8;
             this.label1.Text = "线路数据";
             // 
@@ -143,7 +143,7 @@
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(727, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 25);
+            this.label3.Size = new System.Drawing.Size(0, 39);
             this.label3.TabIndex = 14;
             // 
             // button5
@@ -176,7 +176,7 @@
             this.textBox2.Location = new System.Drawing.Point(1011, 593);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(402, 27);
+            this.textBox2.Size = new System.Drawing.Size(402, 39);
             this.textBox2.TabIndex = 17;
             // 
             // textBox3
@@ -184,7 +184,7 @@
             this.textBox3.Location = new System.Drawing.Point(1011, 484);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(402, 27);
+            this.textBox3.Size = new System.Drawing.Size(402, 39);
             this.textBox3.TabIndex = 18;
             // 
             // textBox4
@@ -192,7 +192,7 @@
             this.textBox4.Location = new System.Drawing.Point(1011, 374);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(402, 27);
+            this.textBox4.Size = new System.Drawing.Size(402, 39);
             this.textBox4.TabIndex = 19;
             // 
             // textBox5
@@ -200,7 +200,7 @@
             this.textBox5.Location = new System.Drawing.Point(1011, 258);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(402, 27);
+            this.textBox5.Size = new System.Drawing.Size(402, 39);
             this.textBox5.TabIndex = 20;
             // 
             // textBox6
@@ -208,7 +208,7 @@
             this.textBox6.Location = new System.Drawing.Point(1011, 699);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(402, 27);
+            this.textBox6.Size = new System.Drawing.Size(402, 39);
             this.textBox6.TabIndex = 21;
             // 
             // button7
@@ -314,10 +314,10 @@
             // 
             // 导入文件
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1545, 768);
+            this.ClientSize = new System.Drawing.Size(1700, 878);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
