@@ -22,6 +22,7 @@ namespace 项目方案第一版
 
         private void 查看已导入文件_Load(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             foreach(string item in Manager.DataSets.Keys)
             {
                 listBox1.Items.Add(item);               
@@ -55,23 +56,41 @@ namespace 项目方案第一版
 
         void Nexttable()
         {
-            if (Current_index < ds.Tables.Count-1)
+
+            try
             {
-                Current_index++;
-                dataGridView1.DataSource=ds.Tables[Current_index];
-                label2.Text = ds.Tables[Current_index].TableName;
+                if (ds != null)
+                {
+                    if (Current_index < ds.Tables.Count - 1)
+                    {
+                        Current_index++;
+                        dataGridView1.DataSource = ds.Tables[Current_index];
+                        label2.Text = ds.Tables[Current_index].TableName;
+                    }
+                }
             }
+            catch
+            {
+                return;
+            }
+
             
         }
         void Lasttable()
         {
-            if (Current_index > 0)
+            try
             {
-                Current_index--;
-                dataGridView1.DataSource = ds.Tables[Current_index];
-                label2.Text = ds.Tables[Current_index].TableName;
+                if (Current_index > 0)
+                {
+                    Current_index--;
+                    dataGridView1.DataSource = ds.Tables[Current_index];
+                    label2.Text = ds.Tables[Current_index].TableName;
+                }
             }
-
+            catch
+            {
+                return;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -81,7 +100,14 @@ namespace 项目方案第一版
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Nexttable();
+            try
+            {
+                Nexttable();
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,6 +115,17 @@ namespace 项目方案第一版
             if (listBox1.SelectedItem == null) return;
             Manager.DataSets.Remove(listBox1.SelectedItem.ToString());
             listBox1.Items.Remove(listBox1.SelectedItem);
+        }
+
+        private void 导入文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            导入文件 form2 = new 导入文件();
+            form2.ShowDialog();
+        }
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            查看已导入文件_Load(sender, e);
         }
     }
 }
