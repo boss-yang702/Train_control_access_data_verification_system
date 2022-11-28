@@ -41,7 +41,9 @@ namespace 项目方案第一版
             public string jinluleixing;
             public string shiduanxinhaoji;
             public string zhongduanxinhaoji;
-            public string state;
+            public string state1;
+            public string state2;
+            public int hangshu;
         }
         public struct zaipinxinxi
         {
@@ -200,6 +202,7 @@ namespace 项目方案第一版
                     int uu,mm;
                     string[] GN = GD[c].Split('\\');
                     xinxi[n].hangshu = i;
+                    zaipin[n].hangshu = i;
                     uu = mytrim(name).IndexOf("邵");
                     mm= mytrim(name).IndexOf("南");
                     if (uu == -1)
@@ -209,18 +212,19 @@ namespace 项目方案第一版
                     if (uu != -1 && mm == -1)
                     {
                         xinxi[n].chezhanming = mytrim(name.Substring(0, 3).Replace("怀", ""));
+                        zaipin[n].chezhanming= mytrim(name.Substring(0, 3).Replace("怀", ""));
                     }
                     else 
                     {
                         xinxi[n].chezhanming = mytrim(name.Substring(0, 2));
+                        zaipin[n].chezhanming= mytrim(name.Substring(0, 2));
                     }
                     try
                     {
                         xinxi[n].changdu = Convert.ToInt32(GN[0]);
                         xinxi[n].zaipin = GN[1];
-                        zaipin[n].zaipin = GN[1];
-                        zaipin[n].chezhanming = name;//载频
-                        zaipin[n].quduan = GN[3];
+                        
+                        zaipin[n].quduan = GN[3];//载频
                         if (mytrim(Convert.ToString(dt.Rows[i][4])).IndexOf("发") != -1)
                         {
                             zaipin[n].jinluleixing = "发车";
@@ -545,21 +549,124 @@ namespace 项目方案第一版
                 }
             }
         }
-        public static void fengzhuang_zaipin(string name)
+        public static void fengzhuang_zaipin()
         {
             dp = Manager.DataSets["怀衡线怀化南至衡阳东站始终端信号机信息表"].Tables[0];
-            string[] chezhanming = new string[11];
-            for (int i = 0; i < zaipin.Length; i++)
+            string chezhanming=null ;
+
+            for (int j = 0; j < 36; j=j+3)
             {
-                for (int j = 0; j < 36; j=j+3)
+                int uu;
+                uu = Convert.ToString(dp.Rows[0][j]).Substring(0, 3).IndexOf("邵");
+                if (uu == -1)
                 {
-                    if (zaipin[i].chezhanming == Convert.ToString(dp.Rows[0][j]))
-                    {
+                    chezhanming = Convert.ToString(dp.Rows[0][j]).Substring(0, 2);
+                }
+                if (uu != -1)
+                {
+                    chezhanming = Convert.ToString(dp.Rows[0][j]).Substring(0, 3).Replace("怀","");
+
+                }
+                if (zaipin[0].chezhanming== chezhanming)
+                  {
+                      for (int k = 0; k < zaipin.Length; k++)
+                      {
+                        for (int i = 0; i < 30; i++)
+                        {
+                            if (Convert.ToString(dp.Rows[i][j]) == zaipin[k].shiduanxinhaoji)
+                            {
+                                zaipin[k].state1 = (Convert.ToString(dp.Rows[i][j + 1]));
+                                break;
+                            }
+                            else
+                            {
+                                zaipin[k].state1 = null;
+                                continue;
+                            }
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            if (Convert.ToString(dp.Rows[i][j]) == zaipin[k].zhongduanxinhaoji)
+                            {
+                                zaipin[k].state2 = (Convert.ToString(dp.Rows[i][j + 1]));
+                                break;
+                            }
+                            else
+                            {
+                                zaipin[k].state2 = null;
+                                continue;
+                            }
+                        }
 
                     }
                 }
+             }
+        }
+        public static void fengzhuang_zaipin1()
+        {
+            for (int i = 0; i < zaipin.Length; i++)
+            {
+                if (zaipin[i].chezhanming != null)
+                {
+                    if (zaipin[i].state1 == zaipin[i].state2 && zaipin[i].state1 != null && zaipin[i].state2 != null)
+                    {
+                        for (int j = 0; j < zaipinduizhao.Length; j++)
+                        {
+                            if (zaipinduizhao[j].chezhanming == zaipin[i].chezhanming)
+                            {
+                                if (zaipinduizhao[j].quduan == zaipin[i].quduan)
+                                {
+                                    zaipin[i].zaipin = zaipinduizhao[j].zaipin;
+                                    break;
+                                }
+                                else
+                                {
+                                    zaipin[i].zaipin = "缺少信息";
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                    if (zaipin[i].state1 != zaipin[i].state2&& zaipin[i].state1 !=null&& zaipin[i].state2 !=null)
+                    {
+                        if (zaipin[i].jinluleixing == "发车")
+                        {
+                            zaipin[i].zaipin = "0";
+                        }
+                        if (zaipin[i].jinluleixing == "接车")
+                        {
+                            if (zaipin[i].hangshu == zaipin[i + 2].hangshu)
+                            {
+                                zaipin[i].zaipin = "0";
+                            }
+                            if (zaipin[i].hangshu != zaipin[i + 2].hangshu)
+                            {
+                                for (int k = 0; k < zaipinduizhao.Length; k++)
+                                {
+                                    if (zaipinduizhao[k].chezhanming == zaipin[i].chezhanming)
+                                    {
+                                        if (zaipinduizhao[k].quduan == zaipin[i].quduan)
+                                        {
+                                            zaipin[i].zaipin = zaipinduizhao[k].zaipin;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            zaipin[i].zaipin = "缺少信息";
+                                            continue;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    if (zaipin[i].state1 == null || zaipin[i].state2 == null)
+                    {
+                        zaipin[i].zaipin = "缺少信息";
+                    }
+                }
             }
-        
         }
     }
 }
