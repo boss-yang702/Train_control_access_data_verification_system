@@ -56,6 +56,8 @@ namespace 项目方案第一版
                 guidaoquduan.fengzhuang_xinhaoji(name);
                 guidaoquduan.fengzhuang_jinluxinxibiao(name);
                 guidaoquduan.fengzhuang_xinhaoji(name);
+                guidaoquduan.fengzhuang_zaipin();
+                guidaoquduan.fengzhuang_zaipin1();
             }
             catch
             {
@@ -69,15 +71,6 @@ namespace 项目方案第一版
                 {
                     guidao3[uuu] = guidaoquduan.duizhao[x].mingcheng_quduan;
                     uuu++;
-                }
-            }
-            int ttt = 0;
-            for (int x = 0; x < guidaoquduan.zaipinduizhao.Length; x++)
-            {
-                if (guidaoquduan.zaipinduizhao[x].chezhanming == guidaoquduan.xinxi[0].chezhanming)
-                {
-                    guidao4[ttt] = guidaoquduan.zaipinduizhao[x].quduan;
-                    ttt++;
                 }
             }
             for (int M = 0; M < guidaoquduan.xinxi.Length; M++)
@@ -105,23 +98,20 @@ namespace 项目方案第一版
                 }
                 if (MainWindow.att)
                 {
-                    for (int ii = 0; ii < guidaoquduan.zaipinduizhao.Length; ii++)
+                    if (guidaoquduan.zaipin[M].chezhanming != null)
                     {
-                        if (guidaoquduan.xinxi[M].chezhanming == guidaoquduan.zaipinduizhao[ii].chezhanming)
+                        if (guidaoquduan.zaipin[M].zaipin != "缺少信息")
                         {
-
-                            if (guidaoquduan.xinxi[M].mingcheng_quduan == guidaoquduan.zaipinduizhao[ii].quduan)
+                            if (guidaoquduan.xinxi[M].zaipin != guidaoquduan.zaipin[M].zaipin)
                             {
-                                if (guidaoquduan.xinxi[M].zaipin != guidaoquduan.zaipinduizhao[ii].zaipin)
-                                {
-                                    int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                                    dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
-                                    strings[z] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipinduizhao[ii].zaipin;
-                                    z++;
-                                    break;
-                                }
+                                int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
+                                dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("Red");
+                                strings[z] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频应由" + guidaoquduan.xinxi[M].zaipin + "改为" + guidaoquduan.zaipin[M].zaipin;
+                                z++;
+
                             }
                         }
+
                     }
                 }
                 if (guidaoquduan.xinxi[M].mingcheng_quduan == guidaoquduan.xinhaoji[M].gudaoming)
@@ -139,9 +129,12 @@ namespace 项目方案第一版
                 {
                     try
                     {
-                        if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
+                        if (guidaoquduan.xinxi[M].mingcheng_quduan != "")
                         {
-                            dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
+                            if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red"))
+                            {
+                                dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
+                            }
                             int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
                             strings3[d] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的长度信息缺失";
                             d++;
@@ -154,24 +147,27 @@ namespace 项目方案第一版
                 }
                 if (MainWindow.att)
                 {
-                    int ccc = guidao4.Count(p => p == guidaoquduan.xinxi[M].mingcheng_quduan);
-                    if (ccc == 0)
+                    //int ccc = guidao4.Count(p => p == guidaoquduan.xinxi[M].mingcheng_quduan);
+                    //if (ccc == 0)
+
+                    try
                     {
-                        try
+                        if ( guidaoquduan.zaipin[M].zaipin == "缺少信息")
                         {
-                            if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red") && guidaoquduan.xinxi[M].mingcheng_quduan != "")
+                            if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red"))
                             {
                                 dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor = Color.FromName("yellow");
-                                int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
-                                strings3[d] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
-                                d++;
                             }
-                        }
-                        catch
-                        {
-
+                            int kkkk = guidaoquduan.xinxi[M].hangshu - 2;
+                            strings3[d] = "序号为" + kkkk + "，" + "进路为" + guidaoquduan.xinxi[M].jinluming + "的轨道区段" + guidaoquduan.xinxi[M].mingcheng_quduan + "的载频信息缺失";
+                            d++;
                         }
                     }
+                    catch
+                    {
+                        continue;
+                    }
+
                 }
                 try
                 {
@@ -181,8 +177,8 @@ namespace 项目方案第一版
                     }
                 }
                 catch
-                { 
-                
+                {
+                    continue;
                 }
             }
         }      

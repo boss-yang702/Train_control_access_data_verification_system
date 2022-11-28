@@ -44,8 +44,7 @@ namespace 项目方案第一版
             Current_index = 0;
             dataGridView1.DataSource = ds.Tables[Current_index];
             label1.Text = ds.DataSetName;
-            
-
+           
         }
 
         private void 查看已导入文件_KeyUp(object sender, KeyEventArgs e)

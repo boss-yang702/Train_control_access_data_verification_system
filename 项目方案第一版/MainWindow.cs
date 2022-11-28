@@ -127,6 +127,8 @@ namespace 项目方案第一版
                     strings4 = (string[])Examine_guidaoquduan.strings3.Clone();
 
                     Examine_speed.start_exam(textBox1.Text, aaa.dataGridView1);
+
+
                 }
                 if (checkedListBox1.GetItemChecked(0) && checkedListBox1.GetItemChecked(2) && !checkedListBox1.GetItemChecked(1))
                 {
@@ -210,6 +212,8 @@ namespace 项目方案第一版
 
         private void qqToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            textBox1.Text = null;
+            textBox2.Text = null;
             dataGridView2.DataSource = null;
             this.BackColor = Color.AliceBlue;
             label3.Show();

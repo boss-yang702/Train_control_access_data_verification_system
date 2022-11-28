@@ -21,5 +21,11 @@ namespace 项目方案第一版
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("修改成功");
+            this.Close();
+        }
     }
 }
