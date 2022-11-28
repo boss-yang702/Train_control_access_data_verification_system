@@ -22,7 +22,7 @@ namespace 项目方案第一版
         public 导入文件()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -108,16 +108,30 @@ namespace 项目方案第一版
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Current_index = (Current_index - 1 + ds.Tables.Count) % ds.Tables.Count;
-            this.dataGridView1.DataSource = ds.Tables[Current_index];
-            label3.Text = ds.Tables[Current_index].TableName;
+            try
+            {
+                Current_index = (Current_index - 1 + ds.Tables.Count) % ds.Tables.Count;
+                this.dataGridView1.DataSource = ds.Tables[Current_index];
+                label3.Text = ds.Tables[Current_index].TableName;
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            Current_index = (Current_index +1) % ds.Tables.Count;
-            this.dataGridView1.DataSource = ds.Tables[Current_index];
-            label3.Text = ds.Tables[Current_index].TableName;
+            try
+            {
+                Current_index = (Current_index + 1) % ds.Tables.Count;
+                this.dataGridView1.DataSource = ds.Tables[Current_index];
+                label3.Text = ds.Tables[Current_index].TableName;
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -428,6 +442,11 @@ namespace 项目方案第一版
         private void button23_Click(object sender, EventArgs e)
         {
             Acknowledge(dss[4]);
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
