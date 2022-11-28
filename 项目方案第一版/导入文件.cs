@@ -27,14 +27,14 @@ namespace 项目方案第一版
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataSet ds_ = ds;
+            
             Manager.Load_file(textBox1,ref ds);
-            if (ds != ds_)
-            {
+            
+            
                 Current_index = 0;
                 dataGridView1.DataSource = ds.Tables[Current_index];
                 label3.Text = ds.Tables[Current_index].TableName;
-            }
+            
             //if (dataGridView1.DataSource != null)
             //{
             //    label2.Hide();
@@ -284,6 +284,7 @@ namespace 项目方案第一版
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (dss[0] == null) return;
             ds = dss[0];
             textBox1.Text = ds.DataSetName;
             Current_index = 0;
@@ -293,6 +294,7 @@ namespace 项目方案第一版
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (dss[1] == null) return;
             ds = dss[1];
             textBox1.Text = ds.DataSetName;
             Current_index = 0;
@@ -302,6 +304,7 @@ namespace 项目方案第一版
 
         private void button11_Click(object sender, EventArgs e)
         {
+            if (dss[2] == null) return;
             ds = dss[2];
             textBox1.Text = ds.DataSetName;
             Current_index = 0;
@@ -311,6 +314,8 @@ namespace 项目方案第一版
 
         private void button12_Click(object sender, EventArgs e)
         {
+            if (dss[3] == null) return;
+
             ds = dss[3];
             textBox1.Text = ds.DataSetName;
             Current_index = 0;
@@ -320,6 +325,8 @@ namespace 项目方案第一版
 
         private void button13_Click(object sender, EventArgs e)
         {
+            if (dss[4] == null) return;
+
             ds = dss[4];
             textBox1.Text = ds.DataSetName;
             Current_index = 0;
@@ -338,6 +345,89 @@ namespace 项目方案第一版
                 label2.Show();
             }
 
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file(textBox5, ref dss[0]);
+            dss[0].DataSetName = "怀衡线怀化南至衡阳东站应答器位置表";
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            Acknowledge(dss[0]);
+        }
+        void Acknowledge(DataSet ds)
+        {
+            if (ds == null) return;
+            try
+            {
+                Manager.DataSets.Add(ds.DataSetName, ds);
+                MessageBox.Show("导入成功！");
+            }
+            catch
+            {
+                DialogResult MsgBoxResult;//设置对话框的返回值
+                MsgBoxResult = System.Windows.Forms.MessageBox.Show(ds.DataSetName + "已导入，是否覆盖？", "这会替换系统中原本的数据集，不覆盖则会显示原本数据", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);//定义对话框的按钮式样
+                if (MsgBoxResult.ToString() == "Yes")//如果对话框的返回值是YES（按"Y"按钮）
+                {
+                    Manager.DataSets.Remove(ds.DataSetName);
+                    Manager.DataSets.Add(ds.DataSetName, ds);
+                    MessageBox.Show("导入成功！");
+
+                }
+
+            }
+            
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file(textBox4, ref dss[1]);
+            dss[1].DataSetName = "怀衡线怀化南至衡阳东站道岔信息表";
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            Acknowledge(dss[1]);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file(textBox3, ref dss[2]);
+            dss[2].DataSetName = "怀衡线怀化南至衡阳东站始终端信号机信息表";
+
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            Acknowledge(dss[2]);
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file(textBox2, ref dss[3]);
+            dss[3].DataSetName = "怀衡线怀化南至衡阳东站线路数据表";
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            Acknowledge(dss[3]);
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Manager.Load_file(textBox6, ref dss[4]);
+            dss[4].DataSetName = "站内轨道区段信息表";
+
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            Acknowledge(dss[4]);
         }
     }
 }
