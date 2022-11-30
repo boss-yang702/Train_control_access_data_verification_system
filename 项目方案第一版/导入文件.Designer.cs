@@ -60,6 +60,11 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +74,7 @@
             this.textBox1.Location = new System.Drawing.Point(587, 68);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(402, 34);
+            this.textBox1.Size = new System.Drawing.Size(402, 29);
             this.textBox1.TabIndex = 0;
             // 
             // label1
@@ -78,7 +83,7 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(581, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 33);
+            this.label1.Size = new System.Drawing.Size(92, 27);
             this.label1.TabIndex = 8;
             this.label1.Text = "线路数据";
             // 
@@ -124,7 +129,7 @@
             this.label3.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(717, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 33);
+            this.label3.Size = new System.Drawing.Size(0, 27);
             this.label3.TabIndex = 14;
             // 
             // button6
@@ -145,7 +150,7 @@
             this.textBox2.Location = new System.Drawing.Point(28, 457);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(402, 27);
+            this.textBox2.Size = new System.Drawing.Size(402, 23);
             this.textBox2.TabIndex = 17;
             // 
             // textBox3
@@ -153,7 +158,7 @@
             this.textBox3.Location = new System.Drawing.Point(28, 348);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(402, 27);
+            this.textBox3.Size = new System.Drawing.Size(402, 23);
             this.textBox3.TabIndex = 18;
             // 
             // textBox4
@@ -161,7 +166,7 @@
             this.textBox4.Location = new System.Drawing.Point(28, 240);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(402, 27);
+            this.textBox4.Size = new System.Drawing.Size(402, 23);
             this.textBox4.TabIndex = 19;
             // 
             // textBox5
@@ -169,7 +174,7 @@
             this.textBox5.Location = new System.Drawing.Point(28, 129);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(402, 27);
+            this.textBox5.Size = new System.Drawing.Size(402, 23);
             this.textBox5.TabIndex = 20;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -178,7 +183,7 @@
             this.textBox6.Location = new System.Drawing.Point(28, 566);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(402, 27);
+            this.textBox6.Size = new System.Drawing.Size(402, 23);
             this.textBox6.TabIndex = 21;
             // 
             // button7
@@ -402,11 +407,61 @@
             this.button23.UseVisualStyleBackColor = false;
             this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "应答器位置表：";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(44, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "道岔信息表";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 327);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 17);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "始终端信号机信息表";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(44, 438);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 17);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "线路数据表";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(44, 545);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 17);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "轨道信息区段表";
+            // 
             // 导入文件
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1297, 675);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
@@ -481,5 +536,10 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
