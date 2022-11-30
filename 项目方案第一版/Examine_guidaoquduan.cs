@@ -100,7 +100,7 @@ namespace 项目方案第一版
                 {
                     if (guidaoquduan.zaipin[M].chezhanming != null)
                     {
-                        if (guidaoquduan.zaipin[M].zaipin != "缺少信息")
+                        if (guidaoquduan.zaipin[M].zaipin != "缺少信息"&&guidaoquduan.zaipin[M].zaipin != "缺少信息1")
                         {
                             if (guidaoquduan.xinxi[M].zaipin != guidaoquduan.zaipin[M].zaipin)
                             {
@@ -152,7 +152,7 @@ namespace 项目方案第一版
 
                     try
                     {
-                        if ( guidaoquduan.zaipin[M].zaipin == "缺少信息")
+                        if (guidaoquduan.zaipin[M].zaipin != "缺少信息1"&&guidaoquduan.zaipin[M].zaipin == "缺少信息"&& guidaoquduan.zaipin[M].zaipin!="正确")
                         {
                             if (dv.Rows[guidaoquduan.xinxi[M].hangshu].Cells[11].Style.BackColor != Color.FromName("Red"))
                             {

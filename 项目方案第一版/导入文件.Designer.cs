@@ -131,7 +131,7 @@
             // 
             this.button6.BackColor = System.Drawing.Color.PowderBlue;
             this.button6.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.Location = new System.Drawing.Point(210, 36);
+            this.button6.Location = new System.Drawing.Point(28, 36);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(163, 66);
@@ -185,7 +185,7 @@
             // 
             this.button7.BackColor = System.Drawing.Color.PowderBlue;
             this.button7.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button7.Location = new System.Drawing.Point(22, 36);
+            this.button7.Location = new System.Drawing.Point(390, 36);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(165, 66);
@@ -198,7 +198,7 @@
             // 
             this.button8.BackColor = System.Drawing.Color.PowderBlue;
             this.button8.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.Location = new System.Drawing.Point(397, 36);
+            this.button8.Location = new System.Drawing.Point(209, 36);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(164, 66);

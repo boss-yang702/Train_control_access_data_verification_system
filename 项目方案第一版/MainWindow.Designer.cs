@@ -62,6 +62,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1,
@@ -70,7 +71,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1282, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1219, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -131,14 +132,14 @@
             // qqToolStripMenuItem
             // 
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
-            this.qqToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.qqToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.qqToolStripMenuItem.Text = "清空当前";
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
             // 改变背景颜色ToolStripMenuItem
             // 
             this.改变背景颜色ToolStripMenuItem.Name = "改变背景颜色ToolStripMenuItem";
-            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.改变背景颜色ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.改变背景颜色ToolStripMenuItem.Text = "背景颜色";
             this.改变背景颜色ToolStripMenuItem.Click += new System.EventHandler(this.改变背景颜色ToolStripMenuItem_Click);
             // 
@@ -172,7 +173,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(891, 112);
+            this.button1.Location = new System.Drawing.Point(891, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(267, 72);
             this.button1.TabIndex = 3;
@@ -183,7 +184,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.PowderBlue;
-            this.button2.Location = new System.Drawing.Point(891, 455);
+            this.button2.Location = new System.Drawing.Point(891, 568);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(267, 72);
             this.button2.TabIndex = 4;
@@ -194,7 +195,7 @@
             // 进路数据导入
             // 
             this.进路数据导入.BackColor = System.Drawing.Color.PowderBlue;
-            this.进路数据导入.Location = new System.Drawing.Point(891, 15);
+            this.进路数据导入.Location = new System.Drawing.Point(891, 30);
             this.进路数据导入.Name = "进路数据导入";
             this.进路数据导入.Size = new System.Drawing.Size(267, 75);
             this.进路数据导入.TabIndex = 5;
@@ -238,7 +239,7 @@
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.PowderBlue;
-            this.progressBar1.Location = new System.Drawing.Point(891, 574);
+            this.progressBar1.Location = new System.Drawing.Point(891, 505);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(267, 31);
             this.progressBar1.TabIndex = 10;
@@ -271,7 +272,7 @@
             "线路速度",
             "载频区段",
             "全选"});
-            this.checkedListBox1.Location = new System.Drawing.Point(891, 214);
+            this.checkedListBox1.Location = new System.Drawing.Point(891, 133);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(267, 224);
             this.checkedListBox1.TabIndex = 12;
@@ -305,7 +306,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1282, 667);
+            this.ClientSize = new System.Drawing.Size(1219, 667);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkedListBox1);
