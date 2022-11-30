@@ -652,7 +652,7 @@ namespace 项目方案第一版
                                         }
                                         else
                                         {
-                                            zaipin[i].zaipin = "缺少信息";
+                                            zaipin[i].zaipin = "缺少信息1";
                                             continue;
                                         }
                                     }
